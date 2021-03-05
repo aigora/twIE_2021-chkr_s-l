@@ -1,10 +1,13 @@
-# [Título del trabajo]
+# Checkers, las damas del futuro.
 
 [Descripción breve del proyecto a realizar (2-3 frases).]
 
 ## Integrantes del equipo
-
-[Nombres, apellidos, y usuario GitHub de los integrantes del equipo.]
+(añadid vuestro usuario)
+Dario Carnés Blanco
+Diego Sanchez Rey
+Juan NIcolás JIménez Pérez
+Bogurad BArañski Barañska (vegely)
 
 ## Objetivos del trabajo
 
