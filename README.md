@@ -6,7 +6,7 @@
 (añadid vuestro usuario) <br/>
 Dario Carnés Blanco <br/>
 Diego Sanchez Rey  <br/>
-Juan NIcolás Jiménez Pérez <br/>
+Juan Nicolás Jiménez Pérez <br/>
 Bogurad Barañski Barañska (vegely)  <br/>
 
 ## Objetivos del trabajo
