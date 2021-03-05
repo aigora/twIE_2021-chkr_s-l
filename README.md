@@ -3,7 +3,7 @@
 [Descripción breve del proyecto a realizar (2-3 frases).]
 
 ## Integrantes del equipo
-(añadid vuestro usuario)
+(añadid vuestro usuario) <br/>
 Dario Carnés Blanco <br/>
 Diego Sanchez Rey  <br/>
 Juan NIcolás Jiménez Pérez <br/>
