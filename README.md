@@ -4,10 +4,10 @@
 
 ## Integrantes del equipo
 (añadid vuestro usuario)
-Dario Carnés Blanco
-Diego Sanchez Rey
-Juan NIcolás JIménez Pérez
-Bogurad BArañski Barañska (vegely)
+Dario Carnés Blanco <br/>
+Diego Sanchez Rey  <br/>
+Juan NIcolás Jiménez Pérez <br/>
+Bogurad BArañski Barañska (vegely)  <br/>
 
 ## Objetivos del trabajo
 
