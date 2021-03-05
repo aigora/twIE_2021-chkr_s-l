@@ -7,7 +7,7 @@
 Dario Carnés Blanco <br/>
 Diego Sanchez Rey  <br/>
 Juan NIcolás Jiménez Pérez <br/>
-Bogurad BArañski Barañska (vegely)  <br/>
+Bogurad Barañski Barañska (vegely)  <br/>
 
 ## Objetivos del trabajo
 
