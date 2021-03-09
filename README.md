@@ -7,7 +7,7 @@ En el proyecto haremos un programa para jugar a las damas ya sea contra una pers
 Dario Carnés Blanco <br/>
 Diego Sanchez Rey  <br/>
 Juan Nicolás Jiménez Pérez <br/>
-Bogurad Barañski Barañska (vegely)  <br/>
+Bogurad Barañski Barañska (https://github.com/Vegely)  <br/>
 
 ## Objetivos del trabajo
 
