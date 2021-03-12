@@ -14,4 +14,4 @@ Bogurad Barañski Barañska (https://github.com/Vegely)  <br/>
 1) Crear un tablero que no tenga que ser redibujado tras cada movimiento <br/>
 2) Intentar que se puedan mover fichas clickando con el ratón <br/>
 3) Crear un Bot para jugar contra él (no vemos factible programar una IA) <br/>
-[Lista de los objetivos que se persiguen con el trabajo propuesto.]
+
