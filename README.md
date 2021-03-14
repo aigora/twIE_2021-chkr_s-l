@@ -4,7 +4,7 @@ En el proyecto haremos un programa para jugar a las damas ya sea contra una pers
 
 ## Integrantes del equipo
 (añadid vuestro usuario) <br/>
-Dario Carnés Blasco (dcblasco) {https://github.com/dcblasco}<br/>
+Dario Carnés Blasco (dcblasco) (https://github.com/dcblasco)<br/>
 Diego Sanchez Rey  <br/>
 Juan Nicolás Jiménez Pérez (https://github.com/JuanNicolasJimenez)<br/>
 Bogurad Barañski Barañska (https://github.com/Vegely)  <br/>
