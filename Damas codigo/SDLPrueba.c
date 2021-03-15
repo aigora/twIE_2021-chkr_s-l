@@ -28,6 +28,23 @@ int main(int argv, char** args)
                         {
                             printf( "No se pudo crear la ventana: %s\n", SDL_GetError() );
                         }
+                    else
+                        {
+                            //Se coge la superficie de la ventana para poder colocar elementos en ella
+                            screenSurface = SDL_GetWindowSurface( window );
+
+                            //Rellena la superficie de blanco
+                            SDL_FillRect( screenSurface, NULL, SDL_MapRGB( screenSurface->format, 0xFF, 0xFF, 0xFF ) );
+
+                            //Actualiza la superficie
+                            SDL_UpdateWindowSurface( window );
+
+                            //Espera 2000 milisegundos para que no desaparezca inmediatamente
+                            SDL_Delay( 2000 );
+
+
+                        }
+            }
 
 
 
