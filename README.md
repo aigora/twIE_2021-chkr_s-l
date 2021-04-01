@@ -7,7 +7,7 @@ En el proyecto haremos un programa para jugar a las damas ya sea contra una pers
 Dario Carnés Blasco (dcblasco) (https://github.com/dcblasco)<br/>
 Diego Sanchez Rey (https://github.com/diego22222) <br/>
 Juan Nicolás Jiménez Pérez (https://github.com/JuanNicolasJimenez)<br/>
-Bogurad Barañski Barañska (https://github.com/Vegely)  <br/>
+Bogurad Barañski Barañska @Vegely (https://github.com/Vegely)  <br/>
 
 ## Objetivos del trabajo
 
