@@ -41,12 +41,7 @@ int main(int argv, char** args)
 
                             //Espera 2000 milisegundos para que no desaparezca inmediatamente
                             SDL_Delay( 2000 );
-
-
                         }
             }
-
-
-
     return 0;
 }
