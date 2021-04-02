@@ -4,7 +4,7 @@
 
 //Al usar la librería SDL es importante que el main quede definido de la siguiente forma para que pueda ser portable a todo SO.
 //De momento es un archivo de prueba en un futuro se convertirá en función.
-bool iniciar()
+Bool iniciar()
 {
 
     //Se declara la ventana donde se renderizara y la superficie contenida por la ventana
