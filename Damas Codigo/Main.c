@@ -8,48 +8,84 @@ int main(int argv, char** args)
 
     do
     {
-            printf("Elige una opción:\n");
-            printf("0. Salir\n");
-            printf("1. Modo un jugador\n");
-            printf("2. Modo multijador\n");
-            scanf("%i",&opcion);
+        printf("Elige una opción:\n");
+        printf("\t0. Salir\n");
+        printf("\t1. Modo un jugador\n");
+        printf("\t2. Modo multijador\n");
+        scanf("%i", &opcion[0]);
 
-
-            switch (opcion[0])
+        switch (opcion[0])
+        {
+            case 1:
+            {
+                do
                 {
-                    case 1:
+                    printf("\nHas seleccionado el modo un jugador\n");
+                    //Multijugador(false);            (Nombre de la función)
 
-                        {
+                    printf("Seleccione el nivel de dificultad:\n");
+                    printf("\t1. Fácil\n");
+                    printf("\t2. Difícil\n");
 
-                          printf("Has seleccionado el modo un jugador\n");
-                          printf("Seleccione el nivel de dificultad:\n");
-                          printf("1. Modo un jugador\n");
-                          printf("2. Modo multijador\n");
+                    scanf("%i", &opcion[1]);
+                }while((opcion[1] != 1) && (opcion[1] != 2));
 
-                        }
+                if (opcion[1] == 1)
+                {
+                    printf("Has entrado en el modo fácil\n");
 
-                    case 2:
-
-                        {
-                          printf("Has seleccionado el modo multijugador\n");
-                        }
-
-                    case 0:
-                        {
-                            printf("Saliendo\n");
-                            break;
-                        }
-
-                    default:
-                        {
-
-                           printf("No ha seleccionado un modo válido\n");
-                           break;
-
-                        }
-
+                    //ModoDificil(false);            (Nombre de la función)
+                }
+                else
+                {
+                    printf("Has entrado en el modo difícil\n");
+                    //ModoDificil(true);
                 }
 
+                do
+                {
+                    printf("\nSeleccione color:\n");
+                    printf("\t1. Blanco\n");
+                    printf("\t2. Negro\n");
+
+                    scanf("%i", &opcion[2]);
+                }while((opcion[2] != 1) && (opcion[2] != 2));
+
+                if (opcion[2] == 1)
+                {
+                    printf("Has elegido el color blanco\n");
+
+                    //ColorBlanco(true);            (Nombre de la función)
+                }
+                else
+                {
+                    printf("Has elegido el color negro\n");
+                    //ColorBlanco(false);
+                }
+                printf("\n");
+                break;
+
+            }
+            case 2:
+
+                {
+                    printf("\nHas seleccionado el modo multijugador\n");
+                    //Multijugador(true);
+                    break;
+                }
+
+            case 0:
+                {
+                    printf("\nSaliendo\n");
+                    break;
+                }
+
+            default:
+                {
+                    printf("\nNo ha seleccionado un modo válido\n");
+                    break;
+                }
+        }
     }
 
     while(opcion[0] != 0);
