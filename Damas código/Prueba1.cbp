@@ -37,7 +37,7 @@
 			<Add directory="x86_64-w64-mingw32/lib" />
 			<Add directory="x86_64-w64-mingw32/bin" />
 		</Linker>
-		<Unit filename="Untitled1.c">
+		<Unit filename="Función main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
