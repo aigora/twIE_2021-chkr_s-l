@@ -1,6 +1,6 @@
 #include <SDL.h>
 #include <stdio.h>
-#include<Funciones.h>
+#include "Funciones.h"
 
 int main(int argv, char** args)
 {
