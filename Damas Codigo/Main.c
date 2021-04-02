@@ -3,7 +3,9 @@
 
 int main(int argv, char** args)
 {
-   iniciar();
+    //iniciar();
+    int
+
     return 0;
 }
 
