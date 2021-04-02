@@ -37,6 +37,10 @@
 			<Add directory="x86_64-w64-mingw32/lib" />
 			<Add directory="x86_64-w64-mingw32/bin" />
 		</Linker>
+		<Unit filename="Funciones.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Funciones.h" />
 		<Unit filename="Main.c">
 			<Option compilerVar="CC" />
 		</Unit>
