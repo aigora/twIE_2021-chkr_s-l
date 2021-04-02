@@ -5,6 +5,8 @@ int main(int argv, char** args)
 {
     //iniciar();
     int opcion[90];
+    double tiempo=0;
+    char nombre[11];
 
     do
     {
@@ -62,6 +64,38 @@ int main(int argv, char** args)
                     printf("Has elegido el color negro\n");
                     //ColorBlanco(false);
                 }
+                do
+                {
+                    printf("¿Desea usar temporizador?\n");
+                    printf("\t1. Sí\n");
+                    printf("\t2. No\n");
+
+                    scanf("%i", &opcion[3]);
+                }while((opcion[3] != 1) && (opcion[3] != 2));
+
+                if (opcion[3] == 1)
+                {
+                    printf("Introduzca el tiempo.\n");
+                    scanf("%lf",&tiempo);
+
+                    //Temporizador(tiempo);            (Nombre de la función)
+                }
+                do
+                {
+                    printf("¿Desea guardar su puntuación?\n");
+                    printf("\t1. Sí\n");
+                    printf("\t2. No\n");
+
+                    scanf("%i", &opcion[4]);
+                }while((opcion[4] != 1) && (opcion[4] != 2));
+
+                if (opcion[4] == 1)
+                {
+                    printf("Introduce un nombre\n");
+                    scanf("%10s",nombre);
+
+                    //Guardar(nombre);            (Nombre de la función)
+                }
                 printf("\n");
                 break;
 
@@ -71,6 +105,23 @@ int main(int argv, char** args)
                 {
                     printf("\nHas seleccionado el modo multijugador\n");
                     //Multijugador(true);
+
+                    do
+                {
+                    printf("¿Desea usar temporizador?\n");
+                    printf("\t1. Sí\n");
+                    printf("\t2. No\n");
+
+                    scanf("%i", &opcion[3]);
+                }while((opcion[3] != 1) && (opcion[3] != 2));
+
+                if (opcion[3] == 1)
+                {
+                    printf("Introduzca el tiempo.\n");
+                    scanf("%lf",&tiempo);
+
+                    //Temporizador(tiempo);            (Nombre de la función)
+                }
                     break;
                 }
 
