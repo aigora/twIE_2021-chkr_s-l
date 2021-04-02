@@ -1,5 +1,5 @@
+#include <SDL.h>
 #include <stdio.h>
-#include <SDL2/SDL.h>
 
 //Al usar la librería SDL es importante que el main quede definido de la siguiente forma para que pueda ser portable a todo SO.
 //De momento es un archivo de prueba en un futuro se convertirá en función.
@@ -45,3 +45,4 @@ int main(int argv, char** args)
             }
     return 0;
 }
+
