@@ -40,7 +40,6 @@
 		<Unit filename="Funciones.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Funciones.h" />
 		<Unit filename="Main.c">
 			<Option compilerVar="CC" />
 		</Unit>
