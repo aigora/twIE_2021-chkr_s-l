@@ -9,8 +9,8 @@ bool iniciar()
 
     //Se declara la ventana donde se renderizara y la superficie contenida por la ventana
 
-    SDL_Window* window = NULL;
-    SDL_Surface* screenSurface = NULL;
+    SDL_Window* Ventana= NULL;
+    SDL_Surface* Superficepantalla = NULL;
     bool funciona = true;
 
         if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
@@ -24,9 +24,9 @@ bool iniciar()
 
         //Se crea una ventana centrada con dimensiones 400 x 400 y con el último argumento muestra la ventana
 
-                window = SDL_CreateWindow( "nombre", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 400, 400, SDL_WINDOW_SHOWN );
+                Ventana = SDL_CreateWindow( "nombre", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 400, 400, SDL_WINDOW_SHOWN );
 
-                    if( window == NULL )
+                    if( Ventana == NULL )
                         {
                             printf( "No se pudo crear la ventana: %s\n", SDL_GetError() );
                             funciona = false;
@@ -35,13 +35,13 @@ bool iniciar()
                     else
                         {
                             //Se coge la superficie de la ventana para poder colocar elementos en ella
-                            screenSurface = SDL_GetWindowSurface( window );
+                            Superficepantalla = SDL_GetWindowSurface( Ventana );
 
                             //Rellena la superficie de blanco
-                            SDL_FillRect( screenSurface, NULL, SDL_MapRGB( screenSurface->format, 0xFF, 0xFF, 0xFF ) );
+                            SDL_FillRect( Superficepantalla, NULL, SDL_MapRGB( Superficepantalla->format, 0xFF, 0xFF, 0xFF ) );
 
                             //Actualiza la superficie
-                            SDL_UpdateWindowSurface( window );
+                            SDL_UpdateWindowSurface( Ventana );
 
                             //Espera 2000 milisegundos para que no desaparezca inmediatamente
                             SDL_Delay( 2000 );

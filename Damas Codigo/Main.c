@@ -1,9 +1,11 @@
 #include <SDL.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 int main(int argv, char** args)
 {
-    //iniciar(); Función de SDL
+
+    //iniciar(); //Función de SDL
     int opcion[5];
     double tiempo=0;
     char nombre[11];
