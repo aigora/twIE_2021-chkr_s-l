@@ -2,6 +2,11 @@
 #include <SDL.h>
 #include <stdbool.h>
 
+typedef struct
+{
+    int x, y;
+}punto;
+
 void fondo ()
 {
             SDL_Window *Ventana= NULL;
@@ -9,7 +14,7 @@ void fondo ()
             SDL_Surface *Tablero = NULL;
 
 
-            if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+            if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 )
             {
                 printf( "SDL no pudo iniciarse: %s\n", SDL_GetError() );
 
@@ -40,7 +45,7 @@ void fondo ()
                                     {
                                         SDL_BlitSurface(Tablero, NULL, Superficepantalla, NULL );
                                         SDL_UpdateWindowSurface( Ventana );
-                                        SDL_Delay( 2000 );
+                                        SDL_Delay( 2000 ); //luego importante quitar
 
 
                                          SDL_FreeSurface( Tablero );
@@ -54,6 +59,55 @@ void fondo ()
                                     }
                         }
             }
+
+
+}
+
+void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear, /*escribir la pantalla sobre la cual se dibujara*/)
+{
+
+    if(rodear==true)
+        {
+            if(Tipo_ficha[i]==2)
+                //dibujar circulo verde
+            else
+                //dibujar círculo naranja
+        }
+    else
+        {
+              switch (Tipo_ficha[i])
+                {
+                    case 0:
+
+                    break;
+
+
+                    case 1:
+
+                    break;
+
+
+                    case 2:
+
+                    break;
+
+
+                    case 3:
+
+                    break;
+
+
+                    case 4:
+
+                    break;
+
+                }
+        }
+}
+
+punto pos_raton (/*superficie*/)
+{
+    punto click;
 
 
 }
