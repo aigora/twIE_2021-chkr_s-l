@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <stdbool.h>
 
+
 typedef struct
 {
     int x, y;
@@ -11,7 +12,7 @@ typedef struct
 
 
 
-void fondo (SDL_Window *Ventana,SDL_Surface *Superficepantalla, SDL_Surface *Tablero)
+void fondo (SDL_Window *Ventana,SDL_Surface *Superficepantalla, SDL_Surface *Tablero,SDL_Renderer *Render, SDL_Texture *Textura)
 {
 
 
@@ -25,6 +26,12 @@ void fondo (SDL_Window *Ventana,SDL_Surface *Superficepantalla, SDL_Surface *Tab
         else
             {
 
+               if(!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ))
+               {
+                   printf("Aviso: Filtración linear de texturas no disponible");
+               }
+
+
                 Ventana = SDL_CreateWindow( "Damas.exe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, SDL_WINDOW_SHOWN );
 
                     if( Ventana == NULL )
@@ -35,38 +42,73 @@ void fondo (SDL_Window *Ventana,SDL_Surface *Superficepantalla, SDL_Surface *Tab
                         }
                     else
                         {
-                            Superficepantalla = SDL_GetWindowSurface( Ventana );
-                                    Tablero=SDL_LoadBMP("chekers_blue.bmp");
 
-                                    if (Tablero == NULL)
-                                    {
-                                        printf("No se pudo iniciar la imagen %s. Error de SDL %s \n ","chekers_blue.bmp",SDL_GetError());
+                            Render= SDL_CreateRenderer( Ventana, -1, SDL_RENDERER_ACCELERATED );
 
-                                    }
-                                    else
+
+                            if( Render == NULL )
                                     {
-                                        SDL_BlitSurface(Tablero, NULL, Superficepantalla, NULL );
-                                        SDL_UpdateWindowSurface( Ventana );
+                                        printf( "El render no se pudo crear SDL Error: %s\n", SDL_GetError() );
                                     }
+                            else
+                                    {
+                                        SDL_SetRenderDrawColor( Render, 0xFF, 0xFF, 0xFF, 0xFF );
+
+
+                                        SDL_Texture *newTexture = NULL;
+                                    	SDL_Surface *SupCarg = SDL_LoadBMP("chekers_blue.bmp");
+                                                            if( SupCarg == NULL )
+                                                            {
+                                                                printf( "No se pudo cargar la imagen: chekers_blue.bmp SDL Error: %s\n", SDL_GetError() );
+                                                            }
+                                                            else
+                                                            {
+
+                                                                newTexture = SDL_CreateTextureFromSurface( Render, SupCarg );
+                                                                if( newTexture == NULL )
+                                                                {
+                                                                    printf( "No se pudo cargar crear la textura SDL Error: %s\n", SDL_GetError() );
+                                                                }
+
+
+                                                                SDL_FreeSurface( SupCarg );
+                                                                Textura=newTexture;
+                                                                  if (Textura == NULL)
+                                                                    {
+                                                                        printf("Fallo al cargar las texturas\n");
+
+                                                                    }
+                                                                else
+                                                                {
+                                                                    SDL_RenderClear( Render );
+
+
+                                                                    SDL_RenderCopy( Render, Textura, NULL, NULL );
+
+
+                                                                    SDL_RenderPresent( Render );
+                                                                }
+                                                            }
+
+                                        }
                         }
+
             }
-
-
 }
 
-void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear, )
+/*void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear, bool rodeados[32],SDL_Window *Ventana,SDL_Surface *Superficepantalla, SDL_Surface *Tablero)
 {
 
     if(rodear==true)
         {
-            if(Tipo_ficha[i]==2)
+            if(Tipo_ficha[numero_casilla]==2)
                 //dibujar circulo verde
             else
                 //dibujar círculo naranja
         }
     else
         {
-              switch (Tipo_ficha[i])
+              switch (Tipo_ficha[numero_casilla])
                 {
                     case 0:
 
@@ -94,7 +136,7 @@ void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear, )
 
                 }
         }
-}
+}*/
 
 punto pos_raton ()
 {
@@ -131,14 +173,16 @@ punto pos_raton ()
    return click;
 }
 
-void cerrar (SDL_Window *Ventana,SDL_Surface *Superficepantalla, SDL_Surface *Tablero)
-{
-                                         SDL_FreeSurface( Tablero );
-                                         Tablero = NULL;
+void cerrar (SDL_Window *Ventana,SDL_Surface *Superficepantalla, SDL_Surface *Tablero, SDL_Texture *Textura, SDL_Renderer *Render)
+            {
+                                    SDL_DestroyTexture( Textura );
+                                    Textura = NULL;
 
 
-                                         SDL_DestroyWindow( Ventana );
-                                         Ventana = NULL;
+                                    SDL_DestroyRenderer( Render );
+                                    SDL_DestroyWindow( Ventana );
+                                    Ventana = NULL;
+                                    Render = NULL;
 
-                                         SDL_Quit();
-}
+                                    SDL_Quit();
+            }
