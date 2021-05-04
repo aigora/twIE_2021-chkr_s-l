@@ -6,8 +6,13 @@
 
 int main(int argv, char** args)
 {
+            SDL_Window *Ventana= NULL;
+            SDL_Surface *Superficepantalla = NULL;
+            SDL_Surface *Tablero = NULL;
 
+    fondo(Ventana,Superficepantalla,Tablero);
 
+    cerrar(Ventana,Superficepantalla,Tablero);
 
     int opcion[5];
     double tiempo=0;

@@ -7,11 +7,13 @@ typedef struct
     int x, y;
 }punto;
 
-void fondo ()
+ punto pos_raton();
+
+
+
+void fondo (SDL_Window *Ventana,SDL_Surface *Superficepantalla, SDL_Surface *Tablero)
 {
-            SDL_Window *Ventana= NULL;
-            SDL_Surface *Superficepantalla = NULL;
-            SDL_Surface *Tablero = NULL;
+
 
 
             if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 )
@@ -45,17 +47,6 @@ void fondo ()
                                     {
                                         SDL_BlitSurface(Tablero, NULL, Superficepantalla, NULL );
                                         SDL_UpdateWindowSurface( Ventana );
-                                        SDL_Delay( 2000 ); //luego importante quitar
-
-
-                                         SDL_FreeSurface( Tablero );
-                                         Tablero = NULL;
-
-
-                                         SDL_DestroyWindow( Ventana );
-                                         Ventana = NULL;
-
-                                         SDL_Quit();
                                     }
                         }
             }
@@ -63,7 +54,7 @@ void fondo ()
 
 }
 
-void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear, /*escribir la pantalla sobre la cual se dibujara*/)
+void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear, )
 {
 
     if(rodear==true)
@@ -105,9 +96,49 @@ void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear, /*escribir la 
         }
 }
 
-punto pos_raton (/*superficie*/)
+punto pos_raton ()
 {
+
     punto click;
+    click.x=0;
+    click.y=0;
+
+    bool funciona=true;
+    SDL_Event mouse;
+
+    while(funciona)
+    {
+
+        while(SDL_PollEvent(&mouse)!=0)
+        {
+            switch(mouse.type)
+            {
+                case SDL_QUIT:
+                    funciona = false;
+                    break;
+
+                case SDL_MOUSEBUTTONDOWN:
+                    click.x = mouse.button.x;
+                    click.y = mouse.button.y;
+                    printf("x: %i    y: %i\n", click.x, click.y);
+                    break;
+                return click;
+
+            }
+        }
+    }
+
+   return click;
+}
+
+void cerrar (SDL_Window *Ventana,SDL_Surface *Superficepantalla, SDL_Surface *Tablero)
+{
+                                         SDL_FreeSurface( Tablero );
+                                         Tablero = NULL;
 
 
+                                         SDL_DestroyWindow( Ventana );
+                                         Ventana = NULL;
+
+                                         SDL_Quit();
 }
