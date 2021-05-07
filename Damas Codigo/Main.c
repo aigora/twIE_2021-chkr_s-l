@@ -3,6 +3,21 @@
 
 int main(int argv, char** args)
 {
+    int movimientosPosibles[4];
+    int tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    pieza = 21;
+    int n = puedeMover(tablero, pieza, movimientosPosibles);
+    printf("%i ", n);
+    if (n != -1)
+    {
+        for (int i = 0; i <= n; i++)
+        {
+        printf("%i ", movimientosPosibles[i]);
+        }
+    }
+
+
+
     //iniciar();
     int opcion[90];
     double tiempo=0;
@@ -140,7 +155,6 @@ int main(int argv, char** args)
     }
 
     while(opcion[0] != 0);
-
     return 0;
 }
 

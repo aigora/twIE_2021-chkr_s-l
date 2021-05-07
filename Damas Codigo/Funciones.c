@@ -50,3 +50,110 @@ bool iniciar()
     return funciona;
 }
 
+
+
+
+bool in(int x, int n)
+{
+    int j, i = 0, array[1] = {-1};
+    bool respuesta = false;
+
+    switch(n)
+    {
+    case 0:
+        {
+            j = 8;
+            int array[8] = {0, 1, 2, 3, 4, 12, 20, 28};
+            break;
+        }
+    case 1:
+        {
+            j = 7;
+            int array[7] = {0, 1, 2, 3, 11, 19, 27};
+            break;
+        }
+    case 2:
+        {
+            j = 7;
+            int array[7] = {4, 12, 20, 28, 29, 30, 31};
+            break;
+        }
+    case 3:
+        {
+            j = 8;
+            int array[8] = {3, 11, 19, 27, 28, 29, 30, 31};
+            break;
+        }
+    }
+
+    while (i < j && !respuesta)
+    {
+        if (x == array[i])
+        {
+            respuesta = true;
+        }
+        i++;
+    }
+
+    return respuesta;
+}
+
+int puedeMover(int tablero[], int pieza, int movimientosPosibles[])
+{
+    int i, j;
+
+    if ((int)(pieza%8)%2 == 0)
+    {
+        i = 5;
+    }
+    else
+    {
+        i = 4;
+    }
+
+    j = -1;
+    if (tablero[pieza] != 1)
+    {
+        if (!in(pieza, 0))
+        {
+            if (tablero[pieza + i - 9] == 2)
+            {
+                j++;
+                movimientosPosibles[j] = pieza + i - 9;
+            }
+        }
+        if (!in(pieza, 1))
+        {
+            if (tablero[pieza + i - 8] == 2)
+            {
+                j++;
+                movimientosPosibles[j] = pieza + i - 8;
+            }
+        }
+        if (!in(pieza, 2))
+        {
+            if (tablero[pieza + i - 1])
+            {
+                j++;
+                movimientosPosibles[j] = pieza + i - 1;
+            }
+        }
+        if (!in(pieza, 3))
+        {
+            if (tablero[pieza + i])
+            {
+                j++;
+                movimientosPosibles[j] = pieza + i;
+            }
+        }
+    }
+
+    return j;
+}
+
+int puedeComer(tablero, turno)
+{
+
+}
+
+
