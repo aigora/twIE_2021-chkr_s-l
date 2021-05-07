@@ -8,6 +8,10 @@ typedef struct
 }Cuadrante;
 
 
+//void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *Render,Cuadrante dimensiones_casilla [32]);
+void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura, Cuadrante  dim_cas [32]);
+int pos_raton ();
+void cerrar (SDL_Window *Ventana, SDL_Texture *Textura, SDL_Renderer *Render);
 
 
 int main(int argv, char** args)
@@ -16,7 +20,7 @@ int main(int argv, char** args)
             SDL_Renderer *Render = NULL;
             SDL_Texture *Textura = NULL;
 
-            const Cuadrante  dimensiones_casilla [32]={
+            const Cuadrante  dim_cas [32]={
                                     {585,72,710,189}, //Primera fila
                                     {835,72,960,189},
                                     {1085,72,1210,189},
@@ -52,7 +56,7 @@ int main(int argv, char** args)
                                 };
 
 
-fondo (Ventana,Render, Textura);
+fondo (Ventana,Render, Textura, dim_cas );
 
         pos_raton ();
 

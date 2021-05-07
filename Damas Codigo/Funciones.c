@@ -8,12 +8,15 @@ typedef struct
     int x, y;
 }punto;
 
- punto pos_raton();
+typedef struct
+{
+    int x1,y1,x2,y2;
+}Cuadrante;
 
 
 
 
-void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura)
+void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura, Cuadrante  dim_cas [32])
 {
     if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 )
         {
@@ -67,11 +70,11 @@ void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura)
                                                 SDL_RenderCopy( Render, Textura, NULL, NULL );
                                                 SDL_RenderPresent( Render );
 
-                                                SDL_Rect fillRect = { 1920 / 4, 1080 / 4, 1920 / 2, 1080 / 2 };
+                                                SDL_Rect fillRect = { dim_cas[1].x1+16.5, dim_cas[1].y1+10, (dim_cas[1].x2-dim_cas[1].x1)-20, (dim_cas[1].y2-dim_cas[1].y1)-20 };
                                                 SDL_SetRenderDrawColor( Render, 0xFF, 0x00, 0x00, 0xFF );
                                                 SDL_RenderFillRect( Render, &fillRect );
+                                               	SDL_RenderPresent( Render );
 
-                                                	SDL_RenderPresent( Render );
                                             }
                                         }
 
@@ -81,22 +84,28 @@ void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura)
         }
 }
 
-/*void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear, bool rodeados[32],SDL_Renderer *Render)
+/*void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *Render,Cuadrante  dim_cas [32])
 {
-
+                                                SDL_Rect fillRect = { 100, 10, -10, 10 };
+                                                SDL_SetRenderDrawColor( Render, 0xFF, 0x00, 0x00, 0xFF );
+                                                SDL_RenderFillRect( Render, &fillRect );
+                                               	SDL_RenderPresent( Render );
     if(rodear==true)
         {
-            if(rodeados[numero_casilla]==false)
-                {
-                    if(Tipo_ficha[numero_casilla]==2)
-                    //dibujar circulo verde
-                    else
-                    //dibujar círculo naranja
-                }
+
+            if(Tipo_ficha[numero_casilla]==2)
+            //dibujar circulo verde
+            else
+            //dibujar círculo naranja
+
 
         }
     else
         {
+                                                SDL_Rect fillRect = { dim_cas.x1[i], dim_cas.y1[i], dim_cas.x2[i]-dim_cas.x1[i], dim_cas.y2[i]-dim_cas.y1[i] };
+                                                SDL_SetRenderDrawColor( Render, 0xFF, 0x00, 0x00, 0xFF );
+                                                SDL_RenderFillRect( Render, &fillRect );
+                                               	SDL_RenderPresent( Render );
               switch (Tipo_ficha[numero_casilla])
                 {
                     case 0:
@@ -126,13 +135,10 @@ void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura)
                 }
         }
 }
+^*/
 
-void despintar(int Tipo_ficha [32], int numero_casilla,SDL_Renderer *Render)
-{
 
-}
-*/
-punto pos_raton ()
+int pos_raton ()
 {
 
     punto click;
@@ -158,13 +164,13 @@ punto pos_raton ()
                     click.y = mouse.button.y;
                     printf("x: %i    y: %i\n", click.x, click.y);
                     break;
-                return click;
+                return 0;
 
             }
         }
     }
 
-   return click;
+   return 0;
 }
 
 void cerrar (SDL_Window *Ventana, SDL_Texture *Textura, SDL_Renderer *Render)
