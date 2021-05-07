@@ -2,12 +2,6 @@
 #include <SDL.h>
 #include <stdbool.h>
 
-
-typedef struct
-{
-    int x, y;
-}punto;
-
 typedef struct
 {
     int x1,y1,x2,y2;
@@ -16,7 +10,7 @@ typedef struct
 
 
 
-void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura,Cuadrante  dim_cas [32])
+void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura)
 {
     if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 )
         {
@@ -69,6 +63,7 @@ void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura,Cuadr
                                                 SDL_RenderClear( Render );
                                                 SDL_RenderCopy( Render, Textura, NULL, NULL );
                                                 SDL_RenderPresent( Render );
+
                                             }
                                         }
 
@@ -78,7 +73,7 @@ void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura,Cuadr
         }
 }
 
-void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *Render,Cuadrante  dim_cas [32])
+void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *Render,const Cuadrante  dim_cas [32])
 {
  int i= numero_casilla;
 
@@ -226,19 +221,19 @@ void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *R
 
 
 
-int pos_raton ()
+int pos_raton (const Cuadrante  dim_cas [32])
 {
 
-    punto click;
-    click.x=0;
-    click.y=0;
+    int x,y;
+    x=0;
+    y=0;
 
     bool funciona=true;
     SDL_Event mouse;
 
     while(funciona)
     {
-
+        int i=0; int k=-1;
         while(SDL_PollEvent(&mouse)!=0)
         {
             switch(mouse.type)
@@ -248,17 +243,36 @@ int pos_raton ()
                     break;
 
                 case SDL_MOUSEBUTTONDOWN:
-                    click.x = mouse.button.x;
-                    click.y = mouse.button.y;
-                    printf("x: %i    y: %i\n", click.x, click.y);
-                    break;
-                return 0;
+                    x = mouse.button.x;
+                    y = mouse.button.y;
+
+                    for (i=0;i<32;i++)
+                    {
+
+                        if((x>=dim_cas[i].x1&&x<=dim_cas[i].x2)&&(y>=dim_cas[i].y1&&y<=dim_cas[i].y2))
+                            {
+                                k=i; return k;
+                            }
+
+
+                    }
+
+                    if(k==-1)
+                    {
+                        return -1;
+                    }
+
+
+
+                break;
+
+
 
             }
         }
     }
 
-   return 0;
+
 }
 
 void cerrar (SDL_Window *Ventana, SDL_Texture *Textura, SDL_Renderer *Render)
