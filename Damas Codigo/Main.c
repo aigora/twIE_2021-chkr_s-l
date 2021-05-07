@@ -56,11 +56,11 @@ int main(int argv, char** args)
                                 };
 
 
-fondo (Ventana,Render, Textura, dim_cas );
+    fondo (Ventana, Render, Textura, dim_cas);
 
-        pos_raton ();
+    pos_raton ();
 
-cerrar (Ventana, Textura, Render);
+    cerrar (Ventana, Textura, Render);
 
 //    int opcion[5];
 //    double tiempo=0;

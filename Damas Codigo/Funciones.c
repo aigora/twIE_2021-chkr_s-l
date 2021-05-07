@@ -16,7 +16,7 @@ typedef struct
 
 
 
-void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura, Cuadrante  dim_cas [32])
+void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura,Cuadrante  dim_cas [32])
 {
     if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 )
         {
@@ -69,12 +69,6 @@ void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura, Cuad
                                                 SDL_RenderClear( Render );
                                                 SDL_RenderCopy( Render, Textura, NULL, NULL );
                                                 SDL_RenderPresent( Render );
-
-                                                SDL_Rect fillRect = { dim_cas[1].x1+16.5, dim_cas[1].y1+10, (dim_cas[1].x2-dim_cas[1].x1)-20, (dim_cas[1].y2-dim_cas[1].y1)-20 };
-                                                SDL_SetRenderDrawColor( Render, 0xFF, 0x00, 0x00, 0xFF );
-                                                SDL_RenderFillRect( Render, &fillRect );
-                                               	SDL_RenderPresent( Render );
-
                                             }
                                         }
 
@@ -84,58 +78,152 @@ void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura, Cuad
         }
 }
 
-/*void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *Render,Cuadrante  dim_cas [32])
+void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *Render,Cuadrante  dim_cas [32])
 {
-                                                SDL_Rect fillRect = { 100, 10, -10, 10 };
-                                                SDL_SetRenderDrawColor( Render, 0xFF, 0x00, 0x00, 0xFF );
-                                                SDL_RenderFillRect( Render, &fillRect );
-                                               	SDL_RenderPresent( Render );
+ int i= numero_casilla;
+
     if(rodear==true)
+
         {
+            if(Tipo_ficha[numero_casilla]==2) //Rodea una casilla
+                    {
+                    SDL_Rect fillRect = { dim_cas[i].x1+16.5, dim_cas[i].y1+10, (dim_cas[i].x2-dim_cas[i].x1)-20, (dim_cas[i].y2-dim_cas[i].y1)-20 };
+                    SDL_SetRenderDrawColor( Render, 0x00, 0xFF, 0x00, 0xFF );
+                    SDL_RenderFillRect( Render, &fillRect );
 
-            if(Tipo_ficha[numero_casilla]==2)
-            //dibujar circulo verde
-            else
-            //dibujar círculo naranja
 
+
+                    SDL_Rect fillRect2 = { dim_cas[i].x1+20.5, dim_cas[i].y1+14, (dim_cas[i].x2-dim_cas[i].x1)-28, (dim_cas[i].y2-dim_cas[i].y1)-28 };   //Llena lo de dentro de blanco
+                    SDL_SetRenderDrawColor( Render, 0xFF, 0xFF, 0xFF, 0xFF );
+                    SDL_RenderFillRect( Render, &fillRect2 );
+
+
+                    SDL_RenderPresent( Render );
+                    }
+
+
+
+            else //Rodea una pieza
+                    {
+                    SDL_Rect fillRect = { dim_cas[i].x1+16.5, dim_cas[i].y1+10, (dim_cas[i].x2-dim_cas[i].x1)-20, (dim_cas[i].y2-dim_cas[i].y1)-20 };
+                    SDL_SetRenderDrawColor( Render, 0xFF, 0x00, 0x00, 0xFF );
+                    SDL_RenderFillRect( Render, &fillRect );
+
+
+
+                    SDL_Rect fillRect2 = { dim_cas[i].x1+20.5, dim_cas[i].y1+14, (dim_cas[i].x2-dim_cas[i].x1)-28, (dim_cas[i].y2-dim_cas[i].y1)-28 };   //Llena lo de dentro de blanco
+                    SDL_SetRenderDrawColor( Render, 0xFF, 0xFF, 0xFF, 0xFF );
+                    SDL_RenderFillRect( Render, &fillRect2 );
+
+
+                    SDL_RenderPresent( Render );
+
+                    switch (Tipo_ficha[numero_casilla])
+                        {
+                            case 0: ;
+                                SDL_Rect fillRect3 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
+                                SDL_SetRenderDrawColor(  Render, 208, 200, 0x00, 0xFF  );
+                                SDL_RenderFillRect( Render, &fillRect3 );
+
+                                 SDL_RenderPresent( Render );
+                            break;
+
+
+                            case 1: ;
+                                SDL_Rect fillRect4 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
+                                SDL_SetRenderDrawColor(  Render, 208, 0x00, 134, 200  );
+                                SDL_RenderFillRect( Render, &fillRect4 );
+
+                                SDL_RenderPresent( Render );
+                            break;
+
+
+                            case 3: ;
+                                SDL_Rect fillRect5 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
+                                SDL_SetRenderDrawColor(  Render, 208, 200, 0x00, 0xFF   );
+                                SDL_RenderFillRect( Render, &fillRect5 );
+
+                                SDL_Rect fillRect7 = { dim_cas[i].x1+51, dim_cas[i].y1+42, (dim_cas[i].x2-dim_cas[i].x1)-90, (dim_cas[i].y2-dim_cas[i].y1)-85 };
+                                SDL_SetRenderDrawColor(  Render, 134, 123, 0x00, 0xFF  );
+                                SDL_RenderFillRect( Render, &fillRect7 );
+
+                                SDL_RenderPresent( Render );
+                            break;
+
+
+                            case 4: ;
+                                SDL_Rect fillRect6 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
+                                SDL_SetRenderDrawColor(   Render, 208, 0x00, 200, 0xFF );
+                                SDL_RenderFillRect( Render, &fillRect6 );
+
+                                SDL_Rect fillRect8 = { dim_cas[i].x1+51, dim_cas[i].y1+42, (dim_cas[i].x2-dim_cas[i].x1)-90, (dim_cas[i].y2-dim_cas[i].y1)-85 };
+                                SDL_SetRenderDrawColor(  Render, 123, 0x00, 134, 0xFF  );
+                                SDL_RenderFillRect( Render, &fillRect8 );
+
+                                SDL_RenderPresent( Render );
+                            break;
+
+                        }
+                    }
 
         }
+
     else
         {
-                                                SDL_Rect fillRect = { dim_cas.x1[i], dim_cas.y1[i], dim_cas.x2[i]-dim_cas.x1[i], dim_cas.y2[i]-dim_cas.y1[i] };
-                                                SDL_SetRenderDrawColor( Render, 0xFF, 0x00, 0x00, 0xFF );
-                                                SDL_RenderFillRect( Render, &fillRect );
-                                               	SDL_RenderPresent( Render );
+            SDL_Rect fillRect = { dim_cas[i].x1+16.5, dim_cas[i].y1+10, (dim_cas[i].x2-dim_cas[i].x1)-20, (dim_cas[i].y2-dim_cas[i].y1)-20 };
+            SDL_SetRenderDrawColor( Render, 0xFF, 0xFF, 0xFF, 0xFF );
+            SDL_RenderFillRect( Render, &fillRect );
+            SDL_RenderPresent( Render );
+
               switch (Tipo_ficha[numero_casilla])
-                {
-                    case 0:
+                        {
+                            case 0: ;
+                                SDL_Rect fillRect3 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
+                                SDL_SetRenderDrawColor(  Render, 208, 200, 0x00, 0xFF  );
+                                SDL_RenderFillRect( Render, &fillRect3 );
 
-                    break;
-
-
-                    case 1:
-
-                    break;
-
-
-                    case 2:
-
-                    break;
+                                 SDL_RenderPresent( Render );
+                            break;
 
 
-                    case 3:
+                            case 1: ;
+                                SDL_Rect fillRect4 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
+                                SDL_SetRenderDrawColor(  Render, 208, 0x00, 134, 200  );
+                                SDL_RenderFillRect( Render, &fillRect4 );
 
-                    break;
+                                SDL_RenderPresent( Render );
+                            break;
 
 
-                    case 4:
+                            case 3: ;
+                                SDL_Rect fillRect5 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
+                                SDL_SetRenderDrawColor(  Render, 208, 200, 0x00, 0xFF   );
+                                SDL_RenderFillRect( Render, &fillRect5 );
 
-                    break;
+                                SDL_Rect fillRect7 = { dim_cas[i].x1+51, dim_cas[i].y1+42, (dim_cas[i].x2-dim_cas[i].x1)-90, (dim_cas[i].y2-dim_cas[i].y1)-85 };
+                                SDL_SetRenderDrawColor(  Render, 134, 123, 0x00, 0xFF  );
+                                SDL_RenderFillRect( Render, &fillRect7 );
 
-                }
+                                SDL_RenderPresent( Render );
+                            break;
+
+
+                            case 4: ;
+                                SDL_Rect fillRect6 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
+                                SDL_SetRenderDrawColor(   Render, 208, 0x00, 200, 0xFF );
+                                SDL_RenderFillRect( Render, &fillRect6 );
+
+                                SDL_Rect fillRect8 = { dim_cas[i].x1+51, dim_cas[i].y1+42, (dim_cas[i].x2-dim_cas[i].x1)-90, (dim_cas[i].y2-dim_cas[i].y1)-85 };
+                                SDL_SetRenderDrawColor(  Render, 123, 0x00, 134, 0xFF  );
+                                SDL_RenderFillRect( Render, &fillRect8 );
+
+                                SDL_RenderPresent( Render );
+                            break;
+
+                        }
         }
 }
-^*/
+
 
 
 int pos_raton ()
