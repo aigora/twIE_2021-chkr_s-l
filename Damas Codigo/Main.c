@@ -20,6 +20,9 @@ int main(int argv, char** args)
             SDL_Renderer *Render = NULL;
             SDL_Texture *Textura = NULL;
 
+            int v1[32];
+            v1[0]=0;
+
             const Cuadrante  dim_cas [32]={
                                     {585,72,710,189}, //Primera fila
                                     {835,72,960,189},
@@ -55,6 +58,9 @@ int main(int argv, char** args)
                                     {1210,891,1335,1008}
                                 };
 
+
+                fondo(Ventana,Render,Textura);
+                Pintar(v1,0,true,Render,dim_cas);
 
     int opcion[5];
     double tiempo=0;
