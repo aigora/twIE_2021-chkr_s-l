@@ -1,71 +1,34 @@
 #include <stdio.h>
 #include <SDL.h>
 #include <stdbool.h>
+#include"funciones.h"
 
-typedef struct
+
+void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura, char path[50])
 {
-    int x1,y1,x2,y2;
-}Cuadrante;
+        SDL_SetRenderDrawColor( Render, 0xFF, 0xFF, 0xFF, 0xFF ); //Se pone el color del render en blanco
 
 
+        SDL_Surface *SupCarg = SDL_LoadBMP(path); //Se carga el fondo
+            if( SupCarg == NULL ) //Se comprueba si se ha guardado bien el fondo
+            {
+                printf( "No se pudo cargar la imagen: %s SDL Error: %s\n", path, SDL_GetError() );
+            }
+            else
+            {
+                Textura = SDL_CreateTextureFromSurface( Render, SupCarg ); //Se aplica el fondo sobre la textura
+                if(  Textura == NULL ) //Se compueba si la textura ha cogido el fondo
+                {
+                    printf( "No se pudo cargar crear la textura SDL Error: %s\n", SDL_GetError() );
+                }
+                SDL_FreeSurface( SupCarg );
 
 
-void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura)
-{
-    if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ) //Se compureba si se ha iniciado correctamente SDL
-        {
-            printf( "SDL no pudo iniciarse: %s\n", SDL_GetError() );
-        }
-    else
-        {
-
-           if(!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" )) //Se compureba si la calidad de texturas
-           {
-               printf("Aviso: Filtración linear de texturas no disponible");
-           }
-            Ventana = SDL_CreateWindow( "Damas.exe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, SDL_WINDOW_SHOWN ); //Se crea la ventana
-
-                if( Ventana == NULL ) //Se comprueba si la ventana ha inicializado bien
-                    {
-                        printf( "No se pudo crear la ventana: %s\n", SDL_GetError() );
-                    }
-                else
-                    {
-                        Render= SDL_CreateRenderer( Ventana, -1, SDL_RENDERER_ACCELERATED ); //Se crea el render que será donde pintaremos y se le añade aceleración de sowftware
-                        if( Render == NULL ) //Se comprubea si ha inicializado bien el render
-                                {
-                                    printf( "El render no se pudo crear SDL Error: %s\n", SDL_GetError() );
-                                }
-                        else
-                                {
-                                    SDL_SetRenderDrawColor( Render, 0xFF, 0xFF, 0xFF, 0xFF ); //Se pone el color del render en blanco
+                    SDL_RenderCopy( Render, Textura, NULL, NULL ); //Se coloca la textura sobre el render
+                    SDL_RenderPresent( Render ); //Se actualiza el Render
 
 
-                                    SDL_Surface *SupCarg = SDL_LoadBMP("chekers_blue.bmp"); //Se carga el fondo
-                                        if( SupCarg == NULL ) //Se comprueba si se ha guardado bien el fondo
-                                        {
-                                            printf( "No se pudo cargar la imagen: chekers_blue.bmp SDL Error: %s\n", SDL_GetError() );
-                                        }
-                                        else
-                                        {
-                                            Textura = SDL_CreateTextureFromSurface( Render, SupCarg ); //Se aplica el fondo sobre la textura
-                                            if(  Textura == NULL ) //Se compueba si la textura ha cogido el fondo
-                                            {
-                                                printf( "No se pudo cargar crear la textura SDL Error: %s\n", SDL_GetError() );
-                                            }
-                                            SDL_FreeSurface( SupCarg );
-
-
-                                                SDL_RenderCopy( Render, Textura, NULL, NULL ); //Se coloca la textura sobre el render
-                                                SDL_RenderPresent( Render ); //Se actualiza el Render
-
-
-                                        }
-
-                                }
-                    }
-
-        }
+            }
 }
 
 void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *Render,const Cuadrante  dim_cas [32])

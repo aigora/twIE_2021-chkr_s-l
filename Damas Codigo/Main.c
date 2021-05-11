@@ -1,28 +1,19 @@
 #include <SDL.h>
 #include <stdio.h>
 #include <stdbool.h>
-
-typedef struct
-{
-    int x1,y1,x2,y2;
-}Cuadrante;
-
-
-void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *Render,const Cuadrante dimensiones_casilla [32]);
-void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura);
-int pos_raton (const Cuadrante  dim_cas [32]);
-void cerrar (SDL_Window *Ventana, SDL_Texture *Textura, SDL_Renderer *Render);
-
+#include "funciones.h"
 
 int main(int argv, char** args)
 {
+            //Se inicializan las variables
+            //Variables gráficas
             SDL_Window *Ventana= NULL;
             SDL_Renderer *Render = NULL;
             SDL_Texture *Textura = NULL;
 
-            int v1[32];
-            v1[0]=0;
 
+
+            //Variables vector estructura
             const Cuadrante  dim_cas [32]={
                                     {585,72,710,189}, //Primera fila
                                     {835,72,960,189},
@@ -58,9 +49,37 @@ int main(int argv, char** args)
                                     {1210,891,1335,1008}
                                 };
 
-
-                fondo(Ventana,Render,Textura);
-                Pintar(v1,0,true,Render,dim_cas);
+// Inicialización de SDL para poder emplear las funciones gráficas, se pondrá en su respectivo sitio en un futuro
+//    if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ) //Se compureba si se ha iniciado correctamente SDL
+//        {
+//            printf( "SDL no pudo iniciarse: %s\n", SDL_GetError() );
+//        }
+//    else
+//        {
+//
+//               if(!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" )) //Se compureba si la calidad de texturas
+//               {
+//                   printf("Aviso: Filtración linear de texturas no disponible");
+//               }
+//
+//            Ventana = SDL_CreateWindow( "Damas.exe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, SDL_WINDOW_SHOWN ); //Se crea la ventana
+//                if( Ventana == NULL ) //Se comprueba si la ventana ha inicializado bien
+//                    {
+//                        printf( "No se pudo crear la ventana: %s\n", SDL_GetError() );
+//
+//                        return -1;
+//                    }
+//
+//            Render= SDL_CreateRenderer( Ventana, -1, SDL_RENDERER_ACCELERATED ); //Se crea el render que será donde pintaremos y se le añade aceleración de sowftware
+//                if( Render == NULL ) //Se comprubea si ha inicializado bien el render
+//                        {
+//                            printf( "El render no se pudo crear SDL Error: %s\n", SDL_GetError() );
+//
+//                            return -1;
+//                        }
+//                  fondo(Ventana,Render,Textura,"chekers_blue.bmp");
+//
+//        }
 
     int opcion[5];
     double tiempo=0;
@@ -201,6 +220,7 @@ int main(int argv, char** args)
         while(opcion[0] != 0);
 
     return 0;
+
 }
 
 
