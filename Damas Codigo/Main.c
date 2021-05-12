@@ -22,6 +22,10 @@ int main(int argv, char** args)
             int turnos, fichas_extra, resultado;
             tiempo t;
 
+            //Inicialización del temporizador
+            t.s=0;
+            t.m=0;
+
 
 
             //Variables vector estructura usados para las dimensiones de la pantalla
@@ -116,11 +120,13 @@ int main(int argv, char** args)
                             opcion[0]=pos_raton(menu_3,3);
 
                             if (opcion[0]==3) //Corrección del dato por el uso de la función
-                                opcion[0]=0;
+                                {
+                                    opcion[0]=0;
+                                }
 
                             switch (opcion[0])
                             {
-                                case 1: //Modo un jugador
+                                case 1:
                                 {
                                     do
                                         {
@@ -165,14 +171,22 @@ int main(int argv, char** args)
                                             fondo(Ventana,Render,Textura,"temporizador.bmp");
                                             opcion[3]=pos_raton(menu_4,4);
 
-                                        }while((opcion[3] != 1) && (opcion[3] != 2));
+                                        }while((opcion[3] != 1) && (opcion[3] != 2)&& (opcion[3] != 3)&& (opcion[3] != 4));
 
-                                        if (opcion[3] == 1)
-                                        {
-                                            int m=0;
+                                           if (opcion[3] == 2)
+                                            {
+                                                t.m=3;
+                                            }
 
-                                            //Temporizador(tiempo);            (Nombre de la función)
-                                        }
+                                            if (opcion[3] == 3)
+                                            {
+                                                t.m=5;
+                                            }
+
+                                            if (opcion[3] == 4)
+                                            {
+                                                t.m=10;
+                                            }
                                     do
                                         {
                                             fondo(Ventana,Render,Textura,"nombre.bmp");
@@ -234,7 +248,7 @@ int main(int argv, char** args)
                                     break;
 
                                 }
-                                case 2: //Modo multijugador
+                                case 2:
 
                                     {
                                         //Modo Multijugador
@@ -245,13 +259,21 @@ int main(int argv, char** args)
                                                 fondo(Ventana,Render,Textura,"temporizador.bmp");
                                                 opcion[3]=pos_raton(menu_4,4);
 
-                                            }while((opcion[3] != 1) && (opcion[3] != 2));
+                                            }while((opcion[3] != 1) && (opcion[3] != 2)&& (opcion[3] != 3)&& (opcion[3] != 4));
 
-                                            if (opcion[3] == 1)
+                                            if (opcion[3] == 2)
                                             {
-                                                int l=0;
+                                                t.m=3;
+                                            }
 
-                                                //Temporizador(tiempo);            (Nombre de la función)
+                                            if (opcion[3] == 3)
+                                            {
+                                                t.m=5;
+                                            }
+
+                                            if (opcion[3] == 4)
+                                            {
+                                                t.m=10;
                                             }
                                         printf("\n");
                                         break;
