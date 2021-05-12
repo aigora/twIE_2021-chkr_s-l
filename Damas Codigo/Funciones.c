@@ -53,9 +53,10 @@ bool iniciar()
 
 
 
-bool in(int x, int n)
+
+bool _in(int x, int n)
 {
-    int j, i = 0, array[1] = {-1};
+    int j = 18, i = 0, array[18] = {0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22};
     bool respuesta = false;
 
     switch(n)
@@ -63,45 +64,67 @@ bool in(int x, int n)
     case 0:
         {
             j = 8;
-            int array[8] = {0, 1, 2, 3, 4, 12, 20, 28};
+            array[0] = 0;
+            array[1] = 1;
+            array[2] = 2;
+            array[3] = 3;
+            array[4] = 4;
+            array[5] = 12;
+            array[6] = 20;
+            array[8] = 28;
+            //int array[] = {0, 1, 2, 3, 4, 12, 20, 28};
             break;
         }
     case 1:
         {
             j = 7;
-            int array[7] = {0, 1, 2, 3, 11, 19, 27};
+            array[0] = 0;
+            array[1] = 1;
+            array[2] = 2;
+            array[3] = 3;
+            array[4] = 11;
+            array[5] = 19;
+            array[6] = 27;
+            //int array[] = {0, 1, 2, 3, 11, 19, 27};
             break;
         }
     case 2:
         {
             j = 7;
-            int array[7] = {4, 12, 20, 28, 29, 30, 31};
+            array[0] = 4;
+            array[1] = 12;
+            array[2] = 20;
+            array[3] = 28;
+            array[4] = 29;
+            array[5] = 30;
+            array[6] = 31;
+            //int array[7] = {4, 12, 20, 28, 29, 30, 31};
             break;
         }
     case 3:
         {
             j = 8;
-            int array[8] = {3, 11, 19, 27, 28, 29, 30, 31};
-            break;
-        }
-    case 4:
-        {
-            j = 18;
-            int array[18] = {0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22};
+            array[0] = 3;
+            array[1] = 11;
+            array[2] = 19;
+            array[3] = 27;
+            array[4] = 28;
+            array[5] = 29;
+            array[6] = 30;
+            array[7] = 31;
+            //int array[8] = {3, 11, 19, 27, 28, 29, 30, 31};
             break;
         }
     }
 
     while (i < j && !respuesta)
     {
-        printf("%i. ", array[i]);
         if (x == array[i])
         {
             respuesta = true;
         }
         i++;
     }
-    printf("%d ", respuesta);
     return respuesta;
 }
 
@@ -109,7 +132,7 @@ int puedeMover(int tablero[], int pieza, int movimientosPosibles[])
 {
     int i, j;
 
-    if ((int)(pieza%8)%2 == 0)
+    if ((int)(pieza/4)%2 == 0)
     {
         j = 5;
     }
@@ -121,7 +144,7 @@ int puedeMover(int tablero[], int pieza, int movimientosPosibles[])
     i = -1;
     if (tablero[pieza] != 1)
     {
-        if (!in(pieza, 0))
+        if (!_in(pieza, 0))
         {
             if (tablero[pieza + j - 9] == 2)
             {
@@ -129,7 +152,7 @@ int puedeMover(int tablero[], int pieza, int movimientosPosibles[])
                 movimientosPosibles[i] = pieza + j - 9;
             }
         }
-        if (!in(pieza, 1))
+        if (!_in(pieza, 1))
         {
             if (tablero[pieza + j - 8] == 2)
             {
@@ -137,7 +160,7 @@ int puedeMover(int tablero[], int pieza, int movimientosPosibles[])
                 movimientosPosibles[i] = pieza + j - 8;
             }
         }
-        if (!in(pieza, 2))
+        if (!_in(pieza, 2))
         {
             if (tablero[pieza + j - 1])
             {
@@ -145,7 +168,7 @@ int puedeMover(int tablero[], int pieza, int movimientosPosibles[])
                 movimientosPosibles[i] = pieza + j - 1;
             }
         }
-        if (!in(pieza, 3))
+        if (!_in(pieza, 3))
         {
             if (tablero[pieza + j])
             {
@@ -160,14 +183,13 @@ int puedeMover(int tablero[], int pieza, int movimientosPosibles[])
 
 int puedeComer(int tablero[], int turno, int comidasPosibles[][3])
 {
-    int i, j, k;
+    int i, j = -1, k;
 
     for (i = 0; i <= 22; i++)
     {
-        if (in(i, 4))
+        if (_in(i, 4))
         {
-            printf("%i ,", i);
-            if ((int)(i%8)%2 == 0)
+            if ((int)(i/4)%2 == 0)
             {
                 k = 5;
             }
@@ -176,7 +198,6 @@ int puedeComer(int tablero[], int turno, int comidasPosibles[][3])
                 k = 4;
             }
 
-            j = -1;
             if (turno % 2 == 0 && (tablero[i + k] == 1 || tablero[i + k] == 4))
             {
                 if ((tablero[i + 8] == 0 || tablero[i + 8] == 3) && tablero[i + 1] == 2)
