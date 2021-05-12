@@ -179,7 +179,7 @@ void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *R
 
 
 
-int pos_raton (const Cuadrante  dim_cas [32])
+int pos_raton (const Cuadrante  dim_cas [],int n)
 {
 
     int x,y;
@@ -204,12 +204,15 @@ int pos_raton (const Cuadrante  dim_cas [32])
                     x = mouse.button.x;
                     y = mouse.button.y;
 
-                    for (i=0;i<32;i++)
+                    for (i=0;i<n;i++)
                     {
 
                         if((x>=dim_cas[i].x1&&x<=dim_cas[i].x2)&&(y>=dim_cas[i].y1&&y<=dim_cas[i].y2))
                             {
-                                k=i; return k;
+                                if(n==32)
+                                {k=i; return k;}
+                                else
+                                    {k=i+1; return k;}
                             }
 
 
