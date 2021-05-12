@@ -14,9 +14,7 @@ int main(int argv, char** args)
 
             //Variables menú
             int opcion[5];
-            double tiempo=0;
             char nombre[11];
-
 
 
             //Variables vector estructura usados para las dimensiones de la pantalla
@@ -107,7 +105,7 @@ int main(int argv, char** args)
 
                     do
                         {
-                            fondo(Ventana,Render,Textura,"tres.bmp");
+                            fondo(Ventana,Render,Textura,"modo_juego.bmp");
                             printf("Elige una opción:\n");
                             printf("\t0. Salir\n");
                             printf("\t1. Modo un jugador\n");
@@ -126,7 +124,7 @@ int main(int argv, char** args)
                                             printf("\nHas seleccionado el modo un jugador.\n");
                                             //Multijugador(false);            (Nombre de la función)
 
-                                            fondo(Ventana,Render,Textura,"dos.bmp");
+                                            fondo(Ventana,Render,Textura,"dificultad.bmp");
 
                                             printf("Seleccione el nivel de dificultad:\n");
                                             printf("\t1. Fácil\n");
@@ -150,7 +148,7 @@ int main(int argv, char** args)
 
                                     do
                                         {
-                                            fondo(Ventana,Render,Textura,"dos.bmp");
+                                            fondo(Ventana,Render,Textura,"color.bmp");
                                             printf("\nSeleccione color:\n");
                                             printf("\t1. Blanco\n");
                                             printf("\t2. Negro\n");
@@ -171,7 +169,7 @@ int main(int argv, char** args)
                                         }
                                     do
                                         {
-                                            fondo(Ventana,Render,Textura,"cuatro.bmp");
+                                            fondo(Ventana,Render,Textura,"temporizador.bmp");
                                             printf("¿Desea usar temporizador?\n");
                                             printf("\t1. Sí\n");
                                             printf("\t2. No\n");
@@ -187,7 +185,7 @@ int main(int argv, char** args)
                                         }
                                     do
                                         {
-                                            fondo(Ventana,Render,Textura,"dos.bmp");
+                                            fondo(Ventana,Render,Textura,"nombre.bmp");
                                             printf("¿Desea guardar su puntuación?\n");
                                             printf("\t1. Sí\n");
                                             printf("\t2. No\n");
@@ -202,6 +200,35 @@ int main(int argv, char** args)
                                             scanf("%10s",nombre);
 
                                             //Guardar(nombre);            (Nombre de la función)
+
+                                            if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ) //Se reinicia SDL porque lo acabamos de cerrar
+                                                {
+                                                    printf( "SDL no pudo iniciarse: %s\n", SDL_GetError() );
+                                                }
+                                            else
+                                                {
+
+                                                       if(!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ))
+                                                       {
+                                                           printf("Aviso: Filtración linear de texturas no disponible");
+                                                       }
+
+                                                    Ventana = SDL_CreateWindow( "Damas.exe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, SDL_WINDOW_SHOWN );
+                                                        if( Ventana == NULL )
+                                                            {
+                                                                printf( "No se pudo crear la ventana: %s\n", SDL_GetError() );
+
+                                                                return -1;
+                                                            }
+
+                                                    Render= SDL_CreateRenderer( Ventana, -1, SDL_RENDERER_ACCELERATED );
+                                                        if( Render == NULL )
+                                                                {
+                                                                    printf( "El render no se pudo crear SDL Error: %s\n", SDL_GetError() );
+
+                                                                    return -1;
+                                                                }
+
                                         }
                                     printf("\n");
                                     break;
@@ -215,7 +242,7 @@ int main(int argv, char** args)
 
                                         do
                                             {
-                                                fondo(Ventana,Render,Textura,"cuatro.bmp");
+                                                fondo(Ventana,Render,Textura,"temporizador.bmp");
                                                 printf("¿Desea usar temporizador?\n");
                                                 printf("\t1. Sí\n");
                                                 printf("\t2. No\n");
@@ -248,8 +275,10 @@ int main(int argv, char** args)
                             }
                         }
 
-                    while(opcion[0] != 0);
-        }
+
+        } while(opcion[0] != 0);
+    }
+
     return 0;
 
 }
