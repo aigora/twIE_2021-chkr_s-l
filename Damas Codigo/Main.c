@@ -49,7 +49,27 @@ int main(int argv, char** args)
                                     {1210,891,1335,1008}
                                 };
 
+            const Cuadrante  menu_2 [2]={
+                                    {11,362,940,837},
+                                    {980,362,1909,837}
+                                        };
+
+            const Cuadrante  menu_3 [3]={
+                                    {44,218,909,627},
+                                    {1013,216,1878,625},
+                                    {515,660,1380,1069}
+                                        };
+
+            const Cuadrante  menu_4 [4]={
+                                    {44,218,909,623},
+                                    {1013,216,1878,624},
+                                    {44,659,909,1064},
+                                    {1013,657,1878,1065}
+                                        };
+
+
 // Inicialización de SDL para poder emplear las funciones gráficas, se pondrá en su respectivo sitio en un futuro
+
 //    if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ) //Se compureba si se ha iniciado correctamente SDL
 //        {
 //            printf( "SDL no pudo iniciarse: %s\n", SDL_GetError() );
