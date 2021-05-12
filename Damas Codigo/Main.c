@@ -12,8 +12,14 @@ int main(int argv, char** args)
             SDL_Texture *Textura = NULL;
 
 
+            //Variables menú
+            int opcion[5];
+            double tiempo=0;
+            char nombre[11];
 
-            //Variables vector estructura
+
+
+            //Variables vector estructura usados para las dimensiones de la pantalla
             const Cuadrante  dim_cas [32]={
                                     {585,72,710,189}, //Primera fila
                                     {835,72,960,189},
@@ -70,175 +76,180 @@ int main(int argv, char** args)
 
 // Inicialización de SDL para poder emplear las funciones gráficas, se pondrá en su respectivo sitio en un futuro
 
-//    if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ) //Se compureba si se ha iniciado correctamente SDL
-//        {
-//            printf( "SDL no pudo iniciarse: %s\n", SDL_GetError() );
-//        }
-//    else
-//        {
-//
-//               if(!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" )) //Se compureba si la calidad de texturas
-//               {
-//                   printf("Aviso: Filtración linear de texturas no disponible");
-//               }
-//
-//            Ventana = SDL_CreateWindow( "Damas.exe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, SDL_WINDOW_SHOWN ); //Se crea la ventana
-//                if( Ventana == NULL ) //Se comprueba si la ventana ha inicializado bien
-//                    {
-//                        printf( "No se pudo crear la ventana: %s\n", SDL_GetError() );
-//
-//                        return -1;
-//                    }
-//
-//            Render= SDL_CreateRenderer( Ventana, -1, SDL_RENDERER_ACCELERATED ); //Se crea el render que será donde pintaremos y se le añade aceleración de sowftware
-//                if( Render == NULL ) //Se comprubea si ha inicializado bien el render
-//                        {
-//                            printf( "El render no se pudo crear SDL Error: %s\n", SDL_GetError() );
-//
-//                            return -1;
-//                        }
-//                  fondo(Ventana,Render,Textura,"chekers_blue.bmp");
-//
-//        }
+    if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ) //Se compureba si se ha iniciado correctamente SDL
+        {
+            printf( "SDL no pudo iniciarse: %s\n", SDL_GetError() );
+        }
+    else
+        {
 
-    int opcion[5];
-    double tiempo=0;
-    char nombre[11];
+               if(!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" )) //Se compureba si la calidad de texturas
+               {
+                   printf("Aviso: Filtración linear de texturas no disponible");
+               }
 
-        do
-            {
-                printf("Elige una opción:\n");
-                printf("\t0. Salir\n");
-                printf("\t1. Modo un jugador\n");
-                printf("\t2. Modo multijador\n");
-                scanf("%i", &opcion[0]);
-
-                switch (opcion[0])
-                {
-                    case 1: //Modo un jugador
+            Ventana = SDL_CreateWindow( "Damas.exe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, SDL_WINDOW_SHOWN ); //Se crea la ventana
+                if( Ventana == NULL ) //Se comprueba si la ventana ha inicializado bien
                     {
-                        do
-                            {
-                                printf("\nHas seleccionado el modo un jugador.\n");
-                                //Multijugador(false);            (Nombre de la función)
+                        printf( "No se pudo crear la ventana: %s\n", SDL_GetError() );
 
-                                printf("Seleccione el nivel de dificultad:\n");
-                                printf("\t1. Fácil\n");
-                                printf("\t2. Difícil\n");
-
-                                scanf("%i", &opcion[1]);
-                            }while((opcion[1] != 1) && (opcion[1] != 2));
-
-                            if (opcion[1] == 1)
-                            {
-                                printf("Has entrado en el modo fácil.\n");
-
-                                //ModoDificil(false);            (Nombre de la función)
-                            }
-                            else
-                            {
-                                printf("Has entrado en el modo difícil.\n");
-                                //ModoDificil(true);
-                            }
-
-                        do
-                            {
-                                printf("\nSeleccione color:\n");
-                                printf("\t1. Blanco\n");
-                                printf("\t2. Negro\n");
-
-                                scanf("%i", &opcion[2]);
-                            }while((opcion[2] != 1) && (opcion[2] != 2));
-
-                            if (opcion[2] == 1)
-                            {
-                                printf("Has elegido el color blanco.\n");
-
-                                //ColorBlanco(true);            (Nombre de la función)
-                            }
-                            else
-                            {
-                                printf("Has elegido el color negro.\n");
-                                //ColorBlanco(false);
-                            }
-                        do
-                            {
-                                printf("¿Desea usar temporizador?\n");
-                                printf("\t1. Sí\n");
-                                printf("\t2. No\n");
-
-                                scanf("%i", &opcion[3]);
-                            }while((opcion[3] != 1) && (opcion[3] != 2));
-
-                            if (opcion[3] == 1)
-                            {
-                                printf("Introduzca el tiempo:\n");
-                                scanf("%lf",&tiempo);
-
-                                //Temporizador(tiempo);            (Nombre de la función)
-                            }
-                        do
-                            {
-                                printf("¿Desea guardar su puntuación?\n");
-                                printf("\t1. Sí\n");
-                                printf("\t2. No\n");
-
-                                scanf("%i", &opcion[4]);
-                            }while((opcion[4] != 1) && (opcion[4] != 2));
-
-                            if (opcion[4] == 1)
-                            {
-                                printf("Introduce un nombre:\n");
-                                scanf("%10s",nombre);
-
-                                //Guardar(nombre);            (Nombre de la función)
-                            }
-                        printf("\n");
-                        break;
-
+                        return -1;
                     }
-                    case 2: //Modo multijugador
 
+            Render= SDL_CreateRenderer( Ventana, -1, SDL_RENDERER_ACCELERATED ); //Se crea el render que será donde pintaremos y se le añade aceleración de sowftware
+                if( Render == NULL ) //Se comprubea si ha inicializado bien el render
                         {
-                            printf("\nHas seleccionado el modo multijugador.\n");
-                            //Multijugador(true);
+                            printf( "El render no se pudo crear SDL Error: %s\n", SDL_GetError() );
 
-                            do
+                            return -1;
+                        }
+
+
+                    do
+                        {
+                            fondo(Ventana,Render,Textura,"tres.bmp");
+                            printf("Elige una opción:\n");
+                            printf("\t0. Salir\n");
+                            printf("\t1. Modo un jugador\n");
+                            printf("\t2. Modo multijador\n");
+                            opcion[0]=pos_raton(menu_3,3);
+
+                            if (opcion[0]==3) //Corrección del dato por el uso de la función
+                                opcion[0]=0;
+
+                            switch (opcion[0])
+                            {
+                                case 1: //Modo un jugador
                                 {
-                                    printf("¿Desea usar temporizador?\n");
-                                    printf("\t1. Sí\n");
-                                    printf("\t2. No\n");
+                                    do
+                                        {
+                                            printf("\nHas seleccionado el modo un jugador.\n");
+                                            //Multijugador(false);            (Nombre de la función)
 
-                                    scanf("%i", &opcion[3]);
-                                }while((opcion[3] != 1) && (opcion[3] != 2));
+                                            fondo(Ventana,Render,Textura,"dos.bmp");
 
-                                if (opcion[3] == 1)
-                                {
-                                    printf("Introduzca el tiempo:\n");
-                                    scanf("%lf",&tiempo);
+                                            printf("Seleccione el nivel de dificultad:\n");
+                                            printf("\t1. Fácil\n");
+                                            printf("\t2. Difícil\n");
 
-                                    //Temporizador(tiempo);            (Nombre de la función)
+                                            opcion[1]=pos_raton(menu_2,2);
+
+                                        }while((opcion[1] != 1) && (opcion[1] != 2));
+
+                                        if (opcion[1] == 1)
+                                        {
+                                            printf("Has entrado en el modo fácil.\n");
+
+                                            //ModoDificil(false);            (Nombre de la función)
+                                        }
+                                        else
+                                        {
+                                            printf("Has entrado en el modo difícil.\n");
+                                            //ModoDificil(true);
+                                        }
+
+                                    do
+                                        {
+                                            fondo(Ventana,Render,Textura,"dos.bmp");
+                                            printf("\nSeleccione color:\n");
+                                            printf("\t1. Blanco\n");
+                                            printf("\t2. Negro\n");
+
+                                            opcion[2]=pos_raton(menu_2,2);
+                                        }while((opcion[2] != 1) && (opcion[2] != 2));
+
+                                        if (opcion[2] == 1)
+                                        {
+                                            printf("Has elegido el color blanco.\n");
+
+                                            //ColorBlanco(true);            (Nombre de la función)
+                                        }
+                                        else
+                                        {
+                                            printf("Has elegido el color negro.\n");
+                                            //ColorBlanco(false);
+                                        }
+                                    do
+                                        {
+                                            fondo(Ventana,Render,Textura,"cuatro.bmp");
+                                            printf("¿Desea usar temporizador?\n");
+                                            printf("\t1. Sí\n");
+                                            printf("\t2. No\n");
+
+                                            opcion[3]=pos_raton(menu_4,4);
+                                        }while((opcion[3] != 1) && (opcion[3] != 2));
+
+                                        if (opcion[3] == 1)
+                                        {
+                                            int m=0;
+
+                                            //Temporizador(tiempo);            (Nombre de la función)
+                                        }
+                                    do
+                                        {
+                                            fondo(Ventana,Render,Textura,"dos.bmp");
+                                            printf("¿Desea guardar su puntuación?\n");
+                                            printf("\t1. Sí\n");
+                                            printf("\t2. No\n");
+
+                                            opcion[4]=pos_raton(menu_2,2);
+                                        }while((opcion[4] != 1) && (opcion[4] != 2));
+
+                                        if (opcion[4] == 1)
+                                        {
+                                            cerrar(Ventana,Textura,Render);
+                                            printf("Introduce un nombre:\n");
+                                            scanf("%10s",nombre);
+
+                                            //Guardar(nombre);            (Nombre de la función)
+                                        }
+                                    printf("\n");
+                                    break;
+
                                 }
-                            printf("\n");
-                            break;
+                                case 2: //Modo multijugador
+
+                                    {
+                                        printf("\nHas seleccionado el modo multijugador.\n");
+                                        //Multijugador(true);
+
+                                        do
+                                            {
+                                                fondo(Ventana,Render,Textura,"cuatro.bmp");
+                                                printf("¿Desea usar temporizador?\n");
+                                                printf("\t1. Sí\n");
+                                                printf("\t2. No\n");
+
+                                                opcion[3]=pos_raton(menu_4,4);
+                                            }while((opcion[3] != 1) && (opcion[3] != 2));
+
+                                            if (opcion[3] == 1)
+                                            {
+                                                int l=0;
+
+                                                //Temporizador(tiempo);            (Nombre de la función)
+                                            }
+                                        printf("\n");
+                                        break;
+                                    }
+
+                                case 0:
+                                    {
+                                        cerrar(Ventana,Textura,Render);
+                                        printf("\nSaliendo...\n\n");
+                                        break;
+                                    }
+
+                                default:
+                                    {
+                                        printf("\nNo ha seleccionado un modo válido.\n\n");
+                                        break;
+                                    }
+                            }
                         }
 
-                    case 0:
-                        {
-                            printf("\nSaliendo...\n\n");
-                            break;
-                        }
-
-                    default:
-                        {
-                            printf("\nNo ha seleccionado un modo válido.\n\n");
-                            break;
-                        }
-                }
-            }
-
-        while(opcion[0] != 0);
-
+                    while(opcion[0] != 0);
+        }
     return 0;
 
 }
