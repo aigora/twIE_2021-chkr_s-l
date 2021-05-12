@@ -84,17 +84,24 @@ bool in(int x, int n)
             int array[8] = {3, 11, 19, 27, 28, 29, 30, 31};
             break;
         }
+    case 4:
+        {
+            j = 18;
+            int array[18] = {0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22};
+            break;
+        }
     }
 
     while (i < j && !respuesta)
     {
+        printf("%i. ", array[i]);
         if (x == array[i])
         {
             respuesta = true;
         }
         i++;
     }
-
+    printf("%d ", respuesta);
     return respuesta;
 }
 
@@ -104,56 +111,145 @@ int puedeMover(int tablero[], int pieza, int movimientosPosibles[])
 
     if ((int)(pieza%8)%2 == 0)
     {
-        i = 5;
+        j = 5;
     }
     else
     {
-        i = 4;
+        j = 4;
     }
 
-    j = -1;
+    i = -1;
     if (tablero[pieza] != 1)
     {
         if (!in(pieza, 0))
         {
-            if (tablero[pieza + i - 9] == 2)
+            if (tablero[pieza + j - 9] == 2)
             {
-                j++;
-                movimientosPosibles[j] = pieza + i - 9;
+                i++;
+                movimientosPosibles[i] = pieza + j - 9;
             }
         }
         if (!in(pieza, 1))
         {
-            if (tablero[pieza + i - 8] == 2)
+            if (tablero[pieza + j - 8] == 2)
             {
-                j++;
-                movimientosPosibles[j] = pieza + i - 8;
+                i++;
+                movimientosPosibles[i] = pieza + j - 8;
             }
         }
         if (!in(pieza, 2))
         {
-            if (tablero[pieza + i - 1])
+            if (tablero[pieza + j - 1])
             {
-                j++;
-                movimientosPosibles[j] = pieza + i - 1;
+                i++;
+                movimientosPosibles[i] = pieza + j - 1;
             }
         }
         if (!in(pieza, 3))
         {
-            if (tablero[pieza + i])
+            if (tablero[pieza + j])
             {
-                j++;
-                movimientosPosibles[j] = pieza + i;
+                i++;
+                movimientosPosibles[i] = pieza + j;
+            }
+        }
+    }
+
+    return i;
+}
+
+int puedeComer(int tablero[], int turno, int comidasPosibles[][3])
+{
+    int i, j, k;
+
+    for (i = 0; i <= 22; i++)
+    {
+        if (in(i, 4))
+        {
+            printf("%i ,", i);
+            if ((int)(i%8)%2 == 0)
+            {
+                k = 5;
+            }
+            else
+            {
+                k = 4;
+            }
+
+            j = -1;
+            if (turno % 2 == 0 && (tablero[i + k] == 1 || tablero[i + k] == 4))
+            {
+                if ((tablero[i + 8] == 0 || tablero[i + 8] == 3) && tablero[i + 1] == 2)
+                {
+                    j++;
+                    comidasPosibles[j][0] = i + 8;
+                    comidasPosibles[j][1] = i + k;
+                    comidasPosibles[j][2] = i + 1;
+                }
+
+                if ((tablero[i + 9] == 0 || tablero[i + 9] == 3) && tablero[i] == 2)
+                {
+                    j++;
+                    comidasPosibles[j][0] = i + 9;
+                    comidasPosibles[j][1] = i + k;
+                    comidasPosibles[j][2] = i;
+                }
+
+                if (tablero[i] == 3 && tablero[i + 9] == 2)
+                {
+                    j++;
+                    comidasPosibles[j][0] = i;
+                    comidasPosibles[j][1] = i + k;
+                    comidasPosibles[j][2] = i + 9;
+                }
+
+                if (tablero[i + 1] == 3 && tablero[i + 8] == 2)
+                {
+                    j++;
+                    comidasPosibles[j][0] = i + 1;
+                    comidasPosibles[j][1] = i + k;
+                    comidasPosibles[j][2] = i + 8;
+                }
+            }
+
+            else if (turno % 2 == 1 && (tablero[i + k] == 0 || tablero[i + k] == 3))
+            {
+                if ((tablero[i] == 1 || tablero[i] == 4) && tablero[i + 9] == 2)
+                {
+                    j++;
+                    comidasPosibles[j][0] = i;
+                    comidasPosibles[j][1] = i + k;
+                    comidasPosibles[j][2] = i + 9;
+                }
+
+                if ((tablero[i + 1] == 1 || tablero[i + 1] == 4) && tablero[i + 8] == 2)
+                {
+                    j++;
+                    comidasPosibles[j][0] = i + 1;
+                    comidasPosibles[j][1] = i + k;
+                    comidasPosibles[j][2] = i + 8;
+                }
+
+                if (tablero[i + 8] == 4 && tablero[i + 1] == 2)
+                {
+                    j++;
+                    comidasPosibles[j][0] = i + 8;
+                    comidasPosibles[j][1] = i + k;
+                    comidasPosibles[j][2] = i + 1;
+                }
+
+                if (tablero[i + 9] == 4 && tablero[i] == 2)
+                {
+                    j++;
+                    comidasPosibles[j][0] = i + 9;
+                    comidasPosibles[j][1] = i + k;
+                    comidasPosibles[j][2] = i;
+                }
             }
         }
     }
 
     return j;
-}
-
-int puedeComer(tablero, turno)
-{
-
 }
 
 
