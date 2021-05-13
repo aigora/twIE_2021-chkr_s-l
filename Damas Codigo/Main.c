@@ -5,6 +5,51 @@
 
 int main(int argv, char** args)
 {
+    //Comprobacion de que las funciones puedeMover y puedeComer funcionan bien
+    /*int movimientosPosibles[4], comidasPosibles[5][3];
+    int tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+                     //0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+    pieza = 15,
+    turno = 0;
+
+    int n = puedeMover(tablero, pieza, movimientosPosibles);
+    if (n != -1)
+    {
+        for (int i = 0; i <= n; i++)
+        {
+        printf("%i ", movimientosPosibles[i]);
+        }
+    }
+    else{printf("La pieza no se puede mover");}
+    printf("\n");
+
+
+    int m = puedeComer(tablero, turno, comidasPosibles);
+    if (m != -1)
+    {
+        for (int i = 0; i <= m; i++)
+        {
+        printf("%i ", comidasPosibles[i][0]);
+        }
+    }
+    else{printf("No hay piezas que se puedan comer");}*/
+
+
+    //iniciar();
+    int opcion[90];
+    double tiempo=0;
+    char nombre[11];
+
+    do
+    {
+        printf("Elige una opción:\n");
+        printf("\t0. Salir\n");
+        printf("\t1. Modo un jugador\n");
+        printf("\t2. Modo multijador\n");
+        scanf("%i", &opcion[0]);
+
+        switch (opcion[0])
+
             //Se inicializan las variables
             //Variables gráficas
             SDL_Window *Ventana= NULL;
@@ -90,6 +135,7 @@ int main(int argv, char** args)
             printf( "SDL no pudo iniciarse: %s\n", SDL_GetError() );
         }
     else
+
         {
 
                if(!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" )) //Se compureba si la calidad de texturas
@@ -155,6 +201,9 @@ int main(int argv, char** args)
                                             opcion[2]=pos_raton(menu_2,2);
 
                                         }while((opcion[2] != 1) && (opcion[2] != 2));
+
+    //Esto se necesita pero no se que parte (a lo mejor todo)
+    /*while(opcion[0] != 0);
 
                                         if (opcion[2] == 1)
                                         {
@@ -293,6 +342,7 @@ int main(int argv, char** args)
         } while(opcion[0] != 0);
     }
 
+*/
     return 0;
 
 }
