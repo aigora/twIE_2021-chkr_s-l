@@ -182,17 +182,17 @@ void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *R
 int pos_raton (const Cuadrante  dim_cas [],int n)
 {
 
-    int x,y;
+    int x,y; //Variables para almacenar las posiciones del mouse
     x=0;
     y=0;
 
-    bool funciona=true;
+    bool funciona=true; //crear un bucle de ratón para que funcionen los eventos de SDL
     SDL_Event mouse;
 
     while(funciona)
     {
         int i=0; int k=-1;
-        while(SDL_PollEvent(&mouse)!=0)
+        while(SDL_PollEvent(&mouse)!=0) //Detecta clicks ratón
         {
             switch(mouse.type)
             {
@@ -204,7 +204,7 @@ int pos_raton (const Cuadrante  dim_cas [],int n)
                     x = mouse.button.x;
                     y = mouse.button.y;
 
-                    for (i=0;i<n;i++)
+                    for (i=0;i<n;i++) //Devuelve la casilla pulsada
                     {
 
                         if((x>=dim_cas[i].x1&&x<=dim_cas[i].x2)&&(y>=dim_cas[i].y1&&y<=dim_cas[i].y2))
