@@ -214,21 +214,12 @@ int pos_raton (const Cuadrante  dim_cas [],int n)
                                 else
                                     {k=i+1; return k;}
                             }
-
-
                     }
-
                     if(k==-1)
                     {
                         return -1;
                     }
-
-
-
                 break;
-
-
-
             }
         }
     }
