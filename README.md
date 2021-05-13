@@ -3,7 +3,7 @@
 En el proyecto haremos un programa para jugar a las damas ya sea contra una persona o contra un bot.
 
 ## Integrantes del equipo
-(añadid vuestro usuario) <br/>
+
 Dario Carnés Blasco [@dcblasco](https://github.com/dcblasco)<br/>
 Diego Sanchez Rey [@diego22222](https://github.com/diego22222) <br/>
 Juan Nicolás Jiménez Pérez [@JuanNicolasJimenez](https://github.com/JuanNicolasJimenez)<br/>
