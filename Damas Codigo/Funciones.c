@@ -45,6 +45,7 @@ void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *R
                     SDL_RenderFillRect( Render, &fillRect );
 
 
+<<<<<<< Updated upstream
 
                     SDL_Rect fillRect2 = { dim_cas[i].x1+20.5, dim_cas[i].y1+14, (dim_cas[i].x2-dim_cas[i].x1)-28, (dim_cas[i].y2-dim_cas[i].y1)-28 };   //Llena lo de dentro de blanco
                     SDL_SetRenderDrawColor( Render, 0xFF, 0xFF, 0xFF, 0xFF );
@@ -54,6 +55,17 @@ void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *R
                     SDL_RenderPresent( Render ); //Se actualiza el render
                     }
 
+=======
+
+                    SDL_Rect fillRect2 = { dim_cas[i].x1+20.5, dim_cas[i].y1+14, (dim_cas[i].x2-dim_cas[i].x1)-28, (dim_cas[i].y2-dim_cas[i].y1)-28 };   //Llena lo de dentro de blanco
+                    SDL_SetRenderDrawColor( Render, 0xFF, 0xFF, 0xFF, 0xFF );
+                    SDL_RenderFillRect( Render, &fillRect2 );
+
+
+                    SDL_RenderPresent( Render ); //Se actualiza el render
+                    }
+
+>>>>>>> Stashed changes
 
 
             else //Rodea una pieza
@@ -147,6 +159,7 @@ void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *R
                                 SDL_RenderPresent( Render );
                             break;
 
+<<<<<<< Updated upstream
 
                             case 3: ;
                                 SDL_Rect fillRect5 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
@@ -161,6 +174,22 @@ void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *R
                             break;
 
 
+=======
+
+                            case 3: ;
+                                SDL_Rect fillRect5 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
+                                SDL_SetRenderDrawColor(  Render, 208, 200, 0x00, 0xFF   );
+                                SDL_RenderFillRect( Render, &fillRect5 );
+
+                                SDL_Rect fillRect7 = { dim_cas[i].x1+51, dim_cas[i].y1+42, (dim_cas[i].x2-dim_cas[i].x1)-90, (dim_cas[i].y2-dim_cas[i].y1)-85 };
+                                SDL_SetRenderDrawColor(  Render, 134, 123, 0x00, 0xFF  );
+                                SDL_RenderFillRect( Render, &fillRect7 );
+
+                                SDL_RenderPresent( Render );
+                            break;
+
+
+>>>>>>> Stashed changes
                             case 4: ;
                                 SDL_Rect fillRect6 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
                                 SDL_SetRenderDrawColor(   Render, 208, 0x00, 200, 0xFF );
@@ -220,6 +249,7 @@ int pos_raton (const Cuadrante  dim_cas [],int n)
                         return -1;
                     }
                 break;
+<<<<<<< Updated upstream
             }
         }
     }
@@ -375,6 +405,163 @@ int puedeComer(int tablero[], int turno, int comidasPosibles[][3])
             {
                 k = 4;
             }
+=======
+            }
+        }
+    }
+
+
+}
+
+
+
+
+
+
+bool _in(int x, int n)
+{
+    int j = 18, i = 0, array[18] = {0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22};
+    bool respuesta = false;
+
+    switch(n)
+    {
+    case 0:
+        {
+            j = 8;
+            array[0] = 0;
+            array[1] = 1;
+            array[2] = 2;
+            array[3] = 3;
+            array[4] = 4;
+            array[5] = 12;
+            array[6] = 20;
+            array[8] = 28;
+            //int array[] = {0, 1, 2, 3, 4, 12, 20, 28};
+            break;
+        }
+    case 1:
+        {
+            j = 7;
+            array[0] = 0;
+            array[1] = 1;
+            array[2] = 2;
+            array[3] = 3;
+            array[4] = 11;
+            array[5] = 19;
+            array[6] = 27;
+            //int array[] = {0, 1, 2, 3, 11, 19, 27};
+            break;
+        }
+    case 2:
+        {
+            j = 7;
+            array[0] = 4;
+            array[1] = 12;
+            array[2] = 20;
+            array[3] = 28;
+            array[4] = 29;
+            array[5] = 30;
+            array[6] = 31;
+            //int array[7] = {4, 12, 20, 28, 29, 30, 31};
+            break;
+        }
+    case 3:
+        {
+            j = 8;
+            array[0] = 3;
+            array[1] = 11;
+            array[2] = 19;
+            array[3] = 27;
+            array[4] = 28;
+            array[5] = 29;
+            array[6] = 30;
+            array[7] = 31;
+            //int array[8] = {3, 11, 19, 27, 28, 29, 30, 31};
+            break;
+        }
+    }
+
+    while (i < j && !respuesta)
+    {
+        if (x == array[i])
+        {
+            respuesta = true;
+        }
+        i++;
+    }
+    return respuesta;
+}
+
+int puedeMover(int tablero[], int pieza, int movimientosPosibles[])
+{
+    int i, j;
+
+    if ((int)(pieza/4)%2 == 0)
+    {
+        j = 5;
+    }
+    else
+    {
+        j = 4;
+    }
+
+    i = -1;
+    if (tablero[pieza] != 1)
+    {
+        if (!_in(pieza, 0))
+        {
+            if (tablero[pieza + j - 9] == 2)
+            {
+                i++;
+                movimientosPosibles[i] = pieza + j - 9;
+            }
+        }
+        if (!_in(pieza, 1))
+        {
+            if (tablero[pieza + j - 8] == 2)
+            {
+                i++;
+                movimientosPosibles[i] = pieza + j - 8;
+            }
+        }
+        if (!_in(pieza, 2))
+        {
+            if (tablero[pieza + j - 1])
+            {
+                i++;
+                movimientosPosibles[i] = pieza + j - 1;
+            }
+        }
+        if (!_in(pieza, 3))
+        {
+            if (tablero[pieza + j])
+            {
+                i++;
+                movimientosPosibles[i] = pieza + j;
+            }
+        }
+    }
+
+    return i;
+}
+
+int puedeComer(int tablero[], int turno, int comidasPosibles[][3])
+{
+    int i, j = -1, k;
+
+    for (i = 0; i <= 22; i++)
+    {
+        if (_in(i, 4))
+        {
+            if ((int)(i/4)%2 == 0)
+            {
+                k = 5;
+            }
+            else
+            {
+                k = 4;
+            }
+>>>>>>> Stashed changes
 
             if (turno % 2 == 0 && (tablero[i + k] == 1 || tablero[i + k] == 4))
             {
@@ -451,8 +638,54 @@ int puedeComer(int tablero[], int turno, int comidasPosibles[][3])
     return j;
 }
 
+<<<<<<< Updated upstream
 
 
+=======
+void coronar(int tablero[])
+{
+    int n=0;
+    while(n<4)
+    {
+        if (tablero[n]==0)
+        {
+            tablero[n]=3;
+        }
+        n+=1;
+    }
+    n=28;
+    while(n<32)
+    {
+        if (tablero[n]==1)
+        {
+            tablero[n]=4;
+        }
+        n+=1;
+    }
+}
+
+int terminar_partida(int tablero[],int turnos,int turnos_comidos,int tiempo)
+{
+//esta funcion devolverá un 0 si no termina la partida o un 1 si ha de terminarse la partida.
+int n=0, moradas=0,amarillas=0;
+if (tiempo<=0)
+    return 1;
+if ((turnos-turnos_comidos)>=30)
+    return 1;
+while(n<32)
+{
+    if ((tablero[n]==0)||(tablero[n]==3))
+        amarillas+=1;
+    if((tablero[n]==1)||(tablero[n]==4))
+        moradas+=1;
+    if((moradas==0)||(amarillas==0))
+        return 1;
+    n+=1;
+}
+
+
+}
+>>>>>>> Stashed changes
 void cerrar (SDL_Window *Ventana, SDL_Texture *Textura, SDL_Renderer *Render) //Cierra todas las funciones de SDL y elimina las ventanas en deshuso
 {
         SDL_DestroyTexture( Textura );
