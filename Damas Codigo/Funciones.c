@@ -28,6 +28,7 @@ void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura, char
                     SDL_RenderPresent( Render ); //Se actualiza el Render
 
 
+
             }
 }
 
