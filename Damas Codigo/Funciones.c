@@ -188,7 +188,7 @@ int pos_raton (const Cuadrante  dim_cas [],int n)
 
 
 
-bool _in(int x, int n)
+/*bool _in(int x, int n)
 {
     int j = 18, i = 0, array[18] = {0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22};
     bool respuesta = false;
@@ -337,7 +337,7 @@ int puedeComer(int tablero[], int turno, int comidasPosibles[][3])
     }
 
 
-}
+}*/
 
 
 
@@ -487,7 +487,6 @@ int puedeComer(int tablero[], int turno, int comidasPosibles[][3])
             {
                 k = 4;
             }
->>>>>>> Stashed changes
 
             if (turno % 2 == 0 && (tablero[i + k] == 1 || tablero[i + k] == 4))
             {
@@ -566,8 +565,6 @@ int puedeComer(int tablero[], int turno, int comidasPosibles[][3])
 
 
 
-
-=======
 void coronar(int tablero[])
 {
     int n=0;
