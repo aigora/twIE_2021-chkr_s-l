@@ -7,15 +7,15 @@ int main(int argv, char** args)
 {
     //Variables lógica
     int tiempo[2];
-    int turno_sin_comidos= 0;
+    int turno_sin_comidos = 0;
     int pieza = -1;
     int turno = 0;
+    int movimientosPosibles[4], comidasPosibles[5][3];
+    int tablero[32] = {2, 1, 2, 1, 1, 1, 1, 1, 1, 0, 1,  2,  2,  0,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
+                     //0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
     int posicion;
     int nComidas_posibles;
     int nMovimientos_posibles;
-    int movimientosPosibles[4], comidasPosibles[5][3];
-    int tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1,  2,  2,  2,  2,  2,  2,  1,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
-                     //0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
 
     //Variables gráficas
     SDL_Window *Ventana= NULL;
@@ -24,8 +24,7 @@ int main(int argv, char** args)
 
 
     //Variables auxiliares
-    int i;
-    int j;
+    int i, j, n;
     bool pasar_turno;
 
 
@@ -346,35 +345,76 @@ int main(int argv, char** args)
                                 }
                                 else if(pieza!=-1)
                                 {
+                                    n = -1;
                                     for(i=0;i<=nComidas_posibles;i++)
                                     {
                                         if(pieza==comidasPosibles[i][0]&&posicion==comidasPosibles[i][2])
                                         {
-                                            tablero[comidasPosibles[i][0]]=2; //Quita la ficha movida
-                                            tablero[comidasPosibles[i][1]]=2; //Quita la ficha comida
-                                            tablero[comidasPosibles[i][2]]=turno%2; //Devuelve el valor en la posición querida
-                                            coronar(tablero); //Se comprueba si se corona
-                                                for(j=0;j<3;j++)
-                                                {
-                                                     Pintar(tablero,comidasPosibles[i][j],false,Render,dim_cas); //Dibuja las piezas movidas
-                                                }
+                                            n = i;
+                                        }
+                                    }
+                                    if (n!=-1)
+                                    {
+                                        tablero[comidasPosibles[n][2]]=tablero[comidasPosibles[n][0]]; //Devuelve el valor en la posición querida
+                                        tablero[comidasPosibles[n][0]]=2; //Quita la ficha movida
+                                        tablero[comidasPosibles[n][1]]=2; //Quita la ficha comida
+                                        coronar(tablero); //Se comprueba si se corona
+                                        for(j=0;j<=2;j++)
+                                        {
+                                             Pintar(tablero,comidasPosibles[n][j],false,Render,dim_cas); //Dibuja las piezas movidas
+                                        }
+                                        for(j=0; j<=nComidas_posibles; j++)
+                                        {
+                                            if (pieza==comidasPosibles[j][0])
+                                            {
+                                                Pintar(tablero,comidasPosibles[j][2],false,Render,dim_cas);
+                                            }
+                                        }
 
-                                                nComidas_posibles=puedeComer(tablero,turno,comidasPosibles); //Como se puede comer 2 veces seguidas se repite la función
-                                                pasar_turno=true;
+                                        nComidas_posibles=puedeComer(tablero,turno,comidasPosibles); //Como se puede comer 2 veces seguidas se repite la función
+                                        pasar_turno=true;
 
-                                                for(j=0;j<=nComidas_posibles;j++)
-                                                {
-                                                    if(posicion==comidasPosibles[j][0])
-                                                    {
-                                                        pasar_turno=false;
-                                                    }
-                                                }
-                                                if(pasar_turno)
-                                                {
-                                                    turno++;
-                                                    nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
-                                                }
+                                        for(j=0; j<=nComidas_posibles; j++)
+                                        {
+                                            if(posicion==comidasPosibles[j][0])
+                                            {
+                                                pasar_turno=false;
+                                            }
+                                        }
 
+                                        pieza = -1;
+                                        turno_sin_comidos = 0;
+
+                                        if(pasar_turno)
+                                        {
+                                            turno++;
+                                            nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (i=0; i<=nMovimientos_posibles; i++)
+                                        {
+                                            if (posicion == movimientosPosibles[i])
+                                            {
+                                                tablero[posicion] = tablero[pieza];
+                                                tablero[pieza] = 2;
+                                                coronar(tablero);
+                                                Pintar(tablero, pieza, false, Render, dim_cas);
+
+                                                for(j=0; j<=nMovimientos_posibles; j++)
+                                                {
+                                                    printf("%i ", movimientosPosibles[j]);
+                                                    Pintar(tablero, movimientosPosibles[j], false, Render, dim_cas);
+                                                }
+                                                printf("\n");
+
+                                                pieza = -1;
+                                                turno_sin_comidos++;
+
+                                                turno++;
+                                                nComidas_posibles=puedeComer(tablero, turno, comidasPosibles);
+                                            }
                                         }
                                     }
                                 }
