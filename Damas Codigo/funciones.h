@@ -18,4 +18,5 @@ int puedeMover(int tablero[], int pieza, int movimientosPosibles[]);
 int puedeComer(int tablero[], int turno, int comidasPosibles[][3]);
 int terminar_partida(int tablero[],int turnos,int turnos_comidos,int tiempo);
 void coronar(int tablero[]);
-
+int mover(int tablero, int turno, int pos_raton, int movimientosPosibles);
+int comer(int tablero, int turno, int pos_raton, int comidasposibles);
