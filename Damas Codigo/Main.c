@@ -404,12 +404,9 @@ int main(int argv, char** args)
 
                                                 for(j=0; j<=nMovimientos_posibles; j++)
                                                 {
-
                                                     Pintar(tablero, movimientosPosibles[j], false, Render, dim_cas);
-                                                    printf("%i ", movimientosPosibles[j]);
-
                                                 }
-                                                printf("\n");
+                                                SDL_RenderPresent( Render );
 
                                                 pieza = -1;
                                                 turno_sin_comidos++;
