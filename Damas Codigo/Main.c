@@ -14,7 +14,7 @@ int main(int argv, char** args)
     int nComidas_posibles;
     int nMovimientos_posibles;
     int movimientosPosibles[4], comidasPosibles[5][3];
-    int tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
+    int tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1,  2,  2,  2,  2,  2,  2,  1,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
                      //0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
 
     //Variables gráficas
@@ -26,6 +26,7 @@ int main(int argv, char** args)
     //Variables auxiliares
     int i;
     int j;
+    bool pasar_turno;
 
 
     //Variables menú
@@ -302,7 +303,7 @@ int main(int argv, char** args)
                                 {
                                     if(pieza!=-1)
                                     {
-                                        if(nComidas_posibles!=-1)
+                                        if(nComidas_posibles==-1)
                                         {
                                             for(i=0;i<=nMovimientos_posibles;i++)
                                             {
@@ -324,7 +325,7 @@ int main(int argv, char** args)
                                     }
                                     pieza=posicion;
                                     nMovimientos_posibles=puedeMover( tablero,pieza,movimientosPosibles);
-                                    if(nComidas_posibles!=-1)
+                                    if(nComidas_posibles==-1)
                                     {
                                         for(i=0;i<=nMovimientos_posibles;i++)
                                         {
@@ -342,6 +343,40 @@ int main(int argv, char** args)
                                         }
                                     }
                                     Pintar(tablero,pieza,true,Render,dim_cas);
+                                }
+                                else if(pieza!=-1)
+                                {
+                                    for(i=0;i<=nComidas_posibles;i++)
+                                    {
+                                        if(pieza==comidasPosibles[i][0]&&posicion==comidasPosibles[i][2])
+                                        {
+                                            tablero[comidasPosibles[i][0]]=2; //Quita la ficha movida
+                                            tablero[comidasPosibles[i][1]]=2; //Quita la ficha comida
+                                            tablero[comidasPosibles[i][2]]=turno%2; //Devuelve el valor en la posición querida
+                                            coronar(tablero); //Se comprueba si se corona
+                                                for(j=0;j<3;j++)
+                                                {
+                                                     Pintar(tablero,comidasPosibles[i][j],false,Render,dim_cas); //Dibuja las piezas movidas
+                                                }
+
+                                                nComidas_posibles=puedeComer(tablero,turno,comidasPosibles); //Como se puede comer 2 veces seguidas se repite la función
+                                                pasar_turno=true;
+
+                                                for(j=0;j<=nComidas_posibles;j++)
+                                                {
+                                                    if(posicion==comidasPosibles[j][0])
+                                                    {
+                                                        pasar_turno=false;
+                                                    }
+                                                }
+                                                if(pasar_turno)
+                                                {
+                                                    turno++;
+                                                    nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
+                                                }
+
+                                        }
+                                    }
                                 }
                             }
 
