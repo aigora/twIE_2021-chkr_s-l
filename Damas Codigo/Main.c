@@ -406,7 +406,6 @@ int main(int argv, char** args)
                                                 {
                                                     Pintar(tablero, movimientosPosibles[j], false, Render, dim_cas);
                                                 }
-                                                SDL_RenderPresent( Render );
 
                                                 pieza = -1;
                                                 turno_sin_comidos++;
