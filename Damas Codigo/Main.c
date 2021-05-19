@@ -5,12 +5,15 @@
 
 int main(int argv, char** args)
 {
-    pieza = -1,
-    turno = 0;
+    //Variables lógica
+    int tiempo[2];
+    int pieza = -1,
+    int turno = 0;
     int movimientosPosibles[4], comidasPosibles[5][3];
     int tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
                      //0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
 
+    //Variables gráficas
     SDL_Window *Ventana= NULL;
     SDL_Renderer *Render = NULL;
     SDL_Texture *Textura = NULL;
@@ -24,12 +27,7 @@ int main(int argv, char** args)
     //Variables fichero de texto
     FILE *archivo;
     int turnos, fichas_extra, resultado;
-    tiempo t;
-
-    //Inicialización del temporizador
-    t.s=0;
-    t.m=0;
-
+    temp t;
 
 
     //Variables vector estructura usados para las dimensiones de la pantalla
@@ -175,20 +173,23 @@ int main(int argv, char** args)
 
                     if (opcion[3] == 2)
                     {
-                        t.m=3;
+                       tiempo[0]=3*60;
+                       tiempo[1]=3*60;
                     }
 
                     if (opcion[3] == 3)
                     {
-                        t.m=5;
+                        tiempo[0]=5*60;
+                        tiempo[1]=5*60;
                     }
 
                     if (opcion[3] == 4)
                     {
-                        t.m=10;
+                       tiempo[0]=10*60;
+                       tiempo[1]=10*60;
                     }
 
-                    do
+                    do //IMPORTANTE LUEGO AÑADIR EL CAMBIO A LA ESTRUCTURA TIEMPO
                     {
                         fondo(Ventana,Render,Textura,"nombre.bmp");
 
@@ -262,17 +263,20 @@ int main(int argv, char** args)
 
                         if (opcion[3] == 2)
                         {
-                            t.m=3;
+                            tiempo[0]=3*60;
+                            tiempo[1]=3*60;
                         }
 
                         if (opcion[3] == 3)
                         {
-                            t.m=5;
+                            tiempo[0]=5*60;
+                            tiempo[1]=5*60;
                         }
 
                         if (opcion[3] == 4)
                         {
-                            t.m=10;
+                            tiempo[0]=10*60;
+                            tiempo[1]=10*60;
                         }
                     printf("\n");
                     break;

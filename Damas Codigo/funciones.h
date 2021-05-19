@@ -7,7 +7,7 @@ typedef struct
 typedef struct
 {
     int m,s;
-}tiempo;
+}temp;
 
 void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *Render,const Cuadrante dimensiones_casilla [32]);
 void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura, char path[50]);
