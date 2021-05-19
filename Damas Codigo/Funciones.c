@@ -202,7 +202,6 @@ bool _in(int x, int n)
             array[5] = 12;
             array[6] = 20;
             array[8] = 28;
-            //int array[] = {0, 1, 2, 3, 4, 12, 20, 28};
             break;
         }
     case 1:
@@ -215,7 +214,6 @@ bool _in(int x, int n)
             array[4] = 11;
             array[5] = 19;
             array[6] = 27;
-            //int array[] = {0, 1, 2, 3, 11, 19, 27};
             break;
         }
     case 2:
@@ -228,7 +226,6 @@ bool _in(int x, int n)
             array[4] = 29;
             array[5] = 30;
             array[6] = 31;
-            //int array[7] = {4, 12, 20, 28, 29, 30, 31};
             break;
         }
     case 3:
@@ -242,7 +239,6 @@ bool _in(int x, int n)
             array[5] = 29;
             array[6] = 30;
             array[7] = 31;
-            //int array[8] = {3, 11, 19, 27, 28, 29, 30, 31};
             break;
         }
     }
@@ -472,6 +468,51 @@ while(n<32)
 
 
 }
+
+int comer(int tablero, int turno, int pos_raton, int comidasposibles){
+    // comidasposibles ES UN ENTERO
+        // 1 = IZQUIERDA
+        // 2 = DERECHA
+
+
+    // Eliminar la pieza clicada, que va a comer, pasada como parámetro
+    // Eliminar la pieza comida del tablero
+    // Pintar la pieza anterior en la nueva posición
+    tablero[pos_raton] = -1;
+    tablero[comidasposibles] = -1;
+
+    // Si la comidasposibles dada como parámetro es 1 -> voy a la izquierda y en el tablero en la posición actual+9 pasará a haber una pieza
+    if (comidasposibles == 1){
+            tablero[pos_raton+9] = 1;
+    }
+
+    // Lo mismo si quiero ir a la derecha
+    else if (comidasposibles == 2) {
+         tablero[pos_raton+7] = 1;
+    }
+)
+
+int mover(int tablero, int turno, int pos_raton, int movimientosPosibles){
+    // movimientosPosibles ES UN ENTERO
+        // 1 = IZQUIERDA
+        // 2 = DERECHA
+
+
+    // Eliminar la pieza clicada, que va a comer, pasada como parámetro
+    // Eliminar la pieza comida del tablero
+    // Pintar la pieza anterior en la nueva posición
+    tablero[pos_raton] = -1;
+
+    // Si  movimientosPosibles dada como parámetro es 1 -> voy a la izquierda y en el tablero en la posición actual+5 pasará a haber una pieza
+    if (movimientosPosibles == 1){
+            tablero[pos_raton+5] = 1;
+    }
+
+    // Lo mismo si quiero ir a la derecha
+    else if (movimientosPosibles == 2){
+         tablero[pos_raton+4] = 1;
+    }
+)
 
 void cerrar (SDL_Window *Ventana, SDL_Texture *Textura, SDL_Renderer *Render) //Cierra todas las funciones de SDL y elimina las ventanas en deshuso
 {
