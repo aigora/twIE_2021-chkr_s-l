@@ -10,6 +10,9 @@ int main(int argv, char** args)
     int turno_sin_comidos= 0;
     int pieza = -1;
     int turno = 0;
+    int posicion;
+    int nComidas_posibles;
+    int nMovimientos_posibles;
     int movimientosPosibles[4], comidasPosibles[5][3];
     int tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
                      //0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
@@ -22,6 +25,7 @@ int main(int argv, char** args)
 
     //Variables auxiliares
     int i;
+    int j;
 
 
     //Variables menú
@@ -288,11 +292,61 @@ int main(int argv, char** args)
                         {
                         Pintar(tablero,i,false,Render,dim_cas);
                         }
+                        nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
 
                         do{
+                            posicion=pos_raton(dim_cas,32);
+                            if(posicion!=-1)
+                            {
+                                if(tablero[posicion]%3==turno%2)
+                                {
+                                    if(pieza!=-1)
+                                    {
+                                        if(nComidas_posibles!=-1)
+                                        {
+                                            for(i=0;i<=nMovimientos_posibles;i++)
+                                            {
+                                                Pintar(tablero,movimientosPosibles[i],false,Render,dim_cas);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            for(i=0;i<=nComidas_posibles;i++)
+                                            {
+                                                if(comidasPosibles[i][0]==pieza)
+                                                {
+                                                    Pintar(tablero, comidasPosibles[i][2],false,Render,dim_cas);
+                                                }
+                                            }
+                                        }
+                                        Pintar(tablero,pieza,false,Render,dim_cas);
 
-                            } while(terminar_partida(tablero,turno_sin_comidos,tiempo)==0);
-                    printf("\n");
+                                    }
+                                    pieza=posicion;
+                                    nMovimientos_posibles=puedeMover( tablero,pieza,movimientosPosibles);
+                                    if(nComidas_posibles!=-1)
+                                    {
+                                        for(i=0;i<=nMovimientos_posibles;i++)
+                                        {
+                                            Pintar(tablero,movimientosPosibles[i],true,Render,dim_cas);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for(i=0;i<=nComidas_posibles;i++)
+                                        {
+                                            if(comidasPosibles[i][0]==pieza)
+                                            {
+                                                Pintar(tablero, comidasPosibles[i][2],true,Render,dim_cas);
+                                            }
+                                        }
+                                    }
+                                    Pintar(tablero,pieza,true,Render,dim_cas);
+                                }
+                            }
+
+                        } while(terminar_partida(tablero,turno_sin_comidos,tiempo)==0);
+
                     break;
                 }
 
