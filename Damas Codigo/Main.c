@@ -391,7 +391,7 @@ int main(int argv, char** args)
                                             nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
                                         }
                                     }
-                                    else
+                                    else if(nComidas_posibles==-1)
                                     {
                                         for (i=0; i<=nMovimientos_posibles; i++)
                                         {
@@ -404,8 +404,10 @@ int main(int argv, char** args)
 
                                                 for(j=0; j<=nMovimientos_posibles; j++)
                                                 {
-                                                    printf("%i ", movimientosPosibles[j]);
+
                                                     Pintar(tablero, movimientosPosibles[j], false, Render, dim_cas);
+                                                    printf("%i ", movimientosPosibles[j]);
+
                                                 }
                                                 printf("\n");
 
