@@ -14,6 +14,7 @@ int main(int argv, char** args)
     int tablero[32] = {2, 1, 2, 1, 1, 1, 1, 1, 1, 0, 1,  2,  2,  0,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
                      //0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
     int posicion;
+    int fin_partida;
     int nComidas_posibles;
     int nMovimientos_posibles;
 
@@ -407,6 +408,8 @@ int main(int argv, char** args)
                                                     Pintar(tablero, movimientosPosibles[j], false, Render, dim_cas);
                                                 }
 
+                                                fin_partida=terminar_partida(tablero,turno_sin_comidos,tiempo,pieza,movimientosPosibles,turno,comidasPosibles);
+
                                                 pieza = -1;
                                                 turno_sin_comidos++;
 
@@ -418,7 +421,7 @@ int main(int argv, char** args)
                                 }
                             }
 
-                        } while(terminar_partida(tablero,turno_sin_comidos,tiempo)==0);
+                        } while(fin_partida==0);
 
                     break;
                 }

@@ -428,8 +428,6 @@ int puedeComer(int tablero[], int turno, int comidasPosibles[][3])
     return j;
 }
 
-
-
 void coronar(int tablero[])
 {
     int n=0;
@@ -452,7 +450,7 @@ void coronar(int tablero[])
     }
 }
 
-int terminar_partida(int tablero[],int turnos_sin_comidos,int tiempo[2])
+int terminar_partida(int tablero[],int turnos_sin_comidos,int tiempo[2],int pieza,int movimientosPosibles[],int turno,int comidasPosibles[][3])
 {
 //esta funcion devolverá un 0 si no termina la partida o 1->ganan amarillas 2->ganan moradas 3->empate.
     int n=0,
@@ -487,6 +485,10 @@ int terminar_partida(int tablero[],int turnos_sin_comidos,int tiempo[2])
     }
 
     if ((turnos_sin_comidos)>=60)
+    {
+        return 3;
+    }
+    if((puedeMover( tablero,pieza,movimientosPosibles)==-1)&&(puedeComer(tablero,turno,comidasPosibles)==-1))
     {
         return 3;
     }
