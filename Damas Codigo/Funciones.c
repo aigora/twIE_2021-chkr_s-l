@@ -455,12 +455,12 @@ while(n<32)
             {
             return 3;
         }
-return 0
+return 0;
 
 
 }
 
-int comer(int tablero, int turno, int pos_raton, int comidasposibles){
+/*int comer(int tablero, int turno, int pos_raton, int comidasposibles){
     // comidasposibles ES UN ENTERO
         // 1 = IZQUIERDA
         // 2 = DERECHA
@@ -503,7 +503,7 @@ int mover(int tablero, int turno, int pos_raton, int movimientosPosibles){
     else if (movimientosPosibles == 2){
          tablero[pos_raton+4] = 1;
     }
-)
+}*/
 
 void cerrar (SDL_Window *Ventana, SDL_Texture *Textura, SDL_Renderer *Render) //Cierra todas las funciones de SDL y elimina las ventanas en deshuso
 {

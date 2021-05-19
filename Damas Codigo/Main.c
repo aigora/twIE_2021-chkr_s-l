@@ -7,16 +7,21 @@ int main(int argv, char** args)
 {
     //Variables lógica
     int tiempo[2];
-    int pieza = -1,
+    int turno_sin_comidos= 0;
+    int pieza = -1;
     int turno = 0;
     int movimientosPosibles[4], comidasPosibles[5][3];
-    int tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+    int tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
                      //0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
 
     //Variables gráficas
     SDL_Window *Ventana= NULL;
     SDL_Renderer *Render = NULL;
     SDL_Texture *Textura = NULL;
+
+
+    //Variables auxiliares
+    int i;
 
 
     //Variables menú
@@ -278,6 +283,15 @@ int main(int argv, char** args)
                             tiempo[0]=10*60;
                             tiempo[1]=10*60;
                         }
+                        fondo(Ventana,Render,Textura,"chekers_blue.bmp");
+                        for (i=0; i<32;i++)
+                        {
+                        Pintar(tablero,i,false,Render,dim_cas);
+                        }
+
+                        do{
+
+                            } while(terminar_partida(tablero,turno_sin_comidos,tiempo)==0);
                     printf("\n");
                     break;
                 }
