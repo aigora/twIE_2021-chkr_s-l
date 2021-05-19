@@ -16,7 +16,7 @@ void cerrar (SDL_Window *Ventana, SDL_Texture *Textura, SDL_Renderer *Render);
 bool _in(int x, int n);
 int puedeMover(int tablero[], int pieza, int movimientosPosibles[]);
 int puedeComer(int tablero[], int turno, int comidasPosibles[][3]);
-int terminar_partida(int tablero[],int turnos,int turnos_comidos,int tiempo);
+int terminar_partida(int tablero[],int turnos_sin_comidos,int tiempo[2]);
 void coronar(int tablero[]);
 int mover(int tablero, int turno, int pos_raton, int movimientosPosibles);
 int comer(int tablero, int turno, int pos_raton, int comidasposibles);

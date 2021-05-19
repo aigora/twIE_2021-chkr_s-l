@@ -423,48 +423,39 @@ void coronar(int tablero[])
     }
 }
 
-int terminar_partida(int tablero[],int turnos,int turnos_comidos,int tiempo)
+int terminar_partida(int tablero[],int turnos_sin_comidos,int tiempo[2])
 {
 //esta funcion devolverá un 0 si no termina la partida o 1->ganan amarillas 2->ganan moradas 3->empate.
 int n=0, moradas=0,amarillas=0;
 
 while(n<32)
-{
-    if ((tablero[n]==0)||(tablero[n]==3))
-        amarillas+=1;
-    if((tablero[n]==1)||(tablero[n]==4))
-        moradas+=1;
-    n+=1;
-}
- if((moradas==0)||(amarillas==0))
+    {
+        if ((tablero[n]==0)||(tablero[n]==3))
+            amarillas+=1;
+        if((tablero[n]==1)||(tablero[n]==4))
+            moradas+=1;
+        n+=1;
+    }
+        if((moradas==0)||(amarillas==0))
         {
-            if((moradas==0)&&(amarillas==0))
-                return 3;
             if(moradas==0)
                 return 1;
             if(amarillas==0)
                 return 2;
         }
-        if (tiempo<=0)
+        if (tiempo[0]<=0)//Se quedan sin tiempo amarillas, ganan moradas
         {
-            if(amarillas<moradas)
-                return 2;
-            if(amarillas>moradas)
-                return 1;
-            if(amarillas==moradas)
-                return 3;
+           return 2;
         }
-
-        if ((turnos-turnos_comidos)>=30)
+         if(tiempo[1]<=0)//Se quedan sin tiempo moradas,ganan amarillas
+        {
+           return 1;
+        }
+        if ((turnos_sin_comidos)>=30)
             {
-            if(amarillas<moradas)
-                return 2;
-            if(amarillas>moradas)
-                return 1;
-            if(amarillas==moradas)
-                return 3;
+            return 3;
         }
-
+return 0
 
 
 }
