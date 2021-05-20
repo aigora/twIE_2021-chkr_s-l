@@ -6,17 +6,21 @@
 int main(int argv, char** args)
 {
     //Variables lógica
-    int tiempo[2];
-    int turno_sin_comidos = 0;
-    int pieza = -1;
-    int turno = 0;
-    int movimientosPosibles[4], comidasPosibles[5][3];
-    int tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
+    int tiempo[2],
+        turno_sin_comidos = 0,
+        pieza = -1,
+        turno = 0,
+        fin_partida=0,
+        movimientosPosibles[4], comidasPosibles[5][3],
+        tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
                      //0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
-    int posicion;
-    int fin_partida=0;
-    int nComidas_posibles;
-    int nMovimientos_posibles;
+
+    int posicion,
+        nComidas_posibles,
+        nMovimientos_posibles,
+        colorBot;
+
+    bool dificil;
 
     //Variables gráficas
     SDL_Window *Ventana= NULL;
@@ -132,139 +136,53 @@ int main(int argv, char** args)
 
             switch (opcion[0])
             {
-                case 1:
+                case 3:
                 {
-                    do
-                    {
-                        //Modo un jugador
-                        //Multijugador(false);            (Nombre de la función)
-
-                        fondo(Ventana,Render,Textura,"dificultad.bmp");
-                        opcion[1]=pos_raton(menu_2,2);
-
-                    }while((opcion[1] != 1) && (opcion[1] != 2));
-
-                    if (opcion[1] == 1)
-                    {
-                        //Modo fácil
-                        //ModoDificil(false);            (Nombre de la función)
-                    }
-                    else
-                    {
-                       //Modo difícil
-                        //ModoDificil(true);
-                    }
-
-                    do
-                    {
-                        fondo(Ventana,Render,Textura,"color.bmp");
-                        opcion[2]=pos_raton(menu_2,2);
-
-                    }while((opcion[2] != 1) && (opcion[2] != 2));
-
-
-                    if (opcion[2] == 1)
-                    {
-                       //Color amarillo
-                        //ColorBlanco(true);            (Nombre de la función)
-                    }
-                    else
-                    {
-                        //Color morado
-                        //ColorBlanco(false);
-                    }
-
-                    do
-                    {
-                        fondo(Ventana,Render,Textura,"temporizador.bmp");
-                        opcion[3]=pos_raton(menu_4,4);
-
-                    }while((opcion[3] != 1) && (opcion[3] != 2)&& (opcion[3] != 3)&& (opcion[3] != 4));
-
-                    if (opcion[3] == 2)
-                    {
-                       tiempo[0]=3*60;
-                       tiempo[1]=3*60;
-                    }
-
-                    if (opcion[3] == 3)
-                    {
-                        tiempo[0]=5*60;
-                        tiempo[1]=5*60;
-                    }
-
-                    if (opcion[3] == 4)
-                    {
-                       tiempo[0]=10*60;
-                       tiempo[1]=10*60;
-                    }
-
-                    do //IMPORTANTE LUEGO AÑADIR EL CAMBIO A LA ESTRUCTURA TIEMPO
-                    {
-                        fondo(Ventana,Render,Textura,"nombre.bmp");
-
-                        opcion[4]=pos_raton(menu_2,2);
-                    }while((opcion[4] != 1) && (opcion[4] != 2));
-
-                    if (opcion[4] == 1)
-                    {
-                        cerrar(Ventana,Textura,Render);
-                        printf("Introduce un nombre:\n");
-                        scanf("%10s",nombre);
-
-                        archivo=fopen("Puntuaciones.txt","a");
-                        if (archivo==NULL)
-                        {
-                            printf("Error al abrir el fichero.\n");
-                        }
-
-                        else
-                        {
-                            printf("Archivo abierto correctamente.\n");
-                            fprintf(archivo,"\n\nUn 1 equivale a vitoria, un 0 a empate y un -1 a derrota.\nPartida:\nNombre: %s\nTiempo empleado: %i minutos y %i segundos\nTurnos: %i\nFichas extra sobre las del rival: %i\nResultado: %i\n",nombre,t.m,t.s,turnos,fichas_extra,resultado);
-                            fclose(archivo);
-                        }
-
-
-
-                        if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ) //Se reinicia SDL porque lo acabamos de cerrar
-                        {
-                            printf( "SDL no pudo iniciarse: %s\n", SDL_GetError() );
-                        }
-                        else
-                        {
-                            if(!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ))
-                            {
-                               printf("Aviso: Filtración linear de texturas no disponible");
-                            }
-
-                            Ventana = SDL_CreateWindow( "Damas.exe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, SDL_WINDOW_SHOWN );
-                            if( Ventana == NULL )
-                                {
-                                    printf( "No se pudo crear la ventana: %s\n", SDL_GetError() );
-
-                                    return -1;
-                                }
-
-                            Render= SDL_CreateRenderer( Ventana, -1, SDL_RENDERER_ACCELERATED );
-                            if( Render == NULL )
-                                    {
-                                        printf( "El render no se pudo crear SDL Error: %s\n", SDL_GetError() );
-
-                                        return -1;
-                                    }
-                        }
-                        printf("\n");
-                    }
+                    cerrar(Ventana,Textura,Render);
+                    printf("\nSaliendo...\n\n");
                     break;
                 }
 
-                case 2:
+                default:
                 {
-                    //Modo Multijugador
-                    //Multijugador(true);
+                    if (opcion[0]==1)                                                           //Modo un jugador
+                    {
+                        do
+                        {
+                            fondo(Ventana,Render,Textura,"dificultad.bmp");
+                            opcion[1]=pos_raton(menu_2,2);
 
-                    do
+                        }while((opcion[1] != 1) && (opcion[1] != 2));
+
+                        if (opcion[1] == 1)
+                        {
+                            //Modo fácil
+                            dificil = false;
+                        }
+                        else
+                        {
+                           //Modo difícil
+                           dificil = true;
+                        }
+
+                        do
+                        {
+                            fondo(Ventana,Render,Textura,"color.bmp");
+                            opcion[2]=pos_raton(menu_2,2);
+
+                        }while((opcion[2] != 1) && (opcion[2] != 2));
+
+
+                        if (opcion[2] == 1)
+                        {
+                           colorBot = 1;
+                        }
+                        else
+                        {
+                            colorBot = 0;
+                        }
+
+                        do
                         {
                             fondo(Ventana,Render,Textura,"temporizador.bmp");
                             opcion[3]=pos_raton(menu_4,4);
@@ -273,8 +191,8 @@ int main(int argv, char** args)
 
                         if (opcion[3] == 2)
                         {
-                            tiempo[0]=3*60;
-                            tiempo[1]=3*60;
+                           tiempo[0]=3*60;
+                           tiempo[1]=3*60;
                         }
 
                         if (opcion[3] == 3)
@@ -285,17 +203,124 @@ int main(int argv, char** args)
 
                         if (opcion[3] == 4)
                         {
-                            tiempo[0]=10*60;
-                            tiempo[1]=10*60;
+                           tiempo[0]=10*60;
+                           tiempo[1]=10*60;
                         }
-                        fondo(Ventana,Render,Textura,"chekers_blue.bmp");
-                        for (i=0; i<32;i++)
-                        {
-                        Pintar(tablero,i,false,Render,dim_cas);
-                        }
-                        nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
 
-                        do{
+                        do //IMPORTANTE LUEGO AÑADIR EL CAMBIO A LA ESTRUCTURA TIEMPO
+                        {
+                            fondo(Ventana,Render,Textura,"nombre.bmp");
+
+                            opcion[4]=pos_raton(menu_2,2);
+                        }while((opcion[4] != 1) && (opcion[4] != 2));
+
+                        if (opcion[4] == 1)
+                        {
+                            cerrar(Ventana,Textura,Render);
+                            printf("Introduce un nombre:\n");
+                            scanf("%10s",nombre);
+
+                            archivo=fopen("Puntuaciones.txt","a");
+                            if (archivo==NULL)
+                            {
+                                printf("Error al abrir el fichero.\n");
+                            }
+
+                            else
+                            {
+                                printf("Archivo abierto correctamente.\n");
+                                fprintf(archivo,"\n\nUn 1 equivale a vitoria, un 0 a empate y un -1 a derrota.\nPartida:\nNombre: %s\nTiempo empleado: %i minutos y %i segundos\nTurnos: %i\nFichas extra sobre las del rival: %i\nResultado: %i\n",nombre,t.m,t.s,turnos,fichas_extra,resultado);
+                                fclose(archivo);
+                            }
+
+
+
+                            if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ) //Se reinicia SDL porque lo acabamos de cerrar
+                            {
+                                printf( "SDL no pudo iniciarse: %s\n", SDL_GetError() );
+                            }
+                            else
+                            {
+                                if(!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ))
+                                {
+                                   printf("Aviso: Filtración linear de texturas no disponible");
+                                }
+
+                                Ventana = SDL_CreateWindow( "Damas.exe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, SDL_WINDOW_SHOWN );
+                                if( Ventana == NULL )
+                                    {
+                                        printf( "No se pudo crear la ventana: %s\n", SDL_GetError() );
+
+                                        return -1;
+                                    }
+
+                                Render= SDL_CreateRenderer( Ventana, -1, SDL_RENDERER_ACCELERATED );
+                                if( Render == NULL )
+                                        {
+                                            printf( "El render no se pudo crear SDL Error: %s\n", SDL_GetError() );
+
+                                            return -1;
+                                        }
+                            }
+                            printf("\n");
+                        }
+                    }
+                    else                                                                    //Modo Multijugador
+                    {
+                        colorBot = -1;
+                        for(i=0; i<32; i++)
+                        {
+                            if (i>=20) { tablero[i] = 0; }
+                            else if (i>=12) { tablero[i] = 2; }
+                            else { tablero[i] = 1; }
+                        }
+
+                        do
+                        {
+                            fondo(Ventana,Render,Textura,"temporizador.bmp");
+                            opcion[3]=pos_raton(menu_4,4);
+
+                        }while((opcion[3] != 1) && (opcion[3] != 2)&& (opcion[3] != 3)&& (opcion[3] != 4));
+
+
+                        switch (opcion[3])
+                        {
+                        case 1:
+                            tiempo = 0;
+                            break;
+                        case 2:
+                            tiempo = 3*60;
+                            break;
+                        case 3:
+                            tiempo = 5*60;
+                            break;
+                        case 4:
+                            tiempo = 10*60;
+                            break;
+                        }
+                    }
+
+
+                                                                                    //El juego en sí
+
+                    fondo(Ventana,Render,Textura,"chekers_blue.bmp");
+                    for (i=0; i<32;i++)
+                    {
+                        Pintar(tablero ,i ,false ,Render ,dim_cas);
+                    }
+
+
+
+
+                    nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
+                    do
+                    {
+                        if (colorBot == turno % 2)
+                        {
+                            IA(tablero, dificil, turno, &pieza, &posicion);
+                        }
+                        else
+                        {
                             posicion=pos_raton(dim_cas,32);
                             if(posicion!=-1)
                             {
@@ -344,92 +369,87 @@ int main(int argv, char** args)
                                     }
                                     Pintar(tablero,pieza,true,Render,dim_cas);
                                 }
-                                else if(pieza!=-1)
+                            }
+                        }
+                        if(posicion!=-1 && pieza!=-1)
+                        {
+                            n = -1;
+                            for(i=0;i<=nComidas_posibles;i++)
+                            {
+                                if(pieza==comidasPosibles[i][0]&&posicion==comidasPosibles[i][2])
                                 {
-                                    n = -1;
-                                    for(i=0;i<=nComidas_posibles;i++)
+                                    n = i;
+                                }
+                            }
+                            if (n!=-1)
+                            {
+                                tablero[comidasPosibles[n][2]]=tablero[comidasPosibles[n][0]]; //Devuelve el valor en la posición querida
+                                tablero[comidasPosibles[n][0]]=2; //Quita la ficha movida
+                                tablero[comidasPosibles[n][1]]=2; //Quita la ficha comida
+                                coronar(tablero); //Se comprueba si se corona
+                                for(j=0;j<=2;j++)
+                                {
+                                     Pintar(tablero,comidasPosibles[n][j],false,Render,dim_cas); //Dibuja las piezas movidas
+                                }
+                                for(j=0; j<=nComidas_posibles; j++)
+                                {
+                                    if (pieza==comidasPosibles[j][0])
                                     {
-                                        if(pieza==comidasPosibles[i][0]&&posicion==comidasPosibles[i][2])
-                                        {
-                                            n = i;
-                                        }
+                                        Pintar(tablero,comidasPosibles[j][2],false,Render,dim_cas);
                                     }
-                                    if (n!=-1)
+                                }
+
+                                nComidas_posibles=puedeComer(tablero,turno,comidasPosibles); //Como se puede comer 2 veces seguidas se repite la función
+                                pasar_turno=true;
+
+                                for(j=0; j<=nComidas_posibles; j++)
+                                {
+                                    if(posicion==comidasPosibles[j][0])
                                     {
-                                        tablero[comidasPosibles[n][2]]=tablero[comidasPosibles[n][0]]; //Devuelve el valor en la posición querida
-                                        tablero[comidasPosibles[n][0]]=2; //Quita la ficha movida
-                                        tablero[comidasPosibles[n][1]]=2; //Quita la ficha comida
-                                        coronar(tablero); //Se comprueba si se corona
-                                        for(j=0;j<=2;j++)
+                                        pasar_turno=false;
+                                    }
+                                }
+
+                                pieza = -1;
+                                turno_sin_comidos = 0;
+
+                                if(pasar_turno)
+                                {
+                                    turno++;
+                                    nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
+                                }
+                            }
+                            else if(nComidas_posibles==-1)
+                            {
+                                for (i=0; i<=nMovimientos_posibles; i++)
+                                {
+                                    if (posicion == movimientosPosibles[i])
+                                    {
+                                        tablero[posicion] = tablero[pieza];
+                                        tablero[pieza] = 2;
+                                        coronar(tablero);
+                                        Pintar(tablero, pieza, false, Render, dim_cas);
+
+                                        for(j=0; j<=nMovimientos_posibles; j++)
                                         {
-                                             Pintar(tablero,comidasPosibles[n][j],false,Render,dim_cas); //Dibuja las piezas movidas
-                                        }
-                                        for(j=0; j<=nComidas_posibles; j++)
-                                        {
-                                            if (pieza==comidasPosibles[j][0])
-                                            {
-                                                Pintar(tablero,comidasPosibles[j][2],false,Render,dim_cas);
-                                            }
+                                            Pintar(tablero, movimientosPosibles[j], false, Render, dim_cas);
                                         }
 
-                                        nComidas_posibles=puedeComer(tablero,turno,comidasPosibles); //Como se puede comer 2 veces seguidas se repite la función
-                                        pasar_turno=true;
-
-                                        for(j=0; j<=nComidas_posibles; j++)
-                                        {
-                                            if(posicion==comidasPosibles[j][0])
-                                            {
-                                                pasar_turno=false;
-                                            }
-                                        }
+                                        fin_partida=terminar_partida(tablero,turno_sin_comidos,tiempo,pieza,movimientosPosibles,turno,comidasPosibles);
 
                                         pieza = -1;
-                                        turno_sin_comidos = 0;
+                                        turno_sin_comidos++;
 
-                                        if(pasar_turno)
-                                        {
-                                            turno++;
-                                            nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
-                                        }
-                                    }
-                                    else if(nComidas_posibles==-1)
-                                    {
-                                        for (i=0; i<=nMovimientos_posibles; i++)
-                                        {
-                                            if (posicion == movimientosPosibles[i])
-                                            {
-                                                tablero[posicion] = tablero[pieza];
-                                                tablero[pieza] = 2;
-                                                coronar(tablero);
-                                                Pintar(tablero, pieza, false, Render, dim_cas);
-
-                                                for(j=0; j<=nMovimientos_posibles; j++)
-                                                {
-                                                    Pintar(tablero, movimientosPosibles[j], false, Render, dim_cas);
-                                                }
-
-                                                fin_partida=terminar_partida(tablero,turno_sin_comidos,tiempo,pieza,movimientosPosibles,turno,comidasPosibles);
-
-                                                pieza = -1;
-                                                turno_sin_comidos++;
-
-                                                turno++;
-                                                nComidas_posibles=puedeComer(tablero, turno, comidasPosibles);
-                                            }
-                                        }
+                                        turno++;
+                                        nComidas_posibles=puedeComer(tablero, turno, comidasPosibles);
                                     }
                                 }
                             }
+                        }
 
-                        } while(fin_partida==0);
-
-                    break;
-                }
-
-                case 3:
-                {
-                    cerrar(Ventana,Textura,Render);
-                    printf("\nSaliendo...\n\n");
+                    } while(fin_partida==0);
+                    printf("%i", fin_partida);
+                                                                        //Aquí acaba el juego en sí
                     break;
                 }
             }

@@ -174,36 +174,33 @@ int pos_raton (const Cuadrante  dim_cas [],int n)
         {
             switch(mouse.type)
             {
-                case SDL_QUIT:
-                    funciona = false;
-                    break;
-
-                case SDL_MOUSEBUTTONDOWN:
-                    x = mouse.button.x;
-                    y = mouse.button.y;
-
-                    for (i=0;i<n;i++) //Devuelve la casilla pulsada
-                    {
-
-                        if((x>=dim_cas[i].x1&&x<=dim_cas[i].x2)&&(y>=dim_cas[i].y1&&y<=dim_cas[i].y2))
-                            {
-                                if(n==32)
-                                {k=i; return k;}
-                                else
-                                    {k=i+1; return k;}
-                            }
-                    }
-                    if(k==-1)
-                    {
-                        return -1;
-                    }
+            case SDL_QUIT:
+                funciona = false;
                 break;
 
+            case SDL_MOUSEBUTTONDOWN:
+                x = mouse.button.x;
+                y = mouse.button.y;
+
+                for (i=0;i<n;i++) //Devuelve la casilla pulsada
+                {
+
+                    if((x>=dim_cas[i].x1&&x<=dim_cas[i].x2)&&(y>=dim_cas[i].y1&&y<=dim_cas[i].y2))
+                        {
+                            if(n==32)
+                            {k=i; return k;}
+                            else
+                                {k=i+1; return k;}
+                        }
+                }
+                if(k==-1)
+                {
+                    return -1;
+                }
+                break;
             }
         }
     }
-
-
 }
 
 
@@ -428,6 +425,25 @@ int puedeComer(int tablero[], int turno, int comidasPosibles[][3])
     return j;
 }
 
+void IA(int tablero[], bool dificil, int turno, int* Pieza, int* Posicion)
+{
+    int rnd = rand(),
+        fichas[12], pieza, posicion, i, j;
+
+    j = 0;
+    for (i=0; i<32; i++)    //Guarda las piezas del color del bot en Fichas[]
+    {
+        if (tablero[i] % 3 == turno % 2)
+        {
+            fichas[j] == tablero[i];
+            j++;
+        }
+    }
+
+    i = 0;
+    while ()
+}
+
 void coronar(int tablero[])
 {
     int n=0;
@@ -488,10 +504,11 @@ int terminar_partida(int tablero[],int turnos_sin_comidos,int tiempo[2],int piez
     {
         return 3;
     }
-    if((puedeMover( tablero,pieza,movimientosPosibles)==-1)&&(puedeComer(tablero,turno,comidasPosibles)==-1))
+    /*if((puedeMover( tablero,pieza,movimientosPosibles)==-1)&&(puedeComer(tablero,turno,comidasPosibles)==-1))
     {
         return 3;
     }
+    */
     return 0;
 }
 
