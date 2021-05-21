@@ -155,8 +155,6 @@ void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *R
     SDL_RenderPresent( Render );
 }
 
-
-
 int pos_raton (const Cuadrante  dim_cas [],int n)
 {
 
@@ -202,7 +200,6 @@ int pos_raton (const Cuadrante  dim_cas [],int n)
         }
     }
 }
-
 
 bool _in(int x, int n)
 {
@@ -668,11 +665,21 @@ int terminar_partida(int tablero[],int turnos_sin_comidos,int tiempo[2],int piez
     {
         return 3;
     }
-    /*if((puedeMover( tablero,pieza,movimientosPosibles)==-1)&&(puedeComer(tablero,turno,comidasPosibles)==-1))
+    n=0;
+    while(n<32)
     {
-        return 3;
+        if(tablero[n]!=2)
+        {
+            if((puedeMover( tablero,n,movimientosPosibles)==-1)&&(puedeComer(tablero,turno,comidasPosibles)==-1))
+                {
+                return 3;
+                }
+        }
+        n+=1;
+
     }
-    */
+
+
     return 0;
 }
 
