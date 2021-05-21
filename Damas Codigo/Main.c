@@ -143,7 +143,8 @@ int main(int argv, char** args)
                     break;
                 }
 
-                default:
+                case 1:
+                case 2:
                 {
                     if (opcion[0]==1)                                                           //Modo un jugador
                     {
