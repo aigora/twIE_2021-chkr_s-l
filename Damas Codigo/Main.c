@@ -263,7 +263,7 @@ int main(int argv, char** args)
                             printf("\n");
                         }
                     }
-                    else                                                                    //Modo Multijugador
+                    else if ([opcion[0] == 2)                                                                  //Modo Multijugador
                     {
                         colorBot = -1;
                         /*for(i=0; i<32; i++)
