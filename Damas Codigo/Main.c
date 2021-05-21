@@ -12,7 +12,7 @@ int main(int argv, char** args)
         turno = 0,
         fin_partida=0,
         movimientosPosibles[4], comidasPosibles[5][3],
-        tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  2,  2,  0,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  2,  0,  0,  0,  0,  0};
+        tablero[32] = {1, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2};
                      //0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
 
     int posicion,
@@ -20,7 +20,8 @@ int main(int argv, char** args)
         nMovimientos_posibles,
         colorBot;
 
-    bool dificil;
+    bool dificil,
+         tempor=false;
 
     //Variables gráficas
     SDL_Window *Ventana= NULL;
@@ -311,7 +312,7 @@ int main(int argv, char** args)
                                     }
                                     Pintar(tablero,pieza,true,Render,dim_cas);
                                 }
-                                else if(posicion!=-1)
+                                else if(pieza!=-1)
                                 {
                                     n = -1;
                                     for(i=0;i<=nComidas_posibles;i++)
@@ -338,6 +339,8 @@ int main(int argv, char** args)
                                                 Pintar(tablero,comidasPosibles[j][2],false,Render,dim_cas);
                                             }
                                         }
+
+                                         fin_partida=terminar_partida(tablero,turno_sin_comidos,tiempo,pieza,movimientosPosibles,turno,comidasPosibles,tempor);
 
                                         nComidas_posibles=puedeComer(tablero,turno,comidasPosibles); //Como se puede comer 2 veces seguidas se repite la función
                                         pasar_turno=true;
@@ -375,7 +378,7 @@ int main(int argv, char** args)
                                                     Pintar(tablero, movimientosPosibles[j], false, Render, dim_cas);
                                                 }
 
-                                                fin_partida=terminar_partida(tablero,turno_sin_comidos,tiempo,pieza,movimientosPosibles,turno,comidasPosibles);
+                                                fin_partida=terminar_partida(tablero,turno_sin_comidos,tiempo,pieza,movimientosPosibles,turno,comidasPosibles,tempor);
 
                                                 pieza = -1;
                                                 turno_sin_comidos++;
