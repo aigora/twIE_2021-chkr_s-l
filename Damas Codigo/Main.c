@@ -206,65 +206,8 @@ int main(int argv, char** args)
                             break;
                         }
 
-                        do //IMPORTANTE LUEGO AÑADIR EL CAMBIO A LA ESTRUCTURA TIEMPO
-                        {
-                            fondo(Ventana,Render,Textura,"nombre.bmp");
-
-                            opcion[4]=pos_raton(menu_2,2);
-                        }while((opcion[4] != 1) && (opcion[4] != 2));
-
-                        if (opcion[4] == 1)
-                        {
-                            cerrar(Ventana,Textura,Render);
-                            printf("Introduce un nombre:\n");
-                            scanf("%10s",nombre);
-
-                            archivo=fopen("Puntuaciones.txt","a");
-                            if (archivo==NULL)
-                            {
-                                printf("Error al abrir el fichero.\n");
-                            }
-
-                            else
-                            {
-                                printf("Archivo abierto correctamente.\n");
-                                fprintf(archivo,"\n\nUn 1 equivale a vitoria, un 0 a empate y un -1 a derrota.\nPartida:\nNombre: %s\nTiempo empleado: %i minutos y %i segundos\nTurnos: %i\nFichas extra sobre las del rival: %i\nResultado: %i\n",nombre,t.m,t.s,turnos,fichas_extra,resultado);
-                                fclose(archivo);
-                            }
-
-
-
-                            if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ) //Se reinicia SDL porque lo acabamos de cerrar
-                            {
-                                printf( "SDL no pudo iniciarse: %s\n", SDL_GetError() );
-                            }
-                            else
-                            {
-                                if(!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ))
-                                {
-                                   printf("Aviso: Filtración linear de texturas no disponible");
-                                }
-
-                                Ventana = SDL_CreateWindow( "Damas.exe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, SDL_WINDOW_SHOWN );
-                                if( Ventana == NULL )
-                                    {
-                                        printf( "No se pudo crear la ventana: %s\n", SDL_GetError() );
-
-                                        return -1;
-                                    }
-
-                                Render= SDL_CreateRenderer( Ventana, -1, SDL_RENDERER_ACCELERATED );
-                                if( Render == NULL )
-                                        {
-                                            printf( "El render no se pudo crear SDL Error: %s\n", SDL_GetError() );
-
-                                            return -1;
-                                        }
-                            }
-                            printf("\n");
-                        }
                     }
-                    else if ([opcion[0] == 2)                                                                  //Modo Multijugador
+                    else if (opcion[0] == 2)                                                                  //Modo Multijugador
                     {
                         colorBot = -1;
                         /*for(i=0; i<32; i++)
@@ -446,6 +389,68 @@ int main(int argv, char** args)
                             }
                         }
                     } while(fin_partida==0);
+
+                    if(colorBot==1||colorBot==0)
+                    {
+                        do //IMPORTANTE LUEGO AÑADIR EL CAMBIO A LA ESTRUCTURA TIEMPO
+                        {
+                            fondo(Ventana,Render,Textura,"nombre.bmp");
+
+                            opcion[4]=pos_raton(menu_2,2);
+                        }while((opcion[4] != 1) && (opcion[4] != 2));
+
+                        if (opcion[4] == 1)
+                        {
+                            cerrar(Ventana,Textura,Render);
+                            printf("Introduce un nombre:\n");
+                            scanf("%10s",nombre);
+
+                            archivo=fopen("Puntuaciones.txt","a");
+                            if (archivo==NULL)
+                            {
+                                printf("Error al abrir el fichero.\n");
+                            }
+
+                            else
+                            {
+                                printf("Archivo abierto correctamente.\n");
+                                fprintf(archivo,"\n\nUn 1 equivale a vitoria, un 0 a empate y un -1 a derrota.\nPartida:\nNombre: %s\nTiempo empleado: %i minutos y %i segundos\nTurnos: %i\nFichas extra sobre las del rival: %i\nResultado: %i\n",nombre,t.m,t.s,turnos,fichas_extra,resultado);
+                                fclose(archivo);
+                            }
+
+
+
+                            if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ) //Se reinicia SDL porque lo acabamos de cerrar
+                            {
+                                printf( "SDL no pudo iniciarse: %s\n", SDL_GetError() );
+                            }
+                            else
+                            {
+                                if(!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ))
+                                {
+                                   printf("Aviso: Filtración linear de texturas no disponible");
+                                }
+
+                                Ventana = SDL_CreateWindow( "Damas.exe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, SDL_WINDOW_SHOWN );
+                                if( Ventana == NULL )
+                                    {
+                                        printf( "No se pudo crear la ventana: %s\n", SDL_GetError() );
+
+                                        return -1;
+                                    }
+
+                                Render= SDL_CreateRenderer( Ventana, -1, SDL_RENDERER_ACCELERATED );
+                                if( Render == NULL )
+                                        {
+                                            printf( "El render no se pudo crear SDL Error: %s\n", SDL_GetError() );
+
+                                            return -1;
+                                        }
+                            }
+                            printf("\n");
+                        }
+                    }
+
                     printf("%i", fin_partida);
                                                                         //Aquí acaba el juego en sí
                     break;
