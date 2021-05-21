@@ -627,7 +627,9 @@ int terminar_partida(int tablero[],int turnos_sin_comidos,int tiempo[2],int piez
 //esta funcion devolverá un 0 si no termina la partida o 1->ganan amarillas 2->ganan moradas 3->empate.
     int n=0,
         moradas=0,
-        amarillas=0;
+        amarillas=0,
+        puede=0,
+        turnoDe;
 
     while(n<32)
     {
@@ -666,18 +668,35 @@ int terminar_partida(int tablero[],int turnos_sin_comidos,int tiempo[2],int piez
         return 3;
     }
     n=0;
+    turnoDe=turno%2;
     while(n<32)
     {
-        if(tablero[n]!=2)
+        if(turnoDe==0)
         {
-            if((puedeMover( tablero,n,movimientosPosibles)==-1)&&(puedeComer(tablero,turno,comidasPosibles)==-1))
+            if((tablero[n]==0)||(tablero[n]==3))
                 {
-                return 3;
+                    if((puedeMover( tablero,n,movimientosPosibles)!=-1)||(puedeComer(tablero,turno,comidasPosibles)!=-1))
+                        {
+                        puede+=1;
+                        printf("%d \n",movimientosPosibles[0]);
+                        }
+                }
+        }
+        if(turnoDe==1)
+        {
+            if((tablero[n]==1)||(tablero[n]==4))
+                {
+                    if((puedeMover( tablero,n,movimientosPosibles)!=-1)||(puedeComer(tablero,turno,comidasPosibles)!=-1))
+                        {
+                        puede+=1;
+                        }
                 }
         }
         n+=1;
 
     }
+    if(puede==0)
+        return 3;
 
 
     return 0;
