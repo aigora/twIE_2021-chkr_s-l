@@ -201,10 +201,10 @@ int pos_raton (const Cuadrante  dim_cas [],int n)
     }
 }
 
-bool _in(int x, int n)
+bool _in(int x, int n) //Función para ver si un valor se encuentra en un intervalo deseado, útil para las funciones puede mover y puede comer
 {
-    int j = 18, i = 0, array[18] = {0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22};
-    bool respuesta = false;
+    int j = 18, i = 0, array[18] = {0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22}; //Inicialización del array (más largo)
+    bool respuesta = false; //Si se encuentra el valor entre los deseados
 
     switch(n)
     {
@@ -347,7 +347,7 @@ bool _in(int x, int n)
     return respuesta;
 }
 
-int puedeMover(int tablero[], int pieza, int movimientosPosibles[])
+int puedeMover(int tablero[], int pieza, int movimientosPosibles[]) //Recibe el estado del tablero y una pieza y devuelve en un array los valores
 {
     int i, j;
 
