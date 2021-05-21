@@ -261,6 +261,82 @@ bool _in(int x, int n)
             array[7] = 31;
             break;
         }
+    case 4:
+        {
+            j = 14;
+            array[0] = 0;
+            array[1] = 1;
+            array[2] = 2;
+            array[3] = 3;
+            array[4] = 4;
+            array[5] = 5;
+            array[6] = 6;
+            array[7] = 7;
+            array[8] = 8;
+            array[9] = 12;
+            array[10] = 16;
+            array[11] = 20;
+            array[12] = 24;
+            array[13] = 28;
+            break;
+        }
+    case 5:
+        {
+            j = 14;
+            array[0] = 0;
+            array[1] = 1;
+            array[2] = 2;
+            array[3] = 3;
+            array[4] = 4;
+            array[5] = 5;
+            array[6] = 6;
+            array[7] = 7;
+            array[8] = 11;
+            array[9] = 15;
+            array[10] = 19;
+            array[11] = 23;
+            array[12] = 27;
+            array[13] = 31;
+            break;
+        }
+    case 6:
+        {
+            j = 14;
+            array[0] = 0;
+            array[1] = 4;
+            array[2] = 8;
+            array[3] = 12;
+            array[4] = 16;
+            array[5] = 20;
+            array[6] = 24;
+            array[7] = 25;
+            array[8] = 26;
+            array[9] = 27;
+            array[10] = 28;
+            array[11] = 29;
+            array[12] = 30;
+            array[13] = 31;
+            break;
+        }
+    case 7:
+        {
+            j = 14;
+            array[0] = 3;
+            array[1] = 7;
+            array[2] = 11;
+            array[3] = 15;
+            array[4] = 19;
+            array[5] = 23;
+            array[6] = 24;
+            array[7] = 25;
+            array[8] = 26;
+            array[9] = 27;
+            array[10] = 28;
+            array[11] = 29;
+            array[12] = 30;
+            array[13] = 31;
+            break;
+        }
     }
 
     while (i < j && !respuesta)
@@ -339,7 +415,7 @@ int puedeComer(int tablero[], int turno, int comidasPosibles[][3])
 
     for (i = 0; i <= 22; i++)
     {
-        if (_in(i, 4))
+        if (_in(i, -1))
         {
             if ((int)(i/4)%2 == 0)
             {
@@ -425,23 +501,106 @@ int puedeComer(int tablero[], int turno, int comidasPosibles[][3])
     return j;
 }
 
-void IA(int tablero[], bool dificil, int turno, int* Pieza, int* Posicion)
+int dondeCome(int tablero[],int turno, int pieza, int comidasPosibles[][2])
 {
-    int rnd = rand(),
-        fichas[12], pieza, posicion, i, j;
-
-    j = 0;
-    for (i=0; i<32; i++)    //Guarda las piezas del color del bot en Fichas[]
+    int i, j;
+    if ((int)(pieza/4)%2 == 0)
     {
-        if (tablero[i] % 3 == turno % 2)
+        i = 5;
+    }
+    else
+    {
+        i = 4;
+    }
+    j = -1;
+    if (tablero[pieza] != 0)
+    {
+        printf("%i", pieza);
+        if ((!_in(pieza, 6) && tablero[pieza + i - 1] == (turno%2) + 1) && tablero[pieza + 7] == 2)
         {
-            fichas[j] == tablero[i];
             j++;
+            comidasPosibles[j][0] = pieza + i - 1;
+            comidasPosibles[j][1] = pieza + 9 - 2;
+        }
+
+        if ((!_in(pieza, 7) && tablero[pieza + i] == (turno%2) + 1) && tablero[pieza + 9] == 2)
+        {
+            j++;
+            comidasPosibles[j][0] = pieza + i;
+            comidasPosibles[j][1] = pieza + 9;
         }
     }
 
-    i = 0;
-    while ()
+    if (tablero[pieza] != 1)
+    {
+        if ((!_in(pieza, 4) && tablero[pieza + i - 9] == (turno%2) + 1) && tablero[pieza - 9] == 2)
+        {
+            j++;
+            comidasPosibles[j][0] = pieza + i - 9;
+            comidasPosibles[j][1] = pieza - 9;
+        }
+
+        if ((!_in(pieza, 4) && tablero[pieza + i - 8] == (turno%2) + 1) && tablero[pieza - 8] == 2)
+        {
+            j++;
+            comidasPosibles[j][0] = pieza + i - 8;
+            comidasPosibles[j][1] = pieza - 8;
+        }
+    }
+    printf("%i", j);
+    return j;
+}
+
+void IA(int tablero[], bool dificil, int turno, int* Pieza, int* Posicion, int comidasPosibles[][3],int nComidasPosibles)
+{
+    int rnd = rand(),
+        tablero1[32], i, j, n, comidasPosibles1[3][2], comida[6] = {0, -1, -1, -1, -1, -1};
+    bool salir;
+
+
+    if (dificil)
+    {
+        for (i=0; i<32; i++) { tablero1[i]=tablero[i]; }
+        for (i=0; i<=nComidasPosibles; i++)
+        {
+            n = 0;
+            salir = false;
+            *Posicion = comidasPosibles[i][0];
+            comidasPosibles1[i][0] = comidasPosibles[i][1];
+            comidasPosibles1[i][1] = comidasPosibles[i][2];
+            do
+            {
+                for (j=0; j<32; j++)
+                {
+                    if (*Posicion == j){ tablero1[j] = turno%2; }
+                    else if (comidasPosibles1[i][0] == j){ tablero1[j] = 2; }
+                    else if (comidasPosibles1[i][1] == j){ tablero1[j] = (turno%2) + 1; }
+                    else { tablero1[j]=tablero[j]; }
+                }
+                *Posicion = comidasPosibles1[i][1];
+                comida[n+1] = comidasPosibles1[i][0];
+                printf("%i;    ", comidasPosibles1[i][0]);
+                n++;
+                j = dondeCome(tablero1, turno, *Posicion, comidasPosibles1);
+                printf("%i", j);
+                if(j != -1 && n > comida[0])
+                {
+                    comida[0] = n;
+                    comida[1] = comidasPosibles1[i][1];
+                }
+                else{ salir = true; }
+            }while (!salir);
+        }
+        for (i=0; i<6; i++)
+        {
+            printf("%i, ", comida[i]);
+        }
+        printf("\n");
+    }
+    else
+    {
+
+    }
 }
 
 void coronar(int tablero[])
@@ -490,12 +649,12 @@ int terminar_partida(int tablero[],int turnos_sin_comidos,int tiempo[2],int piez
             return 2;
     }
 
-    if (tiempo[0]<=0)//Se quedan sin tiempo amarillas, ganan moradas
+    if (tiempo<=0)//Se quedan sin tiempo amarillas, ganan moradas
     {
        return 2;
     }
 
-     if(tiempo[1]<=0)//Se quedan sin tiempo moradas,ganan amarillas
+     if(tiempo<=0)//Se quedan sin tiempo moradas,ganan amarillas
     {
        return 1;
     }
