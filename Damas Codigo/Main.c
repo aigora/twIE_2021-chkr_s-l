@@ -13,9 +13,7 @@ int main(int argv, char** args)
         turno = 0,
         fin_partida=0,
         movimientosPosibles[4], comidasPosibles[5][3],
-        tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
-                     //0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
-                     //tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}; Tablero con la posición inicial correcta
+        tablero[32]
 
     int posicion,
         nComidas_posibles,
@@ -203,7 +201,7 @@ int main(int argv, char** args)
                         }
 
                     }
-                    else if (opcion[0] == 2)                                                                  //Modo Multijugador
+                    else                                                                //Modo Multijugador
                     {
                         colorBot = -1;
                     }
@@ -218,14 +216,14 @@ int main(int argv, char** args)
                     }
 
 
-
-
                     nComidas_posibles = puedeComer(tablero,turno,comidasPosibles); //Se inicaliza la matriz de poder comer
                     do
                     {
                         if (colorBot == turno % 2) //Se comprueba si es turno de la IA o en su defecto si esta activada
                         {
-                            IA(tablero, dificil, turno, &pieza, &posicion, comidasPosibles, nComidas_posibles);
+                            IA(tablero, dificil, turno, comidasPosibles, nComidas_posibles, Render, dim_cas);
+                            turno++;
+                            nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
                         }
                         else
                         {

@@ -37,77 +37,76 @@ void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *R
  int i= numero_casilla; //Variable para acortar la longitud en los parámetros al dibujar rectángulos
 
     if(rodear==true)
-
+    {
+        if(Tipo_ficha[numero_casilla]==2) //Rodea una casilla
         {
-            if(Tipo_ficha[numero_casilla]==2) //Rodea una casilla
-                    {
-                    SDL_Rect fillRect = { dim_cas[i].x1+16.5, dim_cas[i].y1+10, (dim_cas[i].x2-dim_cas[i].x1)-20, (dim_cas[i].y2-dim_cas[i].y1)-20 }; //Todas las funciones de este tipo llenan un rectángulo, luego pintan en él y por último se dibuja el rectángulo en el render
-                    SDL_SetRenderDrawColor( Render, 0x00, 0xFF, 0x00, 0xFF );
-                    SDL_RenderFillRect( Render, &fillRect );
+            SDL_Rect fillRect = { dim_cas[i].x1+16.5, dim_cas[i].y1+10, (dim_cas[i].x2-dim_cas[i].x1)-20, (dim_cas[i].y2-dim_cas[i].y1)-20 }; //Todas las funciones de este tipo llenan un rectángulo, luego pintan en él y por último se dibuja el rectángulo en el render
+            SDL_SetRenderDrawColor( Render, 0x00, 0xFF, 0x00, 0xFF );
+            SDL_RenderFillRect( Render, &fillRect );
 
 
-                    SDL_Rect fillRect2 = { dim_cas[i].x1+20.5, dim_cas[i].y1+14, (dim_cas[i].x2-dim_cas[i].x1)-28, (dim_cas[i].y2-dim_cas[i].y1)-28 };   //Llena lo de dentro de blanco
-                    SDL_SetRenderDrawColor( Render, 0xFF, 0xFF, 0xFF, 0xFF );
-                    SDL_RenderFillRect( Render, &fillRect2 );
+            SDL_Rect fillRect2 = { dim_cas[i].x1+20.5, dim_cas[i].y1+14, (dim_cas[i].x2-dim_cas[i].x1)-28, (dim_cas[i].y2-dim_cas[i].y1)-28 };   //Llena lo de dentro de blanco
+            SDL_SetRenderDrawColor( Render, 0xFF, 0xFF, 0xFF, 0xFF );
+            SDL_RenderFillRect( Render, &fillRect2 );
 
 
-                    SDL_RenderPresent( Render ); //Se actualiza el render
-                    }
-            else //Rodea una pieza
-                    {
-                    SDL_Rect fillRect = { dim_cas[i].x1+16.5, dim_cas[i].y1+10, (dim_cas[i].x2-dim_cas[i].x1)-20, (dim_cas[i].y2-dim_cas[i].y1)-20 };
-                    SDL_SetRenderDrawColor( Render, 0xFF, 0x00, 0x00, 0xFF );
-                    SDL_RenderFillRect( Render, &fillRect );
-
-
-
-                    SDL_Rect fillRect2 = { dim_cas[i].x1+20.5, dim_cas[i].y1+14, (dim_cas[i].x2-dim_cas[i].x1)-28, (dim_cas[i].y2-dim_cas[i].y1)-28 };   //Llena lo de dentro de blanco
-                    SDL_SetRenderDrawColor( Render, 0xFF, 0xFF, 0xFF, 0xFF );
-                    SDL_RenderFillRect( Render, &fillRect2 );
-
-
-                    SDL_RenderPresent( Render );
-
-                    switch (Tipo_ficha[numero_casilla])
-                        {
-                            case 0: ;
-                                SDL_Rect fillRect3 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
-                                SDL_SetRenderDrawColor(  Render, 208, 200, 0x00, 0xFF  );
-                                SDL_RenderFillRect( Render, &fillRect3 );
-                            break;
-
-
-                            case 1: ;
-                                SDL_Rect fillRect4 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
-                                SDL_SetRenderDrawColor(  Render, 208, 0x00, 134, 200  );
-                                SDL_RenderFillRect( Render, &fillRect4 );
-                            break;
-
-
-                            case 3: ;
-                                SDL_Rect fillRect5 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
-                                SDL_SetRenderDrawColor(  Render, 208, 200, 0x00, 0xFF   );
-                                SDL_RenderFillRect( Render, &fillRect5 );
-
-                                SDL_Rect fillRect7 = { dim_cas[i].x1+51, dim_cas[i].y1+42, (dim_cas[i].x2-dim_cas[i].x1)-90, (dim_cas[i].y2-dim_cas[i].y1)-85 };
-                                SDL_SetRenderDrawColor(  Render, 134, 123, 0x00, 0xFF  );
-                                SDL_RenderFillRect( Render, &fillRect7 );
-                            break;
-
-
-                            case 4: ;
-                                SDL_Rect fillRect6 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
-                                SDL_SetRenderDrawColor(   Render, 208, 0x00, 200, 0xFF );
-                                SDL_RenderFillRect( Render, &fillRect6 );
-
-                                SDL_Rect fillRect8 = { dim_cas[i].x1+51, dim_cas[i].y1+42, (dim_cas[i].x2-dim_cas[i].x1)-90, (dim_cas[i].y2-dim_cas[i].y1)-85 };
-                                SDL_SetRenderDrawColor(  Render, 123, 0x00, 134, 0xFF  );
-                                SDL_RenderFillRect( Render, &fillRect8 );
-                            break;
-
-                        }
-                    }
+            SDL_RenderPresent( Render ); //Se actualiza el render
         }
+        else //Rodea una pieza
+        {
+            SDL_Rect fillRect = { dim_cas[i].x1+16.5, dim_cas[i].y1+10, (dim_cas[i].x2-dim_cas[i].x1)-20, (dim_cas[i].y2-dim_cas[i].y1)-20 };
+            SDL_SetRenderDrawColor( Render, 0xFF, 0x00, 0x00, 0xFF );
+            SDL_RenderFillRect( Render, &fillRect );
+
+
+
+            SDL_Rect fillRect2 = { dim_cas[i].x1+20.5, dim_cas[i].y1+14, (dim_cas[i].x2-dim_cas[i].x1)-28, (dim_cas[i].y2-dim_cas[i].y1)-28 };   //Llena lo de dentro de blanco
+            SDL_SetRenderDrawColor( Render, 0xFF, 0xFF, 0xFF, 0xFF );
+            SDL_RenderFillRect( Render, &fillRect2 );
+
+
+            SDL_RenderPresent( Render );
+
+            switch (Tipo_ficha[numero_casilla])
+            {
+                case 0: ;
+                    SDL_Rect fillRect3 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
+                    SDL_SetRenderDrawColor(  Render, 208, 200, 0x00, 0xFF  );
+                    SDL_RenderFillRect( Render, &fillRect3 );
+                break;
+
+
+                case 1: ;
+                    SDL_Rect fillRect4 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
+                    SDL_SetRenderDrawColor(  Render, 208, 0x00, 134, 200  );
+                    SDL_RenderFillRect( Render, &fillRect4 );
+                break;
+
+
+                case 3: ;
+                    SDL_Rect fillRect5 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
+                    SDL_SetRenderDrawColor(  Render, 208, 200, 0x00, 0xFF   );
+                    SDL_RenderFillRect( Render, &fillRect5 );
+
+                    SDL_Rect fillRect7 = { dim_cas[i].x1+51, dim_cas[i].y1+42, (dim_cas[i].x2-dim_cas[i].x1)-90, (dim_cas[i].y2-dim_cas[i].y1)-85 };
+                    SDL_SetRenderDrawColor(  Render, 134, 123, 0x00, 0xFF  );
+                    SDL_RenderFillRect( Render, &fillRect7 );
+                break;
+
+
+                case 4: ;
+                    SDL_Rect fillRect6 = { dim_cas[i].x1+26.5, dim_cas[i].y1+20, (dim_cas[i].x2-dim_cas[i].x1)-40, (dim_cas[i].y2-dim_cas[i].y1)-40 };
+                    SDL_SetRenderDrawColor(   Render, 208, 0x00, 200, 0xFF );
+                    SDL_RenderFillRect( Render, &fillRect6 );
+
+                    SDL_Rect fillRect8 = { dim_cas[i].x1+51, dim_cas[i].y1+42, (dim_cas[i].x2-dim_cas[i].x1)-90, (dim_cas[i].y2-dim_cas[i].y1)-85 };
+                    SDL_SetRenderDrawColor(  Render, 123, 0x00, 134, 0xFF  );
+                    SDL_RenderFillRect( Render, &fillRect8 );
+                break;
+
+            }
+        }
+    }
     else
     {
     SDL_Rect fillRect = { dim_cas[i].x1+16.5, dim_cas[i].y1+10, (dim_cas[i].x2-dim_cas[i].x1)-20, (dim_cas[i].y2-dim_cas[i].y1)-20 }; //Llena de blanco la casilla
@@ -173,7 +172,7 @@ int pos_raton (const Cuadrante  dim_cas [],int n)
             switch(mouse.type)
             {
             case SDL_QUIT:
-                funciona = false;
+
                 break;
 
             case SDL_MOUSEBUTTONDOWN:
@@ -218,7 +217,7 @@ bool _in(int x, int n) //Función para ver si un valor se encuentra en un interv
             array[4] = 4;
             array[5] = 12;
             array[6] = 20;
-            array[8] = 28;
+            array[7] = 28;
             break;
         }
     case 1:
@@ -513,15 +512,14 @@ int dondeCome(int tablero[],int turno, int pieza, int comidasPosibles[][2])
     j = -1;
     if (tablero[pieza] != 0)
     {
-        printf("%i", pieza);
-        if ((!_in(pieza, 6) && tablero[pieza + i - 1] == (turno%2) + 1) && tablero[pieza + 7] == 2)
+        if ((!_in(pieza, 6) && tablero[pieza + i - 1] == (turno+1)%2) && tablero[pieza + 7] == 2)
         {
             j++;
             comidasPosibles[j][0] = pieza + i - 1;
-            comidasPosibles[j][1] = pieza + 9 - 2;
+            comidasPosibles[j][1] = pieza + 7;
         }
 
-        if ((!_in(pieza, 7) && tablero[pieza + i] == (turno%2) + 1) && tablero[pieza + 9] == 2)
+        if ((!_in(pieza, 7) && tablero[pieza + i] == (turno+1)%2) && tablero[pieza + 9] == 2)
         {
             j++;
             comidasPosibles[j][0] = pieza + i;
@@ -531,73 +529,203 @@ int dondeCome(int tablero[],int turno, int pieza, int comidasPosibles[][2])
 
     if (tablero[pieza] != 1)
     {
-        if ((!_in(pieza, 4) && tablero[pieza + i - 9] == (turno%2) + 1) && tablero[pieza - 9] == 2)
+        if ((!_in(pieza, 4) && tablero[pieza + i - 9] == (turno+1)%2) && tablero[pieza - 9] == 2)
         {
             j++;
             comidasPosibles[j][0] = pieza + i - 9;
             comidasPosibles[j][1] = pieza - 9;
         }
 
-        if ((!_in(pieza, 4) && tablero[pieza + i - 8] == (turno%2) + 1) && tablero[pieza - 8] == 2)
+        if ((!_in(pieza, 5) && tablero[pieza + i - 8] == (turno+1)%2) && tablero[pieza - 7] == 2)
         {
             j++;
             comidasPosibles[j][0] = pieza + i - 8;
-            comidasPosibles[j][1] = pieza - 8;
+            comidasPosibles[j][1] = pieza - 7;
         }
     }
-    printf("%i", j);
     return j;
 }
 
-void IA(int tablero[], bool dificil, int turno, int* Pieza, int* Posicion, int comidasPosibles[][3],int nComidasPosibles)
+bool noEsComidaAlMover(int tablero[], int pieza, int posicion, int turno)
 {
-    int rnd = rand(),
-        tablero1[32], i, j, n, comidasPosibles1[3][2], comida[6] = {0, -1, -1, -1, -1, -1};
-    bool salir;
+    int i, nComidas, comidasPosibles[5][3], tablero1[32];
+    for (i=0; i<32; i++)
+    {
+        if (pieza == i) { tablero1[i] = 2; }
+        else if (posicion == i) {tablero1[i] = tablero[pieza]; }
+        else { tablero1[i] = tablero[i]; }
+    }
 
+    nComidas = puedeComer(tablero1, turno + 1, comidasPosibles);
+    if (nComidas != -1)
+    {
+        for (i=0; i<=nComidas; i++)
+        {
+            if (posicion == comidasPosibles[i][1] || pieza == comidasPosibles[i][2]) { return false; }
+        }
+    }
+    return true;
+}
 
+void IA(int tablero[], bool dificil, int turno, int comidasPosibles[][3],int nComidasPosibles, SDL_Renderer *Render, const Cuadrante  dim_cas [32])
+{
+    int rnd, tablero1[32], i, j, k = 0, l = 0, n, pieza, posicion, nComidas, comidasPosibles1[3][2], comida1[5], comida[8] = {-1}, movimientosPosibles[4], nMovimientosPosibles, movidas[30][2],
+        comidasPosibles2[5][3], puedenMover[10], time1 = 400;
+    bool salir, sobrevive;
+    time_t t;
+
+    srand((unsigned) time(&t));
     if (dificil)
     {
-        for (i=0; i<32; i++) { tablero1[i]=tablero[i]; }
-        for (i=0; i<=nComidasPosibles; i++)
+        if (nComidasPosibles != -1)
         {
-            n = 0;
-            salir = false;
-            *Posicion = comidasPosibles[i][0];
-            comidasPosibles1[i][0] = comidasPosibles[i][1];
-            comidasPosibles1[i][1] = comidasPosibles[i][2];
-            do
+            for (i=0; i<32; i++) { tablero1[i]=tablero[i]; }
+            for (i=0; i<=nComidasPosibles; i++)
             {
-                for (j=0; j<32; j++)
+                n = 0;
+                salir = false;
+                posicion = comidasPosibles[i][0];
+                comidasPosibles1[i][0] = comidasPosibles[i][1];
+                comidasPosibles1[i][1] = comidasPosibles[i][2];
+                comida1[0] = comidasPosibles[i][0];
+                comida1[1] = comidasPosibles1[i][0];
+                do
                 {
-                    if (*Posicion == j){ tablero1[j] = turno%2; }
-                    else if (comidasPosibles1[i][0] == j){ tablero1[j] = 2; }
-                    else if (comidasPosibles1[i][1] == j){ tablero1[j] = (turno%2) + 1; }
-                    else { tablero1[j]=tablero[j]; }
-                }
-                *Posicion = comidasPosibles1[i][1];
-                comida[n+1] = comidasPosibles1[i][0];
-                printf("%i;    ", comidasPosibles1[i][0]);
-                n++;
-                j = dondeCome(tablero1, turno, *Posicion, comidasPosibles1);
-                printf("%i", j);
-                if(j != -1 && n > comida[0])
-                {
-                    comida[0] = n;
-                    comida[1] = comidasPosibles1[i][1];
-                }
-                else{ salir = true; }
-            }while (!salir);
+                    pieza = tablero1[posicion];
+                    for (j=0; j<32; j++)
+                    {
+                        if (posicion == j){ tablero1[j] = 2; }
+                        else if (comidasPosibles1[i][0] == j){ tablero1[j] = 2; }
+                        else if (comidasPosibles1[i][1] == j){ tablero1[j] = pieza; }
+                        else { tablero1[j]=tablero1[j]; }
+                    }
+                    posicion = comidasPosibles1[i][1];
+                    coronar(tablero1);
+                    n++;
+                    nComidas = dondeCome(tablero1, turno, posicion, comidasPosibles1);
+                    comida1[n + 1] = comidasPosibles1[i][0];
+                    if(n > comida[0])
+                    {
+                        comida[0] = n;
+                        comida[1] = pieza;
+                        comida[2] = comidasPosibles1[i][1];
+                        for (j=0; j<=n; j++)
+                        {
+                            comida[j + 3] = comida1[j];
+                            printf("%i ", comida1[j]);
+                        }
+                        printf("\n");
+                    }
+                    if (nComidas == -1){ salir = true; }
+                }while (!salir);
+            }
+            printf("\n");
+            for (i=0; i<7; i++)
+            {
+                printf("%i ", comida[i]);
+            }
+            tablero[comida[2]] = comida[1];
+            for (i=0; i<comida[0]+1; i++)
+            {
+                tablero[comida[i + 3]] = 2;
+            }
+            coronar(tablero);
+            SDL_Delay(time1);
+            for (i=0; i<=comida[0]+2; i++)
+            {
+                Pintar(tablero, comida[i + 2], false, Render, dim_cas);
+            }
         }
-        for (i=0; i<6; i++)
+        else
         {
-            printf("%i, ", comida[i]);
-        }
-        printf("\n");
-    }
-    else
-    {
+            nComidas = puedeComer(tablero, turno+1, comidasPosibles2);
+            if (nComidas != -1)
+            {
+                for (i=0; i<32; i++)
+                {
+                    if (tablero[i]%3 == turno%2)
+                    {
+                        nMovimientosPosibles = puedeMover(tablero, i, movimientosPosibles);
+                        if (movimientosPosibles != -1)
+                        {
+                            puedenMover[l] = i;
+                            if (l<=10) { l++; }
 
+                            sobrevive = true;
+                            for(j=0; j<=nComidas; j++)
+                            {
+                                if (comidasPosibles2[j][1] == i) { sobrevive = false; break; }
+                            }
+                            if (!sobrevive)
+                            {
+                                for (j=0; j<=nMovimientosPosibles; j++)
+                                {
+                                    if (noEsComidaAlMover(tablero, i, movimientosPosibles[j], turno))
+                                    {
+                                        movidas[k][0] = i;
+                                        movidas[k][1] = movimientosPosibles[j];
+                                        k++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (i=0; i<32; i++)
+                {
+                    if (tablero[i]%3 == turno%2)
+                    {
+                        nMovimientosPosibles = puedeMover(tablero, i, movimientosPosibles);
+                        if (nMovimientosPosibles != -1)
+                        {
+                            puedenMover[l] = i;
+                            if (l<=10) { l++; }
+                            for (j=0; j<=nMovimientosPosibles; j++)
+                            {
+                                if (noEsComidaAlMover(tablero, i, movimientosPosibles[j], turno))//sobrevive)
+                                {
+                                    movidas[k][0] = i;
+                                    movidas[k][1] = movimientosPosibles[j];
+                                    if (k<=30) { k++; } else { break; }
+                                }
+                            }
+                            if (k>30) { break; }
+                        }
+                    }
+                }
+            }
+            if (k > 0)
+            {
+                rnd = rand() % k;
+
+                tablero[movidas[rnd][1]] = tablero[movidas[rnd][0]];
+                tablero[movidas[rnd][0]] = 2;
+                coronar(tablero);
+
+                SDL_Delay(time1);
+                Pintar(tablero, movidas[rnd][0], false, Render, dim_cas);
+                Pintar(tablero, movidas[rnd][1], false, Render, dim_cas);
+            }
+            else
+            {
+                rnd = rand() % l;
+                pieza = puedenMover[rnd];
+                nMovimientosPosibles = puedeMover(tablero, pieza, movimientosPosibles);
+                if (nMovimientosPosibles != -1) { rnd = rand() % (nMovimientosPosibles + 1); } else { rnd = 0; }
+                posicion = movimientosPosibles[rnd];
+
+                tablero[posicion] = tablero[pieza];
+                tablero[pieza] = 2;
+                coronar(tablero);
+
+                SDL_Delay(time1);
+                Pintar(tablero, pieza, false, Render, dim_cas);
+                Pintar(tablero, posicion, false, Render, dim_cas);
+            }
+        }
     }
 }
 
