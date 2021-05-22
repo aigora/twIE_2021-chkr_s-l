@@ -1143,10 +1143,12 @@
 	<stdbool.h>
 	"funciones.h"
 
-1621592364 source:c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\main.c
+1621689019 source:c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\main.c
 	<SDL.h>
 	<stdio.h>
 	<stdbool.h>
+	<math.h>
+	<string.h>
 	"funciones.h"
 
 1617382008 c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl.h
@@ -1518,7 +1520,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1621597562 source:c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\funciones.c
+1621604316 source:c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\funciones.c
 	<stdio.h>
 	<SDL.h>
 	<stdbool.h>

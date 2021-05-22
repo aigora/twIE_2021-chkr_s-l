@@ -1,6 +1,8 @@
 #include <SDL.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include<math.h>
+#include<string.h>
 #include "funciones.h"
 
 int main(int argv, char** args)
@@ -11,8 +13,9 @@ int main(int argv, char** args)
         turno = 0,
         fin_partida=0,
         movimientosPosibles[4], comidasPosibles[5][3],
-        tablero[32] = {2, 2, 1, 2, 2, 2, 2, 0, 2, 2, 1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  1,  2,  2,  2};
+        tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0};
                      //0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+                     //tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0}; Tablero con la posición inicial correcta
 
     int posicion,
         nComidas_posibles,
@@ -28,7 +31,7 @@ int main(int argv, char** args)
 
 
     //Variables auxiliares
-    int i, j, n;
+    int i, j, n, k;
     bool pasar_turno;
 
 
@@ -39,7 +42,11 @@ int main(int argv, char** args)
 
     //Variables fichero de texto
     FILE *archivo;
-    int turnos, fichas_extra, resultado;
+    int fichas_extra, resultado;
+    int amarillas=0, moradas=0;
+    char color [15];
+    char amarillo[]="Amarillo";
+    char morado[]="Morado";
 
 
     //Variables vector estructura usados para las dimensiones de la pantalla
@@ -122,6 +129,25 @@ int main(int argv, char** args)
 
         do
         {
+            //Después de cada partida es necesario devolver las variables a sus valores iniciales
+            turno_sin_comidos = 0;
+            pieza = -1;
+            turno = 0;
+            fin_partida=0;
+            amarillas=0;
+            moradas=0;
+
+            for (k=0;k<32;k++)
+                {
+                    if(k<=11)
+                        tablero[k]=1;
+                    else if(k<=19)
+                        tablero[k]=2;
+                    else if(k<=31)
+                        tablero[k]=0;
+                }
+
+
             fondo(Ventana,Render,Textura,"modo_juego.bmp");
             opcion[0]=pos_raton(menu_3,3);
 
@@ -168,10 +194,12 @@ int main(int argv, char** args)
                         if (opcion[2] == 1)
                         {
                            colorBot = 1;
+                           strcpy(color,amarillo);
                         }
                         else
                         {
                             colorBot = 0;
+                            strcpy(color,morado);
                         }
 
                     }
@@ -323,6 +351,8 @@ int main(int argv, char** args)
 
                                                 fin_partida=terminar_partida(tablero,turno_sin_comidos,pieza,movimientosPosibles,turno,comidasPosibles);
 
+                                                resultado=fin_partida; //Usada para el fichero
+
                                                 pieza = -1;
                                                 turno_sin_comidos++;
 
@@ -351,16 +381,28 @@ int main(int argv, char** args)
                             printf("Introduce un nombre:\n");
                             scanf("%10s",nombre);
 
+                            for(k=0;k<32;k++) //Contar las fichas extra
+                            {
+                                if(tablero[k]==0||tablero[k]==3)
+                                    amarillas++;
+
+                                if(tablero[k]==1||tablero[k]==4)
+                                    moradas++;
+                            }
+
+                            fichas_extra=abs(amarillas-moradas);
+
                             archivo=fopen("Puntuaciones.txt","a");
                             if (archivo==NULL)
                             {
                                 printf("Error al abrir el fichero.\n");
                             }
 
+
                             else
                             {
                                 printf("Archivo abierto correctamente.\n");
-                                fprintf(archivo,"\n\nUn 1 equivale a vitoria, un 0 a empate y un -1 a derrota.\nPartida:\nNombre: %s\nTurnos: %i\nFichas extra sobre las del rival: %i\nResultado: %i\n",nombre,turnos,fichas_extra,resultado);
+                                fprintf(archivo,"\n\nUn 1 equivale a vitoria de amarillas, un 2 a victoria de moradas y un 3 a un empate.\nPartida:\nNombre: %s\nTurnos: %i\nFichas extra sobre las del rival: %i\nResultado: %i\nColor jugador:%s\n",nombre,turno,fichas_extra,resultado,color);
                                 fclose(archivo);
                             }
 
