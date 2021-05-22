@@ -577,6 +577,7 @@ void IA(int tablero[], bool dificil, int turno, int comidasPosibles[][3],int nCo
     srand((unsigned) time(&t));
     if (dificil)
     {
+
         if (nComidasPosibles != -1)
         {
             for (i=0; i<32; i++) { tablero1[i]=tablero[i]; }
@@ -727,6 +728,81 @@ void IA(int tablero[], bool dificil, int turno, int comidasPosibles[][3],int nCo
             }
         }
     }
+    else
+    {
+        if (nComidasPosibles != -1)
+        {
+
+           pieza=rand()%(nComidasPosibles+1);
+           tablero[comidasPosibles[pieza][2]]=tablero[comidasPosibles[pieza][0]];
+           tablero[comidasPosibles[pieza][0]]=2;
+           tablero[comidasPosibles[pieza][1]]=2;
+           coronar(tablero);
+
+           for(j=0;j<=2;j++)
+            {
+                 Pintar(tablero,comidasPosibles[pieza][j],false,Render,dim_cas); //Dibuja las piezas movidas
+                 SDL_Delay(time1/200);
+            }
+
+            nComidas=-1;
+
+           do
+           {
+               nComidas=dondeCome(tablero,turno,comidasPosibles[pieza][2],comidasPosibles1);
+               SDL_Delay(time1);
+               if(nComidas!=-1)
+               {
+                   pieza=rand()%(nComidas+1);
+
+                   tablero[comidasPosibles1[pieza][1]]=tablero[comidasPosibles[pieza][2]];
+                   tablero[comidasPosibles[pieza][2]]=2;
+                   tablero[comidasPosibles1[pieza][0]]=2;
+                   coronar(tablero);
+
+                   Pintar(tablero,comidasPosibles1[pieza][1],false,Render,dim_cas);
+                   Pintar(tablero,comidasPosibles[pieza][2],false,Render,dim_cas);
+                   Pintar(tablero,comidasPosibles1[pieza][0],false,Render,dim_cas);
+               }
+           }while(nComidas!=-1);
+
+
+
+        }
+        else
+        {
+            for (i=0; i<32; i++)
+                {
+                    if (tablero[i]%3 == turno%2)
+                    {
+                        nMovimientosPosibles = puedeMover(tablero, i, movimientosPosibles);
+                        if (nMovimientosPosibles != -1)
+                        {
+                            puedenMover[l] = i;
+                            if (l<=10) { l++; }
+                            for (j=0; j<=nMovimientosPosibles; j++)
+                            {
+                                if (noEsComidaAlMover(tablero, i, movimientosPosibles[j], turno))//sobrevive)
+                                {
+                                    movidas[k][0] = i;
+                                    movidas[k][1] = movimientosPosibles[j];
+                                    if (k<=30) { k++; } else { break; }
+                                }
+                            }
+                            if (k>30) { break; }
+                        }
+                    }
+                }
+            pieza=rand()%k;
+            tablero[movidas[pieza][1]]=tablero[movidas[pieza][0]];
+            tablero[movidas[pieza][0]]=2;
+            coronar(tablero);
+
+
+            Pintar(tablero,movidas[pieza][0],false,Render,dim_cas);
+            Pintar(tablero,movidas[pieza][1],false,Render,dim_cas);
+        }
+    }
 }
 
 void coronar(int tablero[]) //Función que detecta y actualiza el estado de tablero si una pieza ha coronado
@@ -792,7 +868,7 @@ int terminar_partida(int tablero[],int turnos_sin_comidos,int pieza,int movimien
                     if((puedeMover( tablero,n,movimientosPosibles)!=-1)||(puedeComer(tablero,turno,comidasPosibles)!=-1))
                         {
                         puede+=1;
-                        printf("%d \n",movimientosPosibles[0]);
+
                         }
                 }
         }
