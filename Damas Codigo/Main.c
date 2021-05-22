@@ -13,7 +13,7 @@ int main(int argv, char** args)
         turno = 0,
         fin_partida=0,
         movimientosPosibles[4], comidasPosibles[5][3],
-        tablero[32]
+        tablero[32];
 
     int posicion,
         nComidas_posibles,
