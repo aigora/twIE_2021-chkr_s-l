@@ -222,6 +222,7 @@ int main(int argv, char** args)
                         if (colorBot == turno % 2) //Se comprueba si es turno de la IA o en su defecto si esta activada
                         {
                             IA(tablero, dificil, turno, comidasPosibles, nComidas_posibles, Render, dim_cas);
+                            fin_partida=terminar_partida(tablero,turno_sin_comidos,pieza,movimientosPosibles,turno,comidasPosibles); //Se comprueba si se ha terminado la partida
                             turno++;
                             nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
                         }

@@ -711,7 +711,7 @@ void IA(int tablero[], bool dificil, int turno, int comidasPosibles[][3],int nCo
             }
             else
             {
-                rnd = rand() % l;
+                    rnd = rand() % l;
                 pieza = puedenMover[rnd];
                 nMovimientosPosibles = puedeMover(tablero, pieza, movimientosPosibles);
                 if (nMovimientosPosibles != -1) { rnd = rand() % (nMovimientosPosibles + 1); } else { rnd = 0; }
