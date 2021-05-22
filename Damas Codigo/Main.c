@@ -407,7 +407,7 @@ int main(int argv, char** args)
                             else
                             {
                                 printf("Archivo abierto correctamente.\n");
-                                fprintf(archivo,"\n\nUn 1 equivale a vitoria de amarillas, un 2 a victoria de moradas y un 3 a un empate.\nPartida:\nNombre: %s\nTurnos: %i\nFichas extra sobre las del rival: %i\nResultado: %i\nColor jugador:%s\n",nombre,turno,fichas_extra,fin_partida,color);
+                                fprintf(archivo,"\n\nUn 1 equivale a vitoria de amarillas, un 2 a victoria de moradas y un 3 a un empate.\nPartida:\nNombre: %s\nTurnos: %i\nFichas extra del que más tenía: %i\nResultado: %i\nColor jugador:%s\n",nombre,turno,fichas_extra,fin_partida,color);
                                 fclose(archivo);
                             }
 
