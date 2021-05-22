@@ -12,8 +12,8 @@ int main(int argv, char** args)
         turno = 0,
         fin_partida=0,
         movimientosPosibles[4], comidasPosibles[5][3],
-        tablero[32] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  2,  2,  0,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  2,  0,  0,  0,  0,  0};
-                     //0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+        tablero[32] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 0, 2, 2, 1, 2, 0, 2, 0, 0, 2, 2, 2, 2, 2, 2};
+                      //0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
 
     int posicion,
         nComidas_posibles,
@@ -207,16 +207,9 @@ int main(int argv, char** args)
                         }
 
                     }
-                    else if (opcion[0] == 2)                                                                  //Modo Multijugador
+                    else                                                                //Modo Multijugador
                     {
                         colorBot = -1;
-                        /*for(i=0; i<32; i++)
-                        {
-                            if (i>=20) { tablero[i] = 0; }
-                            else if (i>=12) { tablero[i] = 2; }
-                            else { tablero[i] = 1; }
-                        }*/
-
                         do
                         {
                             fondo(Ventana,Render,Textura,"temporizador.bmp");
@@ -244,22 +237,27 @@ int main(int argv, char** args)
 
 
                                                                                     //El juego en sí
-
                     fondo(Ventana,Render,Textura,"chekers_blue.bmp");
+                    /*for(i=0; i<32; i++)
+                    {
+                        if (i>=20) { tablero[i] = 0; }
+                        else if (i>=12) { tablero[i] = 2; }
+                        else { tablero[i] = 1; }
+                    }*/
+
                     for (i=0; i<32;i++)
                     {
                         Pintar(tablero ,i ,false ,Render ,dim_cas);
                     }
-
-
-
 
                     nComidas_posibles = puedeComer(tablero,turno,comidasPosibles);
                     do
                     {
                         if (colorBot == turno % 2)
                         {
-                            IA(tablero, dificil, turno, &pieza, &posicion, comidasPosibles, nComidas_posibles);
+                            IA(tablero, dificil, turno, comidasPosibles, nComidas_posibles, Render, dim_cas);
+                            turno++;
+                            nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
                         }
                         else
                         {
@@ -311,7 +309,7 @@ int main(int argv, char** args)
                                     }
                                     Pintar(tablero,pieza,true,Render,dim_cas);
                                 }
-                                else if(posicion!=-1)
+                                else if(pieza!=-1)
                                 {
                                     n = -1;
                                     for(i=0;i<=nComidas_posibles;i++)
@@ -375,7 +373,7 @@ int main(int argv, char** args)
                                                     Pintar(tablero, movimientosPosibles[j], false, Render, dim_cas);
                                                 }
 
-                                                fin_partida=terminar_partida(tablero,turno_sin_comidos,tiempo,pieza,movimientosPosibles,turno,comidasPosibles);
+                                                //fin_partida=terminar_partida(tablero,turno_sin_comidos,tiempo,pieza,movimientosPosibles,turno,comidasPosibles);
 
                                                 pieza = -1;
                                                 turno_sin_comidos++;

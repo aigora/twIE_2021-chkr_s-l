@@ -17,6 +17,7 @@ bool _in(int x, int n);
 int puedeMover(int tablero[], int pieza, int movimientosPosibles[]);
 int puedeComer(int tablero[], int turno, int comidasPosibles[][3]);
 int dondeCome(int tablero[],int turno, int pieza, int comidasPosibles[][2]);
-void IA(int tablero[], bool dificil, int turno, int* Pieza, int* Posicion, int comidasPosbles[][3],int nComidasPosibles);
+bool noEsComidaAlMover(int tablero[], int pieza, int posicion, int turno);
+void IA(int tablero[], bool dificil, int turno, int comidasPosibles[][3],int nComidas, SDL_Renderer *Render,const Cuadrante  dim_cas [32]);
 int terminar_partida(int tablero[],int turnos_sin_comidos,int tiempo[2],int pieza,int movimientosPosibles[],int turno,int comidasPosibles[][3],bool tempor);
 void coronar(int tablero[]);
