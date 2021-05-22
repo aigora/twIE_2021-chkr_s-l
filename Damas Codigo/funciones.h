@@ -4,11 +4,6 @@ typedef struct
     int x1,y1,x2,y2;
 }Cuadrante;
 
-typedef struct
-{
-    int m,s;
-}temp;
-
 void Pintar(int Tipo_ficha [32], int numero_casilla, bool rodear,SDL_Renderer *Render,const Cuadrante dimensiones_casilla [32]);
 void fondo (SDL_Window *Ventana,SDL_Renderer *Render, SDL_Texture *Textura, char path[50]);
 int pos_raton (const Cuadrante  dim_cas [],int n);
@@ -19,5 +14,5 @@ int puedeComer(int tablero[], int turno, int comidasPosibles[][3]);
 int dondeCome(int tablero[],int turno, int pieza, int comidasPosibles[][2]);
 bool noEsComidaAlMover(int tablero[], int pieza, int posicion, int turno);
 void IA(int tablero[], bool dificil, int turno, int comidasPosibles[][3],int nComidas, SDL_Renderer *Render,const Cuadrante  dim_cas [32]);
-int terminar_partida(int tablero[],int turnos_sin_comidos,int tiempo[2],int pieza,int movimientosPosibles[],int turno,int comidasPosibles[][3],bool tempor);
+int terminar_partida(int tablero[],int turnos_sin_comidos,int pieza,int movimientosPosibles[],int turno,int comidasPosibles[][3]);
 void coronar(int tablero[]);

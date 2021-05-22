@@ -1,19 +1,19 @@
 #include <SDL.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include<math.h>
+#include<string.h>
 #include "funciones.h"
 
 int main(int argv, char** args)
 {
     //Variables lógica
-    int tiempo,
-        turno_sin_comidos = 0,
+    int turno_sin_comidos = 0,
         pieza = -1,
         turno = 0,
         fin_partida=0,
         movimientosPosibles[4], comidasPosibles[5][3],
-        tablero[32] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 0, 2, 2, 1, 2, 0, 2, 0, 0, 2, 2, 2, 2, 2, 2};
-                      //0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
+        tablero[32]
 
     int posicion,
         nComidas_posibles,
@@ -29,7 +29,7 @@ int main(int argv, char** args)
 
 
     //Variables auxiliares
-    int i, j, n;
+    int i, j, n, k;
     bool pasar_turno;
 
 
@@ -40,8 +40,11 @@ int main(int argv, char** args)
 
     //Variables fichero de texto
     FILE *archivo;
-    int turnos, fichas_extra, resultado;
-    temp t;
+    int fichas_extra, resultado;
+    int amarillas=0, moradas=0;
+    char color [15];
+    char amarillo[]="Amarillo";
+    char morado[]="Morado";
 
 
     //Variables vector estructura usados para las dimensiones de la pantalla
@@ -91,13 +94,6 @@ int main(int argv, char** args)
                             {515,660,1380,1069}
                                 };
 
-    const Cuadrante  menu_4 [4]={
-                            {44,218,909,623},
-                            {1013,216,1878,624},
-                            {44,659,909,1064},
-                            {1013,657,1878,1065}
-                                };
-
 
 // Inicialización de SDL para poder emplear las funciones gráficas, se pondrá en su respectivo sitio en un futuro
 
@@ -131,6 +127,25 @@ int main(int argv, char** args)
 
         do
         {
+            //Después de cada partida es necesario devolver las variables a sus valores iniciales
+            turno_sin_comidos = 0;
+            pieza = -1;
+            turno = 0;
+            fin_partida=0;
+            amarillas=0;
+            moradas=0;
+
+            for (k=0;k<32;k++) //Se reinicia el tablero
+                {
+                    if(k<=11)
+                        tablero[k]=1;
+                    else if(k<=19)
+                        tablero[k]=2;
+                    else if(k<=31)
+                        tablero[k]=0;
+                }
+
+
             fondo(Ventana,Render,Textura,"modo_juego.bmp");
             opcion[0]=pos_raton(menu_3,3);
 
@@ -177,83 +192,34 @@ int main(int argv, char** args)
                         if (opcion[2] == 1)
                         {
                            colorBot = 1;
+                           strcpy(color,amarillo); //Se especifica que el jugador es amarillo para el fichero
                         }
                         else
                         {
                             colorBot = 0;
-                        }
-
-                        do
-                        {
-                            fondo(Ventana,Render,Textura,"temporizador.bmp");
-                            opcion[3]=pos_raton(menu_4,4);
-
-                        }while((opcion[3] != 1) && (opcion[3] != 2)&& (opcion[3] != 3)&& (opcion[3] != 4));
-
-                        switch (opcion[3])
-                        {
-                        case 1:
-                            tiempo = 0;
-                            break;
-                        case 2:
-                            tiempo = 3*60;
-                            break;
-                        case 3:
-                            tiempo = 5*60;
-                            break;
-                        case 4:
-                            tiempo = 10*60;
-                            break;
+                            strcpy(color,morado); //Se especifica que el jugador es morado para el fichero
                         }
 
                     }
                     else                                                                //Modo Multijugador
                     {
                         colorBot = -1;
-                        do
-                        {
-                            fondo(Ventana,Render,Textura,"temporizador.bmp");
-                            opcion[3]=pos_raton(menu_4,4);
-
-                        }while((opcion[3] != 1) && (opcion[3] != 2)&& (opcion[3] != 3)&& (opcion[3] != 4));
-
-
-                        switch (opcion[3])
-                        {
-                        case 1:
-                            tiempo = 0;
-                            break;
-                        case 2:
-                            tiempo = 3*60;
-                            break;
-                        case 3:
-                            tiempo = 5*60;
-                            break;
-                        case 4:
-                            tiempo = 10*60;
-                            break;
-                        }
                     }
 
 
-                                                                                    //El juego en sí
-                    fondo(Ventana,Render,Textura,"chekers_blue.bmp");
-                    /*for(i=0; i<32; i++)
-                    {
-                        if (i>=20) { tablero[i] = 0; }
-                        else if (i>=12) { tablero[i] = 2; }
-                        else { tablero[i] = 1; }
-                    }*/
+                    //Se inicia la partida
 
-                    for (i=0; i<32;i++)
+                    fondo(Ventana,Render,Textura,"chekers_blue.bmp"); //Se carga el fondo
+                    for (i=0; i<32;i++) //Se dibujan las fichas
                     {
                         Pintar(tablero ,i ,false ,Render ,dim_cas);
                     }
 
-                    nComidas_posibles = puedeComer(tablero,turno,comidasPosibles);
+
+                    nComidas_posibles = puedeComer(tablero,turno,comidasPosibles); //Se inicaliza la matriz de poder comer
                     do
                     {
-                        if (colorBot == turno % 2)
+                        if (colorBot == turno % 2) //Se comprueba si es turno de la IA o en su defecto si esta activada
                         {
                             IA(tablero, dificil, turno, comidasPosibles, nComidas_posibles, Render, dim_cas);
                             turno++;
@@ -264,9 +230,9 @@ int main(int argv, char** args)
                             posicion=pos_raton(dim_cas,32);
                             if(posicion!=-1)
                             {
-                                if(tablero[posicion]%3==turno%2)
+                                if(tablero[posicion]%3==turno%2) //Si la pieza selecciona corresponde al color elegido
                                 {
-                                    if(pieza!=-1)
+                                    if(pieza!=-1) //Se ha deseleccionado una pieza y se actualiza gráficamente
                                     {
                                         if(nComidas_posibles==-1)
                                         {
@@ -288,7 +254,7 @@ int main(int argv, char** args)
                                         Pintar(tablero,pieza,false,Render,dim_cas);
 
                                     }
-                                    pieza=posicion;
+                                    pieza=posicion; //Se selecciona una pieza y se dibuja en modo seleccionado
                                     nMovimientos_posibles=puedeMover( tablero,pieza,movimientosPosibles);
                                     if(nComidas_posibles==-1)
                                     {
@@ -337,10 +303,12 @@ int main(int argv, char** args)
                                             }
                                         }
 
+                                         fin_partida=terminar_partida(tablero,turno_sin_comidos,pieza,movimientosPosibles,turno,comidasPosibles); //Se comprueba si se ha terminado la partida
+
                                         nComidas_posibles=puedeComer(tablero,turno,comidasPosibles); //Como se puede comer 2 veces seguidas se repite la función
                                         pasar_turno=true;
 
-                                        for(j=0; j<=nComidas_posibles; j++)
+                                        for(j=0; j<=nComidas_posibles; j++) //Se comprueba si la pieza puede volver a mover
                                         {
                                             if(posicion==comidasPosibles[j][0])
                                             {
@@ -357,23 +325,25 @@ int main(int argv, char** args)
                                             nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
                                         }
                                     }
-                                    else if(nComidas_posibles==-1)
+                                    else if(nComidas_posibles==-1) //Si no se puede comer se comprueba se mueve
                                     {
                                         for (i=0; i<=nMovimientos_posibles; i++)
                                         {
-                                            if (posicion == movimientosPosibles[i])
+                                            if (posicion == movimientosPosibles[i]) //Se analiza si la casilla pulsada es un movimiento posible
                                             {
                                                 tablero[posicion] = tablero[pieza];
                                                 tablero[pieza] = 2;
                                                 coronar(tablero);
                                                 Pintar(tablero, pieza, false, Render, dim_cas);
 
-                                                for(j=0; j<=nMovimientos_posibles; j++)
+                                                for(j=0; j<=nMovimientos_posibles; j++) //Se corrige la parte gráfica
                                                 {
                                                     Pintar(tablero, movimientosPosibles[j], false, Render, dim_cas);
                                                 }
 
-                                                //fin_partida=terminar_partida(tablero,turno_sin_comidos,tiempo,pieza,movimientosPosibles,turno,comidasPosibles);
+                                                fin_partida=terminar_partida(tablero,turno_sin_comidos,pieza,movimientosPosibles,turno,comidasPosibles); //Se comprueba si se ha terminado la partida
+
+                                                resultado=fin_partida; //Usada para el fichero
 
                                                 pieza = -1;
                                                 turno_sin_comidos++;
@@ -388,9 +358,9 @@ int main(int argv, char** args)
                         }
                     } while(fin_partida==0);
 
-                    if(colorBot==1||colorBot==0)
+                    if(colorBot==1||colorBot==0) //Solo se genera el fichero si el bot esta activado
                     {
-                        do //IMPORTANTE LUEGO AÑADIR EL CAMBIO A LA ESTRUCTURA TIEMPO
+                        do
                         {
                             fondo(Ventana,Render,Textura,"nombre.bmp");
 
@@ -403,16 +373,28 @@ int main(int argv, char** args)
                             printf("Introduce un nombre:\n");
                             scanf("%10s",nombre);
 
+                            for(k=0;k<32;k++) //Contar las fichas extra
+                            {
+                                if(tablero[k]==0||tablero[k]==3)
+                                    amarillas++;
+
+                                if(tablero[k]==1||tablero[k]==4)
+                                    moradas++;
+                            }
+
+                            fichas_extra=abs(amarillas-moradas);
+
                             archivo=fopen("Puntuaciones.txt","a");
                             if (archivo==NULL)
                             {
                                 printf("Error al abrir el fichero.\n");
                             }
 
+
                             else
                             {
                                 printf("Archivo abierto correctamente.\n");
-                                fprintf(archivo,"\n\nUn 1 equivale a vitoria, un 0 a empate y un -1 a derrota.\nPartida:\nNombre: %s\nTiempo empleado: %i minutos y %i segundos\nTurnos: %i\nFichas extra sobre las del rival: %i\nResultado: %i\n",nombre,t.m,t.s,turnos,fichas_extra,resultado);
+                                fprintf(archivo,"\n\nUn 1 equivale a vitoria de amarillas, un 2 a victoria de moradas y un 3 a un empate.\nPartida:\nNombre: %s\nTurnos: %i\nFichas extra sobre las del rival: %i\nResultado: %i\nColor jugador:%s\n",nombre,turno,fichas_extra,resultado,color);
                                 fclose(archivo);
                             }
 
@@ -454,7 +436,7 @@ int main(int argv, char** args)
                     break;
                 }
             }
-        } while(opcion[0] != 3);
+        } while(opcion[0] != 3); //Bucle del menú
     }
 
     return 0;

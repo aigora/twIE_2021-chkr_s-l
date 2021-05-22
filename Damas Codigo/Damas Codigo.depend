@@ -762,7 +762,7 @@
 	<SDL.h>
 	<stdbool.h>
 
-1621448659 source:c:\users\ariel carnés\documents\github\twie_2021-chkr_s-l\damas codigo\funciones.c
+1621602382 source:c:\users\ariel carnés\documents\github\twie_2021-chkr_s-l\damas codigo\funciones.c
 	<stdio.h>
 	<SDL.h>
 	<stdbool.h>
@@ -1137,16 +1137,18 @@
 	"begin_code.h"
 	"close_code.h"
 
-1621448374 source:c:\users\ariel carnés\documents\github\twie_2021-chkr_s-l\damas codigo\main.c
+1621602968 source:c:\users\ariel carnés\documents\github\twie_2021-chkr_s-l\damas codigo\main.c
 	<SDL.h>
 	<stdio.h>
 	<stdbool.h>
 	"funciones.h"
 
-1621592364 source:c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\main.c
+1621690573 source:c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\main.c
 	<SDL.h>
 	<stdio.h>
 	<stdbool.h>
+	<math.h>
+	<string.h>
 	"funciones.h"
 
 1617382008 c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl.h
@@ -1518,13 +1520,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1621592284 source:c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\funciones.c
+1621694215 source:c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\funciones.c
 	<stdio.h>
 	<SDL.h>
 	<stdbool.h>
 	"funciones.h"
 
-1621592284 c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\funciones.h
+1621597562 c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\funciones.h
 
 1620833949 source:c:\users\diego\onedrive\escritorio\universidad\informatica\nueva carpeta\damasss\damas\twie_2021-chkr_s-l\damas codigo\main.c
 	<SDL.h>
@@ -2298,5 +2300,5 @@
 
 1621411843 c:\users\diego\onedrive\escritorio\universidad\informatica\twie_2021-chkr_s-l\damas codigo\funciones.h
 
-1621448638 c:\users\ariel carnés\documents\github\twie_2021-chkr_s-l\damas codigo\funciones.h
+1621598210 c:\users\ariel carnés\documents\github\twie_2021-chkr_s-l\damas codigo\funciones.h
 
