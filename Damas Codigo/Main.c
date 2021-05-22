@@ -137,7 +137,7 @@ int main(int argv, char** args)
             amarillas=0;
             moradas=0;
 
-            for (k=0;k<32;k++)
+            for (k=0;k<32;k++) //Se reinicia el tablero
                 {
                     if(k<=11)
                         tablero[k]=1;
@@ -194,12 +194,12 @@ int main(int argv, char** args)
                         if (opcion[2] == 1)
                         {
                            colorBot = 1;
-                           strcpy(color,amarillo);
+                           strcpy(color,amarillo); //Se especifica que el jugador es amarillo para el fichero
                         }
                         else
                         {
                             colorBot = 0;
-                            strcpy(color,morado);
+                            strcpy(color,morado); //Se especifica que el jugador es morado para el fichero
                         }
 
                     }
@@ -215,10 +215,10 @@ int main(int argv, char** args)
                     }
 
 
-                                                                                    //El juego en sí
+                    //Se inicia la partida
 
-                    fondo(Ventana,Render,Textura,"chekers_blue.bmp");
-                    for (i=0; i<32;i++)
+                    fondo(Ventana,Render,Textura,"chekers_blue.bmp"); //Se carga el fondo
+                    for (i=0; i<32;i++) //Se dibujan las fichas
                     {
                         Pintar(tablero ,i ,false ,Render ,dim_cas);
                     }
@@ -226,10 +226,10 @@ int main(int argv, char** args)
 
 
 
-                    nComidas_posibles = puedeComer(tablero,turno,comidasPosibles);
+                    nComidas_posibles = puedeComer(tablero,turno,comidasPosibles); //Se inicaliza la matriz de poder comer
                     do
                     {
-                        if (colorBot == turno % 2)
+                        if (colorBot == turno % 2) //Se comprueba si es turno de la IA o en su defecto si esta activada
                         {
                             IA(tablero, dificil, turno, &pieza, &posicion, comidasPosibles, nComidas_posibles);
                         }
@@ -238,9 +238,9 @@ int main(int argv, char** args)
                             posicion=pos_raton(dim_cas,32);
                             if(posicion!=-1)
                             {
-                                if(tablero[posicion]%3==turno%2)
+                                if(tablero[posicion]%3==turno%2) //Si la pieza selecciona corresponde al color elegido
                                 {
-                                    if(pieza!=-1)
+                                    if(pieza!=-1) //Se ha deseleccionado una pieza y se actualiza gráficamente
                                     {
                                         if(nComidas_posibles==-1)
                                         {
@@ -262,7 +262,7 @@ int main(int argv, char** args)
                                         Pintar(tablero,pieza,false,Render,dim_cas);
 
                                     }
-                                    pieza=posicion;
+                                    pieza=posicion; //Se selecciona una pieza y se dibuja en modo seleccionado
                                     nMovimientos_posibles=puedeMover( tablero,pieza,movimientosPosibles);
                                     if(nComidas_posibles==-1)
                                     {
@@ -311,12 +311,12 @@ int main(int argv, char** args)
                                             }
                                         }
 
-                                         fin_partida=terminar_partida(tablero,turno_sin_comidos,pieza,movimientosPosibles,turno,comidasPosibles);
+                                         fin_partida=terminar_partida(tablero,turno_sin_comidos,pieza,movimientosPosibles,turno,comidasPosibles); //Se comprueba si se ha terminado la partida
 
                                         nComidas_posibles=puedeComer(tablero,turno,comidasPosibles); //Como se puede comer 2 veces seguidas se repite la función
                                         pasar_turno=true;
 
-                                        for(j=0; j<=nComidas_posibles; j++)
+                                        for(j=0; j<=nComidas_posibles; j++) //Se comprueba si la pieza puede volver a mover
                                         {
                                             if(posicion==comidasPosibles[j][0])
                                             {
@@ -333,23 +333,23 @@ int main(int argv, char** args)
                                             nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
                                         }
                                     }
-                                    else if(nComidas_posibles==-1)
+                                    else if(nComidas_posibles==-1) //Si no se puede comer se comprueba se mueve
                                     {
                                         for (i=0; i<=nMovimientos_posibles; i++)
                                         {
-                                            if (posicion == movimientosPosibles[i])
+                                            if (posicion == movimientosPosibles[i]) //Se analiza si la casilla pulsada es un movimiento posible
                                             {
                                                 tablero[posicion] = tablero[pieza];
                                                 tablero[pieza] = 2;
                                                 coronar(tablero);
                                                 Pintar(tablero, pieza, false, Render, dim_cas);
 
-                                                for(j=0; j<=nMovimientos_posibles; j++)
+                                                for(j=0; j<=nMovimientos_posibles; j++) //Se corrige la parte gráfica
                                                 {
                                                     Pintar(tablero, movimientosPosibles[j], false, Render, dim_cas);
                                                 }
 
-                                                fin_partida=terminar_partida(tablero,turno_sin_comidos,pieza,movimientosPosibles,turno,comidasPosibles);
+                                                fin_partida=terminar_partida(tablero,turno_sin_comidos,pieza,movimientosPosibles,turno,comidasPosibles); //Se comprueba si se ha terminado la partida
 
                                                 resultado=fin_partida; //Usada para el fichero
 
@@ -366,9 +366,9 @@ int main(int argv, char** args)
                         }
                     } while(fin_partida==0);
 
-                    if(colorBot==1||colorBot==0)
+                    if(colorBot==1||colorBot==0) //Solo se genera el fichero si el bot esta activado
                     {
-                        do //IMPORTANTE LUEGO AÑADIR EL CAMBIO A LA ESTRUCTURA TIEMPO
+                        do
                         {
                             fondo(Ventana,Render,Textura,"nombre.bmp");
 
@@ -444,7 +444,7 @@ int main(int argv, char** args)
                     break;
                 }
             }
-        } while(opcion[0] != 3);
+        } while(opcion[0] != 3); //Bucle del menú
     }
 
     return 0;
