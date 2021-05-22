@@ -40,7 +40,7 @@ int main(int argv, char** args)
 
     //Variables fichero de texto
     FILE *archivo;
-    int fichas_extra, resultado;
+    int fichas_extra;
     int amarillas=0, moradas=0;
     char color [15];
     char amarillo[]="Amarillo";
@@ -344,7 +344,6 @@ int main(int argv, char** args)
 
                                                 fin_partida=terminar_partida(tablero,turno_sin_comidos,pieza,movimientosPosibles,turno,comidasPosibles); //Se comprueba si se ha terminado la partida
 
-                                                resultado=fin_partida; //Usada para el fichero
 
                                                 pieza = -1;
                                                 turno_sin_comidos++;
@@ -358,6 +357,19 @@ int main(int argv, char** args)
                             }
                         }
                     } while(fin_partida==0);
+
+                    if(fin_partida==1)
+                        fondo(Ventana,Render,Textura,"amarillas.bmp");
+
+                    if(fin_partida==2)
+                        fondo(Ventana,Render,Textura,"moradas.bmp");
+
+                    if(fin_partida==3)
+                        fondo(Ventana,Render,Textura,"tablas.bmp");
+
+                    SDL_RenderPresent( Render );
+                    pos_raton(dim_cas,32);
+
 
                     if(colorBot==1||colorBot==0) //Solo se genera el fichero si el bot esta activado
                     {
@@ -395,7 +407,7 @@ int main(int argv, char** args)
                             else
                             {
                                 printf("Archivo abierto correctamente.\n");
-                                fprintf(archivo,"\n\nUn 1 equivale a vitoria de amarillas, un 2 a victoria de moradas y un 3 a un empate.\nPartida:\nNombre: %s\nTurnos: %i\nFichas extra sobre las del rival: %i\nResultado: %i\nColor jugador:%s\n",nombre,turno,fichas_extra,resultado,color);
+                                fprintf(archivo,"\n\nUn 1 equivale a vitoria de amarillas, un 2 a victoria de moradas y un 3 a un empate.\nPartida:\nNombre: %s\nTurnos: %i\nFichas extra sobre las del rival: %i\nResultado: %i\nColor jugador:%s\n",nombre,turno,fichas_extra,fin_partida,color);
                                 fclose(archivo);
                             }
 
