@@ -349,9 +349,9 @@ bool _in(int x, int n) //Función para ver si un valor se encuentra en un interv
 
 int puedeMover(int tablero[], int pieza, int movimientosPosibles[]) //Recibe el estado del tablero y una pieza y devuelve en un array los valores
 {
-    int i, j;
+    int i, j; //Variables auxiliares
 
-    if ((int)(pieza/4)%2 == 0)
+    if ((int)(pieza/4)%2 == 0) //Comprueba que tipo de casilla es
     {
         j = 5;
     }
@@ -361,7 +361,7 @@ int puedeMover(int tablero[], int pieza, int movimientosPosibles[]) //Recibe el 
     }
 
     i = -1;
-    if (tablero[pieza] != 1)
+    if (tablero[pieza] != 1) //Si la pieza no es amarilla tiene los siguientes movimientos
     {
         if (!_in(pieza, 0))
         {
@@ -382,7 +382,7 @@ int puedeMover(int tablero[], int pieza, int movimientosPosibles[]) //Recibe el 
         }
     }
 
-    if (tablero[pieza] != 0)
+    if (tablero[pieza] != 0) //Si la pieza no es morada tiene los siguientes movimientos
     {
         if (!_in(pieza, 2))
         {
@@ -407,10 +407,11 @@ int puedeMover(int tablero[], int pieza, int movimientosPosibles[]) //Recibe el 
 }
 
 int puedeComer(int tablero[], int turno, int comidasPosibles[][3])
+    //Recibe el estado del tablero y devuelve el número de piezas que pueden comer junto a una matriz con la posición inicial, intermedia y final de una pieza al comer
 {
     int i, j = -1, k;
 
-    for (i = 0; i <= 22; i++)
+    for (i = 0; i <= 22; i++) //Se comprueba si la pieza puede comer sabiendo que las piezas comidas solo pueden estar en el cuadrado interior 6x6
     {
         if (_in(i, -1))
         {
@@ -600,7 +601,7 @@ void IA(int tablero[], bool dificil, int turno, int* Pieza, int* Posicion, int c
     }
 }
 
-void coronar(int tablero[])
+void coronar(int tablero[]) //Función que detecta y actualiza el estado de tablero si una pieza ha coronado
 {
     int n=0;
     while(n<4)
@@ -631,7 +632,7 @@ int terminar_partida(int tablero[],int turnos_sin_comidos,int pieza,int movimien
         puede=0,
         turnoDe;
 
-    while(n<32)
+    while(n<32) //Cuenta el número de fichas de cada color
     {
         if ((tablero[n]==0)||(tablero[n]==3))
             amarillas+=1;
@@ -640,7 +641,7 @@ int terminar_partida(int tablero[],int turnos_sin_comidos,int pieza,int movimien
         n+=1;
     }
 
-    if((moradas==0)||(amarillas==0))
+    if((moradas==0)||(amarillas==0)) //Si uno no tiene fichas pierde
     {
         if(moradas==0)
             return 1;
@@ -648,13 +649,13 @@ int terminar_partida(int tablero[],int turnos_sin_comidos,int pieza,int movimien
             return 2;
     }
 
-    if ((turnos_sin_comidos)>=60)
+    if ((turnos_sin_comidos)>=60) //Si ha habido 60 turnos sin comer es tablas
     {
         return 3;
     }
     n=0;
     turnoDe=turno%2;
-    while(n<32)
+    while(n<32) //Se comprueba si es ahogado
     {
         if(turnoDe==0)
         {
