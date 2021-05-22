@@ -374,7 +374,17 @@
 
 1617382704 c:\users\bogur\desktop\programacion\progra\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\funciones.h
 
-1621698800 source:c:\users\rubik\documents\github\twie_2021-chkr_s-l\damas codigo\main.c
+1617382704 ated upstream
+
+1621713046 source:c:\users\rubik\documents\github\twie_2021-chkr_s-l\damas codigo\main.c
+	<SDL.h>
+	<stdio.h>
+	<stdbool.h>
+	<math.h>
+	<string.h>
+	"funciones.h"
+
+1621705702 shed changes
 	<SDL.h>
 	<stdio.h>
 	<stdbool.h>
@@ -749,9 +759,9 @@
 	"begin_code.h"
 	"close_code.h"
 
-1621683480 c:\users\rubik\documents\github\twie_2021-chkr_s-l\damas codigo\funciones.h
+1621713046 c:\users\rubik\documents\github\twie_2021-chkr_s-l\damas codigo\funciones.h
 
-1621699537 source:c:\users\rubik\documents\github\twie_2021-chkr_s-l\damas codigo\funciones.c
+1621713706 source:c:\users\rubik\documents\github\twie_2021-chkr_s-l\damas codigo\funciones.c
 	<stdio.h>
 	<SDL.h>
 	<stdbool.h>
