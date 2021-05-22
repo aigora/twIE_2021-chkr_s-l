@@ -206,12 +206,6 @@ int main(int argv, char** args)
                     else if (opcion[0] == 2)                                                                  //Modo Multijugador
                     {
                         colorBot = -1;
-                        /*for(i=0; i<32; i++)
-                        {
-                            if (i>=20) { tablero[i] = 0; }
-                            else if (i>=12) { tablero[i] = 2; }
-                            else { tablero[i] = 1; }
-                        }*/
                     }
 
 
