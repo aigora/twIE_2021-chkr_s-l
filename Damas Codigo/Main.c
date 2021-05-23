@@ -224,7 +224,8 @@ int main(int argv, char** args)
                             IA(tablero, dificil, turno, comidasPosibles, nComidas_posibles, Render, dim_cas);
                             fin_partida=terminar_partida(tablero,turno_sin_comidos,pieza,movimientosPosibles,turno,comidasPosibles); //Se comprueba si se ha terminado la partida
                             turno++;
-                            nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
+                            nComidas_posibles=puedeComer(tablero, turno, comidasPosibles);
+                            fin_partida=terminar_partida(tablero, turno_sin_comidos, pieza, turno, nComidas_posibles, comidasPosibles); //Se comprueba si se ha terminado la partida
                         }
                         else
                         {
@@ -286,6 +287,7 @@ int main(int argv, char** args)
                                             n = i;
                                         }
                                     }
+
                                     if (n!=-1)
                                     {
                                         tablero[comidasPosibles[n][2]]=tablero[comidasPosibles[n][0]]; //Devuelve el valor en la posición querida
@@ -303,8 +305,6 @@ int main(int argv, char** args)
                                                 Pintar(tablero,comidasPosibles[j][2],false,Render,dim_cas);
                                             }
                                         }
-
-                                         fin_partida=terminar_partida(tablero,turno_sin_comidos,pieza,movimientosPosibles,turno,comidasPosibles); //Se comprueba si se ha terminado la partida
 
                                         nComidas_posibles=puedeComer(tablero,turno,comidasPosibles); //Como se puede comer 2 veces seguidas se repite la función
                                         pasar_turno=true;
@@ -324,6 +324,7 @@ int main(int argv, char** args)
                                         {
                                             turno++;
                                             nComidas_posibles=puedeComer(tablero,turno,comidasPosibles);
+                                            fin_partida=terminar_partida(tablero, turno_sin_comidos, pieza, turno, nComidas_posibles, comidasPosibles); //Se comprueba si se ha terminado la partida
                                         }
                                     }
                                     else if(nComidas_posibles==-1) //Si no se puede comer se comprueba se mueve
@@ -341,15 +342,15 @@ int main(int argv, char** args)
                                                 {
                                                     Pintar(tablero, movimientosPosibles[j], false, Render, dim_cas);
                                                 }
-
-                                                fin_partida=terminar_partida(tablero,turno_sin_comidos,pieza,movimientosPosibles,turno,comidasPosibles); //Se comprueba si se ha terminado la partida
-
+                                                
+                                                resultado=fin_partida; //Usada para el fichero
 
                                                 pieza = -1;
                                                 turno_sin_comidos++;
 
                                                 turno++;
                                                 nComidas_posibles=puedeComer(tablero, turno, comidasPosibles);
+                                                fin_partida=terminar_partida(tablero, turno_sin_comidos, pieza, turno, nComidas_posibles, comidasPosibles); //Se comprueba si se ha terminado la partida
                                             }
                                         }
                                     }
@@ -357,7 +358,6 @@ int main(int argv, char** args)
                             }
                         }
                     } while(fin_partida==0);
-
                     if(fin_partida==1)
                         fondo(Ventana,Render,Textura,"amarillas.bmp");
 
@@ -371,7 +371,7 @@ int main(int argv, char** args)
                     pos_raton(dim_cas,32);
 
 
-                    if(colorBot==1||colorBot==0) //Solo se genera el fichero si el bot esta activado
+                    if (colorBot != -1 && colorBot != fin_partida - 1 && fin_partida == 3)//Solo se genera el fichero si el bot esta activado y este no ha ganado la partida
                     {
                         do
                         {

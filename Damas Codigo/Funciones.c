@@ -647,7 +647,7 @@ void IA(int tablero[], bool dificil, int turno, int comidasPosibles[][3],int nCo
                     if (tablero[i]%3 == turno%2)
                     {
                         nMovimientosPosibles = puedeMover(tablero, i, movimientosPosibles);
-                        if (movimientosPosibles != -1)
+                        if (nMovimientosPosibles != -1)
                         {
                             puedenMover[l] = i;
                             if (l<=10) { l++; }
@@ -732,7 +732,6 @@ void IA(int tablero[], bool dificil, int turno, int comidasPosibles[][3],int nCo
     {
         if (nComidasPosibles != -1)
         {
-
            pieza=rand()%(nComidasPosibles+1);
            tablero[comidasPosibles[pieza][2]]=tablero[comidasPosibles[pieza][0]];
            tablero[comidasPosibles[pieza][0]]=2;
@@ -765,9 +764,6 @@ void IA(int tablero[], bool dificil, int turno, int comidasPosibles[][3],int nCo
                    Pintar(tablero,comidasPosibles1[pieza][0],false,Render,dim_cas);
                }
            }while(nComidas!=-1);
-
-
-
         }
         else
         {
@@ -827,67 +823,38 @@ void coronar(int tablero[]) //Función que detecta y actualiza el estado de tabl
     }
 }
 
-int terminar_partida(int tablero[],int turnos_sin_comidos,int pieza,int movimientosPosibles[],int turno,int comidasPosibles[][3])
+int terminar_partida(int tablero[], int turnos_sin_comidos, int pieza, int turno, int nComidasPosibles, int comidasPosibles[][3])
 {
 //esta funcion devolverá un 0 si no termina la partida o 1->ganan amarillas 2->ganan moradas 3->empate.
-    int n=0,
-        moradas=0,
+    int moradas=0,
         amarillas=0,
-        puede=0,
-        turnoDe;
+        i, nMovimientosPosibles, movimientosPosibles[4];
+    bool ahogado = true;
 
-    while(n<32) //Cuenta el número de fichas de cada color
+    for (i=0; i<32; i++) //Cuenta el número de fichas de cada color
     {
-        if ((tablero[n]==0)||(tablero[n]==3))
-            amarillas+=1;
-        if((tablero[n]==1)||(tablero[n]==4))
-            moradas+=1;
-        n+=1;
+        if (tablero[i] % 3 == 0) { amarillas++; } else if (tablero[i] % 3 == 1) { moradas++; }
     }
 
-    if((moradas==0)||(amarillas==0)) //Si uno no tiene fichas pierde
-    {
-        if(moradas==0)
-            return 1;
-        if(amarillas==0)
-            return 2;
-    }
+    if(moradas==0) { return 1; } else if(amarillas==0) { return 2; }
 
     if ((turnos_sin_comidos)>=60) //Si ha habido 60 turnos sin comer es tablas
     {
         return 3;
     }
-    n=0;
-    turnoDe=turno%2;
-    while(n<32) //Se comprueba si es ahogado
+
+    if (nComidasPosibles == -1)
     {
-        if(turnoDe==0)
+        for (i=0; i<32; i++) //Se comprueba si es ahogado
         {
-            if((tablero[n]==0)||(tablero[n]==3))
-                {
-                    if((puedeMover( tablero,n,movimientosPosibles)!=-1)||(puedeComer(tablero,turno,comidasPosibles)!=-1))
-                        {
-                        puede+=1;
-
-                        }
-                }
+            if (tablero[i]%3 == turno%2)
+            {
+                nMovimientosPosibles = puedeMover(tablero, i, movimientosPosibles);
+                if (nMovimientosPosibles != -1) { ahogado = false; }
+            }
         }
-        if(turnoDe==1)
-        {
-            if((tablero[n]==1)||(tablero[n]==4))
-                {
-                    if((puedeMover( tablero,n,movimientosPosibles)!=-1)||(puedeComer(tablero,turno,comidasPosibles)!=-1))
-                        {
-                        puede+=1;
-                        }
-                }
-        }
-        n+=1;
-
+        if (ahogado) { return 3; }
     }
-    if(puede==0)
-        return 3;
-
 
     return 0;
 }

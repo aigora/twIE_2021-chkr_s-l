@@ -14,5 +14,5 @@ int puedeComer(int tablero[], int turno, int comidasPosibles[][3]);
 int dondeCome(int tablero[],int turno, int pieza, int comidasPosibles[][2]);
 bool noEsComidaAlMover(int tablero[], int pieza, int posicion, int turno);
 void IA(int tablero[], bool dificil, int turno, int comidasPosibles[][3],int nComidas, SDL_Renderer *Render,const Cuadrante  dim_cas [32]);
-int terminar_partida(int tablero[],int turnos_sin_comidos,int pieza,int movimientosPosibles[],int turno,int comidasPosibles[][3]);
+int terminar_partida(int tablero[], int turnos_sin_comidos, int pieza, int turno, int nComidasPosibles, int comidasPosibles[][3]);
 void coronar(int tablero[]);
