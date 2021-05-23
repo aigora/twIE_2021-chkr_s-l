@@ -374,20 +374,12 @@
 
 1617382704 c:\users\bogur\desktop\programacion\progra\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\funciones.h
 
-1617382704 ated upstream
-
-1621713046 source:c:\users\rubik\documents\github\twie_2021-chkr_s-l\damas codigo\main.c
+1621700938 source:c:\users\rubik\documents\github\twie_2021-chkr_s-l\damas codigo\main.c
 	<SDL.h>
 	<stdio.h>
 	<stdbool.h>
 	<math.h>
 	<string.h>
-	"funciones.h"
-
-1621705702 shed changes
-	<SDL.h>
-	<stdio.h>
-	<stdbool.h>
 	"funciones.h"
 
 1608576488 c:\users\rubik\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl.h
@@ -759,6 +751,7 @@
 	"begin_code.h"
 	"close_code.h"
 
+
 1621713046 c:\users\rubik\documents\github\twie_2021-chkr_s-l\damas codigo\funciones.h
 
 1621713706 source:c:\users\rubik\documents\github\twie_2021-chkr_s-l\damas codigo\funciones.c
@@ -772,13 +765,13 @@
 	<SDL.h>
 	<stdbool.h>
 
-1621602382 source:c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\funciones.c
+1621602382 source:c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\funciones.c
 	<stdio.h>
 	<SDL.h>
 	<stdbool.h>
 	"funciones.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_assert.h"
@@ -814,12 +807,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_main.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_stdinc.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -848,28 +841,28 @@
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_config.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_config.h
 	"SDL_platform.h"
 	<sdkddkver.h>
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_platform.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_platform.h
 	"AvailabilityMacros.h"
 	"TargetConditionals.h"
 	<winapifamily.h>
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\begin_code.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\begin_code.h
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\close_code.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\close_code.h
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_assert.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_assert.h
 	"SDL_config.h"
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_atomic.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_atomic.h
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
@@ -877,7 +870,7 @@
 	<mbarrier.h>
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_audio.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -887,25 +880,25 @@
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_error.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_endian.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_endian.h
 	"SDL_stdinc.h"
 	<endian.h>
 	<endian.h>
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_mutex.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_thread.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_atomic.h"
@@ -916,18 +909,18 @@
 	<stdlib.h>
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_rwops.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_clipboard.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_clipboard.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_cpuinfo.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_cpuinfo.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
@@ -946,7 +939,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_events.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -960,7 +953,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_video.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_video.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -968,13 +961,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_pixels.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_pixels.h
 	"SDL_stdinc.h"
 	"SDL_endian.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_rect.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_rect.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -982,7 +975,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_surface.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_surface.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -991,11 +984,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_blendmode.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_blendmode.h
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_keyboard.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keycode.h"
@@ -1003,27 +996,27 @@
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_keycode.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_scancode.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_scancode.h
 	"SDL_stdinc.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_mouse.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_joystick.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_gamecontroller.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_gamecontroller.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
@@ -1032,17 +1025,17 @@
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_sensor.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_sensor.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_quit.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_gesture.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_gesture.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -1050,65 +1043,65 @@
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_touch.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_touch.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_filesystem.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_filesystem.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_haptic.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_haptic.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_hints.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_hints.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_loadso.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_log.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_log.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_messagebox.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_messagebox.h
 	"SDL_stdinc.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_metal.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_metal.h
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_power.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_power.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_render.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_render.h
 	"SDL_stdinc.h"
 	"SDL_rect.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_shape.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_shape.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -1117,7 +1110,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_system.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_system.h
 	"SDL_stdinc.h"
 	"SDL_keyboard.h"
 	"SDL_render.h"
@@ -1125,35 +1118,35 @@
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_timer.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_timer.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_version.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_locale.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_locale.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1617385151 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_misc.h
+1617385151 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\x86_64-w64-mingw32\include\sdl2\sdl_misc.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1621602968 source:c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\main.c
+1621602968 source:c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\main.c
 	<SDL.h>
 	<stdio.h>
 	<stdbool.h>
 	"funciones.h"
 
-1621690573 source:c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\main.c
+1621716386 source:c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\main.c
 	<SDL.h>
 	<stdio.h>
 	<stdbool.h>
@@ -1530,13 +1523,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1621694215 source:c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\funciones.c
+1621712016 source:c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\funciones.c
 	<stdio.h>
 	<SDL.h>
 	<stdbool.h>
 	"funciones.h"
 
-1621597562 c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\funciones.h
+1621706467 c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\funciones.h
 
 1620833949 source:c:\users\diego\onedrive\escritorio\universidad\informatica\nueva carpeta\damasss\damas\twie_2021-chkr_s-l\damas codigo\main.c
 	<SDL.h>
@@ -1921,13 +1914,13 @@
 	<stdbool.h>
 	"funciones.h"
 
-1620835621 source:c:\users\diego\onedrive\escritorio\universidad\informatica\nueva carpeta\damasss\damas\twie_2021-chkr_s-l\damas codigo\funciÛn comer.c
+1620835621 source:c:\users\diego\onedrive\escritorio\universidad\informatica\nueva carpeta\damasss\damas\twie_2021-chkr_s-l\damas codigo\funci√≥n comer.c
 	<SDL.h>
 	<stdio.h>
 	<stdbool.h>
 	"funciones.h"
 
-1621114805 source:c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\funci√≥n comer.c
+1621114805 source:c:\users\bogur\desktop\trabajo en grupo github\twie_2021-chkr_s-l\damas codigo\funci√É¬≥n comer.c
 	<SDL.h>
 	<stdio.h>
 	<stdbool.h>
@@ -2310,5 +2303,5 @@
 
 1621411843 c:\users\diego\onedrive\escritorio\universidad\informatica\twie_2021-chkr_s-l\damas codigo\funciones.h
 
-1621598210 c:\users\ariel carnÈs\documents\github\twie_2021-chkr_s-l\damas codigo\funciones.h
+1621598210 c:\users\ariel carn√©s\documents\github\twie_2021-chkr_s-l\damas codigo\funciones.h
 

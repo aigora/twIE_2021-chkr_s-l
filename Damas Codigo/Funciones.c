@@ -577,6 +577,7 @@ void IA(int tablero[], bool dificil, int turno, int comidasPosibles[][3],int nCo
     srand((unsigned) time(&t));
     if (dificil)
     {
+
         if (nComidasPosibles != -1)
         {
             for (i=0; i<32; i++) { tablero1[i]=tablero[i]; }
@@ -731,38 +732,71 @@ void IA(int tablero[], bool dificil, int turno, int comidasPosibles[][3],int nCo
     {
         if (nComidasPosibles != -1)
         {
-            rnd = rand() % nComidasPosibles + 1;
-            n = 0;
-            salir = false;
-            posicion = comidasPosibles[rnd][0];
-            comidasPosibles1[rnd][0] = comidasPosibles[rnd][1];
-            comidasPosibles1[rnd][1] = comidasPosibles[rnd][2];
-            comida1[0] = comidasPosibles[rnd][0];
-            comida1[1] = comidasPosibles1[rnd][0];
-            do
-            {
+           pieza=rand()%(nComidasPosibles+1);
+           tablero[comidasPosibles[pieza][2]]=tablero[comidasPosibles[pieza][0]];
+           tablero[comidasPosibles[pieza][0]]=2;
+           tablero[comidasPosibles[pieza][1]]=2;
+           coronar(tablero);
 
-            }while (!salir);
+           for(j=0;j<=2;j++)
+            {
+                 Pintar(tablero,comidasPosibles[pieza][j],false,Render,dim_cas); //Dibuja las piezas movidas
+                 SDL_Delay(time1/200);
+            }
+
+            nComidas=-1;
+
+           do
+           {
+               nComidas=dondeCome(tablero,turno,comidasPosibles[pieza][2],comidasPosibles1);
+               SDL_Delay(time1);
+               if(nComidas!=-1)
+               {
+                   pieza=rand()%(nComidas+1);
+
+                   tablero[comidasPosibles1[pieza][1]]=tablero[comidasPosibles[pieza][2]];
+                   tablero[comidasPosibles[pieza][2]]=2;
+                   tablero[comidasPosibles1[pieza][0]]=2;
+                   coronar(tablero);
+
+                   Pintar(tablero,comidasPosibles1[pieza][1],false,Render,dim_cas);
+                   Pintar(tablero,comidasPosibles[pieza][2],false,Render,dim_cas);
+                   Pintar(tablero,comidasPosibles1[pieza][0],false,Render,dim_cas);
+               }
+           }while(nComidas!=-1);
         }
         else
         {
             for (i=0; i<32; i++)
-            {
-                if (tablero[i] % 3 == turno % 2)
                 {
-                    nMovimientosPosibles = puedeMover(tablero, i, movimientosPosibles);
-                    if (nMovimientosPosibles != -1)
+                    if (tablero[i]%3 == turno%2)
                     {
-                        for (j=0; j<=nMovimientosPosibles; j++)
+                        nMovimientosPosibles = puedeMover(tablero, i, movimientosPosibles);
+                        if (nMovimientosPosibles != -1)
                         {
-                            movidas[k][0] = i;
-                            movidas[k][1] = movimientosPosibles[j];
-                            if (k<30) { k++; } else { break; }
+                            puedenMover[l] = i;
+                            if (l<=10) { l++; }
+                            for (j=0; j<=nMovimientosPosibles; j++)
+                            {
+                                if (noEsComidaAlMover(tablero, i, movimientosPosibles[j], turno))//sobrevive)
+                                {
+                                    movidas[k][0] = i;
+                                    movidas[k][1] = movimientosPosibles[j];
+                                    if (k<=30) { k++; } else { break; }
+                                }
+                            }
+                            if (k>30) { break; }
                         }
                     }
-                    if (k=30) { break; }
                 }
-            }
+            pieza=rand()%k;
+            tablero[movidas[pieza][1]]=tablero[movidas[pieza][0]];
+            tablero[movidas[pieza][0]]=2;
+            coronar(tablero);
+
+
+            Pintar(tablero,movidas[pieza][0],false,Render,dim_cas);
+            Pintar(tablero,movidas[pieza][1],false,Render,dim_cas);
         }
     }
 }
