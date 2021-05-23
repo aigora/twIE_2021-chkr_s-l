@@ -222,7 +222,6 @@ int main(int argv, char** args)
                         if (colorBot == turno % 2) //Se comprueba si es turno de la IA o en su defecto si esta activada
                         {
                             IA(tablero, dificil, turno, comidasPosibles, nComidas_posibles, Render, dim_cas);
-                            fin_partida=terminar_partida(tablero,turno_sin_comidos,pieza,movimientosPosibles,turno,comidasPosibles); //Se comprueba si se ha terminado la partida
                             turno++;
                             nComidas_posibles=puedeComer(tablero, turno, comidasPosibles);
                             fin_partida=terminar_partida(tablero, turno_sin_comidos, pieza, turno, nComidas_posibles, comidasPosibles); //Se comprueba si se ha terminado la partida
@@ -342,8 +341,7 @@ int main(int argv, char** args)
                                                 {
                                                     Pintar(tablero, movimientosPosibles[j], false, Render, dim_cas);
                                                 }
-                                                
-                                                resultado=fin_partida; //Usada para el fichero
+
 
                                                 pieza = -1;
                                                 turno_sin_comidos++;
@@ -371,7 +369,7 @@ int main(int argv, char** args)
                     pos_raton(dim_cas,32);
 
 
-                    if (colorBot != -1 && colorBot != fin_partida - 1 && fin_partida == 3)//Solo se genera el fichero si el bot esta activado y este no ha ganado la partida
+                    if (colorBot != -1 )
                     {
                         do
                         {
@@ -444,8 +442,7 @@ int main(int argv, char** args)
                         }
                     }
 
-                    printf("%i", fin_partida);
-                                                                        //Aquí acaba el juego en sí
+                      //Aquí acaba el juego en sí
                     break;
                 }
             }

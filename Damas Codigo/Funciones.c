@@ -613,17 +613,10 @@ void IA(int tablero[], bool dificil, int turno, int comidasPosibles[][3],int nCo
                         for (j=0; j<=n; j++)
                         {
                             comida[j + 3] = comida1[j];
-                            printf("%i ", comida1[j]);
                         }
-                        printf("\n");
                     }
                     if (nComidas == -1){ salir = true; }
                 }while (!salir);
-            }
-            printf("\n");
-            for (i=0; i<7; i++)
-            {
-                printf("%i ", comida[i]);
             }
             tablero[comida[2]] = comida[1];
             for (i=0; i<comida[0]+1; i++)
