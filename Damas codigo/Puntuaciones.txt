@@ -1,0 +1,9 @@
+
+
+Un 1 equivale a vitoria de amarillas, un 2 a victoria de moradas y un 3 a un empate.
+Partida:
+Nombre: Dario
+Turnos: 169
+Fichas extra del que más tenía: 6
+Resultado: 1
+Color jugador:Morado
